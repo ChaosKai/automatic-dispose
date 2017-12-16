@@ -1,0 +1,23 @@
+{
+    "mission_id":   "274",
+    "mission_name": "Bewusstlose Person",
+    "vehicles":
+    {
+        [
+        "28":
+        {
+            "type": 28,
+            "name": "RTW",
+            "quantity": 1,
+            "chance": 100
+        },
+        "29":
+        {
+            "type": 29,
+            "name": "NEF",
+            "quantity": 1,
+            "chance": 90
+        }
+        ]
+    }
+}
