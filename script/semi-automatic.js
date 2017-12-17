@@ -6,12 +6,12 @@ $(document).ready(function()
         $("#automatic-dispose-dashboard-switch-mode-button").html("Halb-Automatik");
     }
 
-    setInterval( collectMissions, 1000 );
+    setInterval( AutomaticDispose_CollectMissions, 1000 );
 });
 
 
 
-function switchMode()
+function AutomaticDispose_SwitchMode()
 {
     if( localStorage.getItem("AutomaticDispose-Mode") == "semi" )
     {
@@ -25,45 +25,22 @@ function switchMode()
     }
 }
 
-AllianceMissions = {};
-
-function collectMissions()
+function AutomaticDispose_CollectMissions()
 {
-    var UpdatedMissions = {};
-
     $("#mission_list").find(".missionSideBarEntry").each(function()
     {
         var MissionID = $(this).attr("mission_id");
         var MissionType = $(this).attr("mission_type_id");
         var MissionName = $(this).find(".map_position_mover").text();
 
-        UpdatedMissions[MissionID] = {
-            "id":    MissionID,
-            "type":  MissionType,
-            "name":  MissionName
-        };
-    });
-
-    $.each(UpdatedMissions, function(Key, Mission)
-    {
-        if( typeof AllianceMissions[Mission.id] != "undefined" )
+        if( $("#AutomaticDispose-Button-AddMission-" + MissionID).length == 0 )
         {
-            if( AllianceMissions[Mission.id].state != Mission.state && Mission.state == "green" )
+            $(this).append('<a id="AutomaticDispose-Button-AddMission-' + MissionID + '" class="btn btn-default btn-xs">AD+</a>');
+            
+            $("#AutomaticDispose-Button-AddMission-" + MissionID).click(function()
             {
-                var notification = new Notification("Einsatz " + Mission.name + " beginnt", { body: "Der Einsatz startet. Schicke schnell ein Fahrzeug." });
                 
-                var MissionsReady = JSON.parse(localStorage.getItem("AllianceVehicleAlert-MissionsReady"));
-                MissionsReady.push(Mission.id);
-                localStorage.setItem( "AllianceVehicleAlert-MissionsReady", JSON.stringify(MissionsReady) );
-                
-                var MissionPopup = window.open("https://www.leitstellenspiel.de/missions/" + Mission.id, "AllianceVehicleAlert", "width=101,height=101");
-                setTimeout( function()
-                {
-                    MissionPopup.close();
-                }, 5000);
-            }
+            });
         }
     });
-
-    AllianceMissions = UpdatedMissions;
 }
