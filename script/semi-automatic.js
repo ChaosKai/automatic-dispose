@@ -42,11 +42,15 @@ function AutomaticDispose_AddMission( ID, Mode )
         Missions[ ID ] = {
             "id": MissionID,
             "type": MissionType,
-            "name": MissionName
+            "name": MissionName,
             "mode": Mode,
             "last_check": Math.floor( new Date().getTime() / 1000 ),
             "next_check": Math.floor( new Date().getTime() / 1000 ) + 1
         }
+    }
+    else
+    {
+        Missions[ ID ]["mode"] = Mode;
     }
     
     localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) ); 
