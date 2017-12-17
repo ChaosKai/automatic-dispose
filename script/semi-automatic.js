@@ -44,7 +44,7 @@ function AutomaticDispose_CollectMissions()
 
         if( $("#AutomaticDispose-Button-AddMission-" + MissionID).length == 0 )
         {
-            $(this).find(".panel-heading").append('<a id="AutomaticDispose-Button-AddMission-' + MissionID + '" class="btn btn-default btn-xs">AD+</a>');
+            $(this).find(".panel-heading").prepend('<a id="AutomaticDispose-Button-AddMission-' + MissionID + '" class="btn btn-default btn-xs">AD+</a>');
             
             $("#AutomaticDispose-Button-AddMission-" + MissionID).click(function()
             {
