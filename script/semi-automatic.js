@@ -1,12 +1,12 @@
 $(document).ready(function()
 {
-    if( typeof localStorage.getItem("AutomaticDispose-Mode") == "null" )
+    if( typeof localStorage.getItem("AutomaticDispose-Mode") == "undefined" )
     {
         localStorage.setItem("AutomaticDispose-Mode", "semi");
         $("#automatic-dispose-dashboard-switch-mode-button").html("Halb-Automatik");
     }
     
-    if( typeof localStorage.getItem("AutomaticDispose-Missions") == "null" )
+    if( typeof localStorage.getItem("AutomaticDispose-Missions") == "undefined" )
     {
         localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify({}) );
     }
@@ -35,6 +35,9 @@ function AutomaticDispose_SwitchMode()
 function AutomaticDispose_AddMission( ID, Mode )
 {
     var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
+    
+    if( Missions == null )
+        Missions = {};
     
     if( typeof Missions[ ID ] == "undefined" )
     {
