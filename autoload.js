@@ -25,17 +25,30 @@
             scriptElement.type = "text/javascript";
             scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/interface.js";
             document.body.appendChild(scriptElement);
+            
+            
+            var styleElement = document.createElement("link");
+            styleElement.rel = "stylesheet";
+            styleElement.type = "text/css";
+            styleElement.media = "screen";
+            styleElement.href = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/style/interface.css";
+            document.body.appendChild(styleElement);
         }
         
 //      -
-//      -           Mission Catcher
+//      -           Load Automatic Modes
 //      -
         
         if (window.location.pathname === "/" || window.location.pathname === "/#")
         {
             var scriptElement = document.createElement("script");
             scriptElement.type = "text/javascript";
-            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/mission-catcher.js";
+            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/semi-automatic.js";
+            document.body.appendChild(scriptElement);
+                
+            var scriptElement = document.createElement("script");
+            scriptElement.type = "text/javascript";
+            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/full-automatic.js";
             document.body.appendChild(scriptElement);
         }
         
@@ -49,18 +62,4 @@
             scriptElement.type = "text/javascript";
             scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/vehicle-alert.js";
             document.body.appendChild(scriptElement);
-        }
-
-//      -
-//      -           Load Style
-//      -
-        
-        if (window.location.pathname === "/" || window.location.pathname === "/#")
-        {
-            var styleElement = document.createElement("link");
-            styleElement.rel = "stylesheet";
-            styleElement.type = "text/css";
-            styleElement.media = "screen";
-            styleElement.href = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/style/interface.css";
-            document.body.appendChild(styleElement);
         }
