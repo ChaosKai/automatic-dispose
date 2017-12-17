@@ -1,6 +1,6 @@
 $(document).ready(function()
 {
-    if( typeof localStorage.getItem("AutomaticDispose-Mode") != "undefined" )
+    if( typeof localStorage.getItem("AutomaticDispose-Mode") == "undefined" )
     {
         localStorage.setItem("AutomaticDispose-Mode", "semi");
         $("#automatic-dispose-dashboard-switch-mode-button").html("Halb-Automatik");
@@ -27,9 +27,29 @@ function AutomaticDispose_SwitchMode()
 
 
 
-function AddMission( ID, Mode )
+function AutomaticDispose_AddMission( ID, Mode )
 {
     var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
+    
+    if( typeof Missions[ ID ] == "undefined" )
+    {
+        var MissionElement = $("#mission_" + ID);
+        
+        var MissionID = MissionElement.attr("mission_id");
+        var MissionType = MissionElement.attr("mission_type_id");
+        var MissionName = MissionElement.find(".map_position_mover").text();
+        
+        Missions[ ID ] = {
+            "id": MissionID,
+            "type": MissionType,
+            "name": MissionName
+            "mode": Mode,
+            "last_check": Math.floor( new Date().getTime() / 1000 ),
+            "next_check": Math.floor( new Date().getTime() / 1000 ) + 1
+        }
+    }
+    
+    localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) ); 
 }
 
 
@@ -48,7 +68,7 @@ function AutomaticDispose_CollectMissions()
             
             $("#AutomaticDispose-Button-AddMission-" + MissionID).click(function()
             {
-                AddMission( MissionID, "semi" );
+                AutomaticDispose_AddMission( MissionID, "semi" );
             });
         }
     });
