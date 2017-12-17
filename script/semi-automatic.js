@@ -1,12 +1,12 @@
 $(document).ready(function()
 {
-    if( typeof localStorage.getItem("AutomaticDispose-Mode") == "undefined" )
+    if( typeof localStorage.getItem("AutomaticDispose-Mode") == "null" )
     {
         localStorage.setItem("AutomaticDispose-Mode", "semi");
         $("#automatic-dispose-dashboard-switch-mode-button").html("Halb-Automatik");
     }
     
-    if( typeof localStorage.getItem("AutomaticDispose-Missions") == "undefined" )
+    if( typeof localStorage.getItem("AutomaticDispose-Missions") == "null" )
     {
         localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify({}) );
     }
