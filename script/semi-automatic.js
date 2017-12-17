@@ -5,6 +5,11 @@ $(document).ready(function()
         localStorage.setItem("AutomaticDispose-Mode", "semi");
         $("#automatic-dispose-dashboard-switch-mode-button").html("Halb-Automatik");
     }
+    
+    if( typeof localStorage.getItem("AutomaticDispose-Missions") == "undefined" )
+    {
+        localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify({}) );
+    }
 
     setInterval( AutomaticDispose_CollectMissions, 1000 );
 });
