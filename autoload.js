@@ -61,6 +61,6 @@
             styleElement.rel = "stylesheet";
             styleElement.type = "text/css";
             styleElement.media = "screen";
-            styleElement.href = "https://rawgit.com/ChaosKai/automatic-dispose/style/interface.css";
+            styleElement.href = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/style/interface.css";
             document.body.appendChild(styleElement);
         }
