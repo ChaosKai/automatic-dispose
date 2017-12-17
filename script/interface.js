@@ -51,6 +51,6 @@ function AutomaticDispose_CreateDashboard()
 
     $("#automatic-dispose-dashboard-switch-mode-button").click(function()
     {
-        
+        switchMode();
     });
 }
