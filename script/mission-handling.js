@@ -29,6 +29,9 @@ console.log(Missions[MissionID]);
         if( typeof Missions[MissionID] !== "undefined" && Missions[MissionID].next_check < CurrentTime )
         {
             AD_GetMissionConfiguration();
+            
+            AD_CollectInvolvedVehicles():
+            AD_CollectPatients();
         }
     }
 
@@ -149,7 +152,7 @@ console.log(Missions[MissionID]);
     {
         var PatientCounter = 0;
         
-        $(".mission-patient").each(function()
+        $(".mission_patient").each(function()
         {
             var PatientName = $(this).text();
             var PatientNeedRTW = false;
