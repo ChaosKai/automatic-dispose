@@ -229,8 +229,11 @@ console.log(Missions[MissionID]);
                 var VehicleID = $(this).attr("id").replace("vehicle_element_content_", "");
                 var VehicleDistanceTime = $("#vehicle_sort_" + VehicleID).attr("sortvalue");
                 
+                console.log("  Automatic Dispose: " + $(this).attr("vehicle_type") + " " + VehiclesNeed["38"] );
+                
                 if( $(this).attr("vehicle_type") == "KTW" && VehiclesNeed["38"] > 0 )
                 {
+                    console.log("  Automatic Dispose: Fahrzeug " + VehicleID + " " + $(this).attr("vehicle_type") + " markiert");
                     $("#vehicle_checkbox_" + VehicleID).click();
                     VehiclesNeed["38"]--;
                 }
