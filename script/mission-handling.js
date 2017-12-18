@@ -166,7 +166,7 @@ console.log(Missions);
             
             
             
-            if(  )
+            //if(  )
             
         }
     }
