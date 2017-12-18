@@ -61,7 +61,7 @@
         {
             var scriptElement = document.createElement("script");
             scriptElement.type = "text/javascript";
-            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/mission-handling.js";
+            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/mission-opener.js";
             document.body.appendChild(scriptElement);
         }
         
@@ -73,6 +73,6 @@
         {
             var scriptElement = document.createElement("script");
             scriptElement.type = "text/javascript";
-            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/vehicle-alert.js";
+            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/mission-handling.js";
             document.body.appendChild(scriptElement);
         }
