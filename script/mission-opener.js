@@ -16,13 +16,16 @@ function AutomaticDispose_CheckMissionAttention()
         
     $.each(Missions, function(MissionID, Mission)
     {
-        if( Mission.next_check < CurrentTime )
+        if( $("#mission_" + MissionID).length == 0 )
+        {
+            delete Missions[MissionID]
+        }
+        else if( Mission.next_check < CurrentTime )
         {
             if( typeof AutomaticDispose_MissionWindows[ Mission.id ] === "undefined" || AutomaticDispose_MissionWindows[ Mission.id ].closed )
             {
                 AutomaticDispose_MissionWindows[ Mission.id ] = window.open("https://www.leitstellenspiel.de/missions/" + Mission.id, "Mission " + Mission.id, "width=256,height=512");
                 AutomaticDispose_MissionWindows[ Mission.id ].blur();
-                Missions[ Mission.id ]["last_check"] = CurrentTime;
             }
         }
     });
