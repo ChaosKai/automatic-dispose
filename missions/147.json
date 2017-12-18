@@ -1,0 +1,14 @@
+{
+    "mission_id":   "147",
+    "mission_name": "Krankentransport",
+    
+    "emergency_medical_service":
+    {
+        "use_KTW":      true,
+        "use_RTW":      false,
+        "use_NEF":      false,
+        "use_RTH":      false,
+        "use_LNA":      false,
+        "use_SEG":      false
+    }
+}
