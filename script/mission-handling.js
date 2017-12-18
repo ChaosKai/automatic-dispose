@@ -14,7 +14,10 @@ $(document).ready(function()
     MissionType = Missions[ MissionID ].type;
     CurrentTime = Math.floor( new Date().getTime() / 1000 );
     
-    AD_CheckMissionAutomatic();
+    setTimeout(function()
+    {
+        AD_CheckMissionAutomatic();
+    }, 100);
 });
 
 
