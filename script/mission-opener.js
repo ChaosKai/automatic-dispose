@@ -14,7 +14,7 @@ function AutomaticDispose_CheckMissionAttention()
     if( Missions == null )
         Missions = {};
         
-    $.each(function(MissionID, Mission)
+    $.each(Missions, function(MissionID, Mission)
     {
         if( Mission.next_check < CurrentTime )
         {
