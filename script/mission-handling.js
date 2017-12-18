@@ -25,14 +25,10 @@ var CurrentTime = Math.floor( new Date().getTime() / 1000 );
     function AD_CheckMissionAutomatic()
     {
         var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
-
+console.log(Missions[MissionID]);
         if( typeof Missions[MissionID] !== "undefined" && Missions[MissionID].next_check < CurrentTime )
         {
             AD_GetMissionConfiguration();
-        }
-        else
-        {
-            window.close();
         }
     }
 
