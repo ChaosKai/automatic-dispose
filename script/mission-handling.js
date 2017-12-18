@@ -56,9 +56,9 @@ var CurrentTime = Math.floor( new Date().getTime() / 1000 );
                 Missions[ MissionID ]["last_check"] = CurrentTime;
                 Missions[ MissionID ]["next_check"] = CurrentTime + 300;
             }
-console.log(Missions);
+            
             localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
-            //window.close();
+            window.close();
         });
     }
 
