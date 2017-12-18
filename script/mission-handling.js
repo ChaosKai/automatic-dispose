@@ -25,8 +25,12 @@ var CurrentTime = Math.floor( new Date().getTime() / 1000 );
     function AD_CheckMissionAutomatic()
     {
         var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
-console.log(Missions[MissionID]);
-        if( typeof Missions[MissionID] !== "undefined" && Missions[MissionID].next_check < CurrentTime )
+        
+        console.log(Missions[MissionID]);
+        console.log(typeof Missions[MissionID]);
+        console.log("  Automatic Dispose: " + Missions[MissionID].next_check + " < " + CurrentTime);
+        
+        if( typeof Missions[MissionID] != "undefined" && Missions[MissionID].next_check < CurrentTime )
         {
             AD_GetMissionConfiguration();
             
