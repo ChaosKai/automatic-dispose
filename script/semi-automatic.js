@@ -110,4 +110,21 @@ function AutomaticDispose_CollectMissions()
             });
         }
     });
+    
+    $("#mission_list_krankentransporte").find(".missionSideBarEntry").each(function()
+    {
+        var MissionID = $(this).attr("mission_id");
+        var MissionType = $(this).attr("mission_type_id");
+        var MissionName = $(this).find(".map_position_mover").text();
+
+        if( $("#AutomaticDispose-Button-AddMission-" + MissionID).length == 0 )
+        {
+            $(this).find(".panel-heading").prepend('<a id="AutomaticDispose-Button-AddMission-' + MissionID + '" class="btn btn-default btn-xs">AD+</a>');
+            
+            $("#AutomaticDispose-Button-AddMission-" + MissionID).click(function()
+            {
+                AutomaticDispose_AddMission( MissionID, "semi" );
+            });
+        }
+    });
 }
