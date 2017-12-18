@@ -6,7 +6,7 @@ $(document).ready(function()
     MissionID = document.location.pathname.substr( document.location.pathname.lastIndexOf("/") + 1 );
     MissionType = Missions[ MissionID ].type;
     
-    setTimeout( checkAutomaticAlert, 1000 );
+    AutomaticDispose_CheckMissionAutomatic();
 });
 
 
@@ -15,6 +15,17 @@ var MissionID;
 var MissionType;
 var CurrentTime = Math.floor( new Date().getTime() / 1000 );
 
+
+
+function AutomaticDispose_CheckMissionAutomatic()
+{
+    var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
+    
+    if( typeof Missions[ MissionID ] !== "undefined" )
+    {
+        AutomaticDispose_GetMissionConfiguration();
+    }
+}
 
 
 function AutomaticDispose_GetMissionConfiguration()
