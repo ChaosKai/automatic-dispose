@@ -196,14 +196,14 @@ var CurrentTime = Math.floor( new Date().getTime() / 1000 );
                 if( MissionConfig.emergency_medical_service.use_KTW )
                 {
                     if( !Patient.need_RTW && !Patient.need_NEF && !Patient.need_RTH )
-                        VehiclesNeed.38++;
+                        VehiclesNeed["38"]++;
                 }
                 
                 if( MissionConfig.emergency_medical_service.use_RTW )
-                    VehiclesNeed.28++;
+                    VehiclesNeed["28"]++;
                 
                 if( MissionConfig.emergency_medical_service.use_NEF )
-                    VehiclesNeed.29++;
+                    VehiclesNeed["29"]++;
             });
             
             
