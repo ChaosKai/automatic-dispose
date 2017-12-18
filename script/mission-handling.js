@@ -238,6 +238,8 @@ console.log(Missions[MissionID]);
                 {
                     $("#vehicle_checkbox_" + VehicleID).click();
                     VehiclesNeed["74"]--;
+                    VehiclesNeed["28"]--;
+                    VehiclesNeed["29"]--;
                 }
                 else if( $(this).attr("vehicle_type") == "RTW" && VehiclesNeed["28"] > 0 )
                 {
