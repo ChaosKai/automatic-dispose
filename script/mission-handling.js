@@ -6,7 +6,7 @@ $(document).ready(function()
     MissionID = document.location.pathname.substr( document.location.pathname.lastIndexOf("/") + 1 );
     MissionType = Missions[ MissionID ].type;
     
-    AutomaticDispose_CheckMissionAutomatic();
+    AD_CheckMissionAutomatic();
 });
 
 
@@ -22,18 +22,22 @@ var CurrentTime = Math.floor( new Date().getTime() / 1000 );
 //  -
 //  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-    function AutomaticDispose_CheckMissionAutomatic()
+    function AD_CheckMissionAutomatic()
     {
         var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
 
-        if( typeof Missions[ MissionID ] !== "undefined" )
+        if( typeof Missions[MissionID] !== "undefined" && Missions[MissionID].next_check < CurrentTime )
         {
-            AutomaticDispose_GetMissionConfiguration();
+            AD_GetMissionConfiguration();
+        }
+        else
+        {
+            window.close();
         }
     }
 
 
-    function AutomaticDispose_GetMissionConfiguration()
+    function AD_GetMissionConfiguration()
     {
         $.getJSON( AutomaticDispose_URL + AutomaticDispose_Branch + "/missions/" + MissionType + ".json", function( Response )
         {
@@ -47,9 +51,6 @@ var CurrentTime = Math.floor( new Date().getTime() / 1000 );
         {
             console.log("  Automatic Dispose: Die Konfiguration für den Einsatz " + MissionType + " ist nicht verfügbar");
             var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
-
-            if( Missions == null )
-                Missions = {};
 
             if( typeof Missions[ MissionID ] !== "undefined" )
             {
@@ -97,7 +98,7 @@ var CurrentTime = Math.floor( new Date().getTime() / 1000 );
             
             localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
             
-            $("#mission_alarm_btn").first().click();
+            //$("#mission_alarm_btn").first().click();
         }, 500);
     }
 
