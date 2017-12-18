@@ -30,7 +30,7 @@ console.log(Missions[MissionID]);
         {
             AD_GetMissionConfiguration();
             
-            AD_CollectInvolvedVehicles():
+            AD_CollectInvolvedVehicles();
             AD_CollectPatients();
         }
     }
