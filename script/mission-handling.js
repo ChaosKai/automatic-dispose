@@ -35,17 +35,20 @@ console.log(Missions[MissionID]);
 
     function AD_GetMissionConfiguration()
     {
+        console.log("  Automatic Dispose: Lade Einsatzkonfiguration aus GitHub...");
+        
         $.getJSON( AutomaticDispose_URL + AutomaticDispose_Branch + "/missions/" + MissionType + ".json", function( Response )
         {
             MissionConfig = Response;
         })
         .done( function()
         {
+            console.log("  Automatic Dispose: Einsatzkonfiguration erfolgreich geladen.");
             AD_StartAlarmProcess();
         })
         .fail( function()
         {
-            console.log("  Automatic Dispose: Die Konfiguration für den Einsatz " + MissionType + " ist nicht verfügbar");
+            console.log("  Automatic Dispose: Die Konfiguration für den Einsatz " + MissionType + " ist nicht verfügbar!");
             var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
 
             if( typeof Missions[ MissionID ] !== "undefined" )
@@ -62,6 +65,8 @@ console.log(Missions[MissionID]);
 
     function AD_StartAlarmProcess()
     {
+        console.log("  Automatic Dispose: Starte Alarmierungsprozess");
+        
         setTimeout(function()       // Process Emergency Medical Service
         {
             AD_ProcessEmergencyMedicalService();
@@ -134,6 +139,9 @@ console.log(Missions[MissionID]);
                 "type": VehicleType
             }
         });
+        
+        console.log("  Automatic Dispose: Bereits beteiligte Fahrzeuge:");
+        console.log(AD_Vehicles);
     }
 
 
@@ -162,6 +170,9 @@ console.log(Missions[MissionID]);
             
             PatientCounter++;
         });
+        
+        console.log("  Automatic Dispose: Patientenliste:");
+        console.log(AD_Patients);
     }
 
 //  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
@@ -182,10 +193,15 @@ console.log(Missions[MissionID]);
             "59": 0 - AD_CountInvolvedVehiclesOfType("59"),      // (SEG) ELW 1
             "60": 0 - AD_CountInvolvedVehiclesOfType("60")       // (SEG) GW-San
         };
+        
+        
+        console.log("  Automatic Dispose: EMS Prozess - Step 1");
+        console.log(VehiclesNeed);
 
         
         if( typeof MissionConfig.emergency_medical_service == "object" )            // Wenn der EMS-Block in der Config definiert ist
         {
+            console.log("  Automatic Dispose: EMS Prozess - Start");
             
             $.each(AD_Patients, function(Key, Patient)
             {
@@ -202,6 +218,8 @@ console.log(Missions[MissionID]);
                     VehiclesNeed["29"]++;
             });
             
+            console.log("  Automatic Dispose: EMS Prozess - Step 2");
+            console.log(VehiclesNeed);
             
             $("#vehicle_show_table_body_all").find(".vehicle_select_table_tr").each( function()
             {
@@ -234,6 +252,9 @@ console.log(Missions[MissionID]);
                     VehiclesNeed["29"]--;
                 }
             });
+            
+            console.log("  Automatic Dispose: EMS Prozess - Step 3");
+            console.log(VehiclesNeed);
             
         }
     }
