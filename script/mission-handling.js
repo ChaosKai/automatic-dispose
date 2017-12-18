@@ -52,7 +52,7 @@ function AutomaticDispose_GetMissionConfiguration()
         }
 
         localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
-        window.close();
+        //window.close();
     });
 }
 
