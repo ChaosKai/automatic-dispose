@@ -229,27 +229,22 @@ console.log(Missions[MissionID]);
                 var VehicleID = $(this).attr("id").replace("vehicle_element_content_", "");
                 var VehicleDistanceTime = $("#vehicle_sort_" + VehicleID).attr("sortvalue");
                 
-                if( $(this).attr("vehicle_type") == "38" && VehiclesNeed["38"] > 0 )
+                if( $(this).attr("vehicle_type") == "KTW" && VehiclesNeed["38"] > 0 )
                 {
                     $("#vehicle_checkbox_" + VehicleID).click();
                     VehiclesNeed["38"]--;
                 }
-                else if( $(this).attr("vehicle_type") == "74" && VehiclesNeed["28"] > 0  && VehiclesNeed["29"] > 0 )
+                else if( $(this).attr("vehicle_type") == "NAW" && VehiclesNeed["28"] > 0  && VehiclesNeed["29"] > 0 )
                 {
                     $("#vehicle_checkbox_" + VehicleID).click();
                     VehiclesNeed["74"]--;
                 }
-                else if( $(this).attr("vehicle_type") == "28" && VehiclesNeed["28"] > 0 )
+                else if( $(this).attr("vehicle_type") == "RTW" && VehiclesNeed["28"] > 0 )
                 {
                     $("#vehicle_checkbox_" + VehicleID).click();
                     VehiclesNeed["28"]--;
                 }
-                else if( $(this).attr("vehicle_type") == "29" && VehiclesNeed["29"] > 0 )
-                {
-                    $("#vehicle_checkbox_" + VehicleID).click();
-                    VehiclesNeed["29"]--;
-                }
-                else if( $(this).attr("vehicle_type") == "29" && VehiclesNeed["29"] > 0 )
+                else if( $(this).attr("vehicle_type") == "NEF" && VehiclesNeed["29"] > 0 )
                 {
                     $("#vehicle_checkbox_" + VehicleID).click();
                     VehiclesNeed["29"]--;
