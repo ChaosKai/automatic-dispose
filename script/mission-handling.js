@@ -224,7 +224,7 @@ console.log(Missions[MissionID]);
             console.log("  Automatic Dispose: EMS Prozess - Step 2");
             console.log(VehiclesNeed);
             
-            $("#vehicle_show_table_body_all").find(".vehicle_select_table_tr").each( function()
+            $("#vehicle_show_table_body_rett").find(".vehicle_select_table_tr").each( function()
             {
                 var VehicleID = $(this).attr("id").replace("vehicle_element_content_", "");
                 var VehicleDistanceTime = $("#vehicle_sort_" + VehicleID).attr("sortvalue");
