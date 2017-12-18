@@ -1,23 +1,48 @@
 {
     "mission_id":   "274",
     "mission_name": "Bewusstlose Person",
-    "vehicles":
+    
+    "organizations":
     {
-        [
-        "28":
-        {
-            "type": 28,
-            "name": "RTW",
-            "quantity": 1,
-            "chance": 100
-        },
-        "29":
-        {
-            "type": 29,
-            "name": "NEF",
-            "quantity": 1,
-            "chance": 90
-        }
-        ]
+        "fire_department":              false,
+        "emergency_medical_service":    false,
+        "police_department":            false,
+        "technical_emergency_service":  false
+    },
+    
+    "fire_department":
+    {
+        "num_LF":       "0",
+        "num_ELW1":     "0",
+        "num_ELW2":     "0",
+        "num_DLK":      "0",
+        "num_RW":       "0",
+        "num_FwK"       "0",
+        "num_GW-A":     "0",
+        "num_GW-G":     "0",
+        "num_GW-OEL":   "0",
+        "num_GW-Mess":  "0",
+        "num_GW-L":     "0",
+        "num_GW-Hoeh":  "0",
+        "num_GW-W":     "0",
+        "num_Dekon-P":  "0"
+    },
+    "emergency_medical_service":
+    {
+        "use_KTW":      false,
+        "use_RTW":      true,
+        "use_NEF":      true,
+        "use_RTH":      false,
+        "use_LNA":      false,
+        "use_SEG":      false
+    },
+    "police_department":
+    {
+        "num_FuStw":    "0",
+        "num_leBefKw":  "0",
+        "num_GruKw":    "0",
+        "num_FueKw":    "0",
+        "num_GefKw":    "0",
+        "num_WaWe":     "0"
     }
 }
