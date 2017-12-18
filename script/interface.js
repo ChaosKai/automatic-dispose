@@ -10,7 +10,7 @@ $(document).ready(function()
 function AutomaticDispose_CreateNavbarItem()
 {
     $('#news_li').before('<li id="automatic-dispose-nav-item"></li>');
-    $('#automatic-dispose-nav-item').append('<a id="automatic-dispose-open-button" href="#">Autom. Disposition</a>');
+    $('#automatic-dispose-nav-item').append('<a id="automatic-dispose-open-button" href="#"><img class="navbar-icon" title="Automatische Disposition"></a>');
 }
 
 
