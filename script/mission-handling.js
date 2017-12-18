@@ -16,7 +16,7 @@ function AutomaticDispose_CheckMissionAttention()
         
     $.each(function(MissionID, Mission)
     {
-        if( Mission.next_check > CurrentTime )
+        if( Mission.next_check < CurrentTime )
         {
             AutomaticDispose_MissionWindows[ Mission.id ] = window.open("https://www.leitstellenspiel.de/missions/" + Mission.id, "Mission " + Mission.id, "width=256,height=512");
             
