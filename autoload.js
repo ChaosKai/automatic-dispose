@@ -5,6 +5,7 @@
 //  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
         var AutomaticDispose_Branch = "master";
+        var AutomaticDispose_URL    = "https://rawgit.com/ChaosKai/automatic-dispose/";
 
 //      -
 //      -           Google Font
