@@ -1,20 +1,23 @@
 
+
+var MissionID;
+var MissionType;
+var MissionConfig;
+var CurrentTime;
+
+
 $(document).ready(function()
 {
     var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
     
-    MissionID = document.location.pathname.substr( document.location.pathname.lastIndexOf("/") + 1 );
+    MissionID   = document.location.pathname.substr( document.location.pathname.lastIndexOf("/") + 1 );
     MissionType = Missions[ MissionID ].type;
+    CurrentTime = Math.floor( new Date().getTime() / 1000 );
     
     AD_CheckMissionAutomatic();
 });
 
 
-
-var MissionID;
-var MissionType;
-var MissionConfig;
-var CurrentTime = Math.floor( new Date().getTime() / 1000 );
 
 //  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 //  -
