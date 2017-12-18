@@ -41,7 +41,7 @@ console.log(Missions[MissionID]);
         })
         .done( function()
         {
-            console.log( "success" );
+            AD_StartAlarmProcess();
         })
         .fail( function()
         {
@@ -89,7 +89,7 @@ console.log(Missions[MissionID]);
             if( typeof Missions[ MissionID ] !== "undefined" )
             {
                 Missions[ MissionID ]["last_check"] = CurrentTime;
-                Missions[ MissionID ]["next_check"] = CurrentTime + 300;
+                Missions[ MissionID ]["next_check"] = CurrentTime + 60;
             }
             
             localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
@@ -247,7 +247,7 @@ console.log(Missions[MissionID]);
     {
         var CountedVehicles = 0;
         
-        $.each(AutomaticDispose_Vehicles, function( VehicleID, Vehicle )
+        $.each(AD_Vehicles, function( VehicleID, Vehicle )
         {
             if( Vehicle.type == VehicleType )
                 CountedVehicles++;
