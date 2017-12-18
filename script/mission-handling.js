@@ -53,7 +53,8 @@ var CurrentTime = Math.floor( new Date().getTime() / 1000 );
 
             if( typeof Missions[ MissionID ] !== "undefined" )
             {
-                Missions[ MissionID ]["next_update"] = CurrentTime + 300;
+                Missions[ MissionID ]["last_check"] = CurrentTime;
+                Missions[ MissionID ]["next_check"] = CurrentTime + 300;
             }
 console.log(Missions);
             localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
