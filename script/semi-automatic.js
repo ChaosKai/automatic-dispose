@@ -80,6 +80,20 @@ function AutomaticDispose_AddMission( ID, Mode )
 
 function AutomaticDispose_CollectMissions()
 {
+    var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
+    if( Missions == null )
+        Missions = {};
+    
+    $.each(Missions, function(MissionID, Mission)
+    {
+        if( $("#mission_" + Mission.id).length < 1 )
+        {
+            delete Missions[ Mission.id ];
+        }
+    });
+    
+    localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
+    
     $("#mission_list").find(".missionSideBarEntry").each(function()
     {
         var MissionID = $(this).attr("mission_id");
