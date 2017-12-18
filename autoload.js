@@ -54,6 +54,18 @@
         }
         
 //      -
+//      -           Load Mission Handling
+//      -
+        
+        if (window.location.pathname === "/" || window.location.pathname === "/#")
+        {
+            var scriptElement = document.createElement("script");
+            scriptElement.type = "text/javascript";
+            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/mission-handling.js";
+            document.body.appendChild(scriptElement);
+        }
+        
+//      -
 //      -           Vehicle Alert
 //      -
         
