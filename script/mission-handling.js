@@ -62,16 +62,55 @@ var CurrentTime = Math.floor( new Date().getTime() / 1000 );
         });
     }
 
+
+    function AD_StartAlarmProcess()
+    {
+        setTimeout(function()       // Process Emergency Medical Service
+        {
+            AD_ProcessEmergencyMedicalService();
+        }, 100);
+        
+        setTimeout(function()       // Process Fire Department
+        {
+            //AD_ProcessFireDepartment();
+        }, 100);
+        
+        setTimeout(function()       // Process Police Department
+        {
+            //AD_ProcessPoliceDepartment();
+        }, 100);
+        
+        setTimeout(function()       // Process Technical Emergency Service
+        {
+            //AD_ProcessTechnicalEmergencyService();
+        }, 100);
+        
+        setTimeout(function()       // Send Alarm
+        {
+            var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
+
+            if( typeof Missions[ MissionID ] !== "undefined" )
+            {
+                Missions[ MissionID ]["last_check"] = CurrentTime;
+                Missions[ MissionID ]["next_check"] = CurrentTime + 300;
+            }
+            
+            localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
+            
+            $("#mission_alarm_btn").first().click();
+        }, 500);
+    }
+
 //  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 //  -
 //  -                   Collect Involved Vehicles & Patients
 //  -
 //  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-    var AutomaticDispose_Vehicles = {};
-    var AutomaticDispose_Patients = {};
+    var AD_Vehicles = {};
+    var AD_Patients = {};
 
-    function AutomaticDispose_CollectInvolvedVehicles()
+    function AD_CollectInvolvedVehicles()
     {
         $("#mission_vehicle_driving tbody").find("tr").each( function()
         {
@@ -79,7 +118,7 @@ var CurrentTime = Math.floor( new Date().getTime() / 1000 );
             var VehicleName = $(this).find("a").first().text();
             var VehicleType = $(this).find("a").first().attr("vehicle_type_id");
             
-            InvolvedVehicles[ VehicleID ] = {
+            AD_Vehicles[ VehicleID ] = {
                 "id": VehicleID,
                 "name": VehicleName,
                 "type": VehicleType
@@ -92,7 +131,7 @@ var CurrentTime = Math.floor( new Date().getTime() / 1000 );
             var VehicleName = $(this).find("a").first().text();
             var VehicleType = $(this).find("a").first().attr("vehicle_type_id");
             
-            AutomaticDispose_Vehicles[ VehicleID ] = {
+            AD_Vehicles[ VehicleID ] = {
                 "id": VehicleID,
                 "name": VehicleName,
                 "type": VehicleType
@@ -101,7 +140,7 @@ var CurrentTime = Math.floor( new Date().getTime() / 1000 );
     }
 
 
-    function AutomaticDispose_CollectPatients()
+    function AD_CollectPatients()
     {
         var PatientCounter = 0;
         
@@ -117,7 +156,7 @@ var CurrentTime = Math.floor( new Date().getTime() / 1000 );
                 PatientNeedNEF = true;
             }
             
-            AutomaticDispose_Patients[ PatientCounter ] = {
+            AD_Patients[ PatientCounter ] = {
                 "name":     PatientName,
                 "need_RTW": PatientNeedRTW,
                 "need_NEF": PatientNeedNEF,
@@ -134,42 +173,88 @@ var CurrentTime = Math.floor( new Date().getTime() / 1000 );
 //  -
 //  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-    var AutomaticDispose_EmergencyMedicalService_VehiclesNeed = {
-        "38": 0,        // KTW
-        "28": 0,        // RTW
-        "29": 0,        // NEF
-        "74": 0,        // NAW
-        "73": 0,        // GRTW
-        "58": 0,        // (SEG) KTW Typ B
-        "59": 0,        // (SEG) ELW 1
-        "60": 0,        // (SEG) GW-San
-    };
-
-    function AutomaticDispose_ProcessEmergencyMedicalService()
+    function AD_ProcessEmergencyMedicalService()
     {
+        var VehiclesNeed = {
+            "38": 0 - AD_CountInvolvedVehiclesOfType("38"),      // KTW
+            "28": 0 - AD_CountInvolvedVehiclesOfType("28"),      // RTW
+            "29": 0 - AD_CountInvolvedVehiclesOfType("29"),      // NEF
+            "74": 0 - AD_CountInvolvedVehiclesOfType("74"),      // NAW
+            "73": 0 - AD_CountInvolvedVehiclesOfType("73"),      // GRTW
+            "58": 0 - AD_CountInvolvedVehiclesOfType("58"),      // (SEG) KTW Typ B
+            "59": 0 - AD_CountInvolvedVehiclesOfType("59"),      // (SEG) ELW 1
+            "60": 0 - AD_CountInvolvedVehiclesOfType("60")       // (SEG) GW-San
+        };
+
+        
         if( typeof MissionConfig.emergency_medical_service == "object" )            // Wenn der EMS-Block in der Config definiert ist
         {
             
-            $.each(AutomaticDispose_Patients, function(Key, Patient)
+            $.each(AD_Patients, function(Key, Patient)
             {
                 if( MissionConfig.emergency_medical_service.use_KTW )
                 {
                     if( !Patient.need_RTW && !Patient.need_NEF && !Patient.need_RTH )
-                        AutomaticDispose_EmergencyMedicalService_VehiclesNeed["38"] += 1;
+                        VehiclesNeed.38++;
                 }
                 
                 if( MissionConfig.emergency_medical_service.use_RTW )
-                    AutomaticDispose_EmergencyMedicalService_VehiclesNeed["28"] += 1;
+                    VehiclesNeed.28++;
                 
                 if( MissionConfig.emergency_medical_service.use_NEF )
-                    AutomaticDispose_EmergencyMedicalService_VehiclesNeed["29"] += 1;
+                    VehiclesNeed.29++;
             });
             
             
-            
-            //if(  )
+            $("#vehicle_show_table_body_all").find(".vehicle_select_table_tr").each( function()
+            {
+                var VehicleID = $(this).attr("id").replace("vehicle_element_content_", "");
+                var VehicleDistanceTime = $("#vehicle_sort_" + VehicleID).attr("sortvalue");
+                
+                if( $(this).attr("vehicle_type") == "38" && VehiclesNeed["38"] > 0 )
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    VehiclesNeed["38"]--;
+                }
+                else if( $(this).attr("vehicle_type") == "74" && VehiclesNeed["28"] > 0  && VehiclesNeed["29"] > 0 )
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    VehiclesNeed["74"]--;
+                }
+                else if( $(this).attr("vehicle_type") == "28" && VehiclesNeed["28"] > 0 )
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    VehiclesNeed["28"]--;
+                }
+                else if( $(this).attr("vehicle_type") == "29" && VehiclesNeed["29"] > 0 )
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    VehiclesNeed["29"]--;
+                }
+                else if( $(this).attr("vehicle_type") == "29" && VehiclesNeed["29"] > 0 )
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    VehiclesNeed["29"]--;
+                }
+            });
             
         }
     }
 
 
+
+
+
+
+    function AD_CountInvolvedVehiclesOfType( VehicleType )
+    {
+        var CountedVehicles = 0;
+        
+        $.each(AutomaticDispose_Vehicles, function( VehicleID, Vehicle )
+        {
+            if( Vehicle.type == VehicleType )
+                CountedVehicles++;
+        });
+        
+        return CountedVehicles;
+    }
