@@ -3,6 +3,7 @@ $(document).ready(function()
     if( typeof localStorage.getItem("AutomaticDispose-Mode") == "undefined" )
     {
         localStorage.setItem("AutomaticDispose-Mode", "semi");
+        $("#automatic-dispose-open-button").find("img").attr("src", AutomaticDispose_URL + AutomaticDispose_Branch + "/images/semi-automatic.svg");
         $("#automatic-dispose-dashboard-switch-mode-button").html("Halb-Automatik");
     }
     
@@ -21,11 +22,13 @@ function AutomaticDispose_SwitchMode()
     if( localStorage.getItem("AutomaticDispose-Mode") == "semi" )
     {
         localStorage.setItem("AutomaticDispose-Mode", "full");
+        $("#automatic-dispose-open-button").find("img").attr("src", AutomaticDispose_URL + AutomaticDispose_Branch + "/images/full-automatic.svg");
         $("#automatic-dispose-dashboard-switch-mode-button").html("Voll-Automatik");
     }
     else
     {
         localStorage.setItem("AutomaticDispose-Mode", "semi");
+        $("#automatic-dispose-open-button").find("img").attr("src", AutomaticDispose_URL + AutomaticDispose_Branch + "/images/semi-automatic.svg");
         $("#automatic-dispose-dashboard-switch-mode-button").html("Halb-Automatik");
     }
 }
