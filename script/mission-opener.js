@@ -20,7 +20,7 @@ function AutomaticDispose_CheckMissionAttention()
         {
             if( typeof AutomaticDispose_MissionWindows[ Mission.id ] === "undefined" || AutomaticDispose_MissionWindows[ Mission.id ].closed )
             {
-                AutomaticDispose_MissionWindows[ Mission.id ] = window.open("https://www.leitstellenspiel.de/missions/" + Mission.id, "Mission " + Mission.id, "width=256,height=512");
+                AutomaticDispose_MissionWindows[ Mission.id ] = window.open("https://www.leitstellenspiel.de/missions/" + Mission.id, "_blank");
                 Missions[ Mission.id ]["last_check"] = CurrentTime;
             }
         }
