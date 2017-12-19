@@ -116,6 +116,7 @@
                 #adis-dashboard-mission-list .mission
                 {
                     width:                  100%;
+                    min-height:             32px;
                     padding:                6px 8px;
                     margin:                 4px 0px;
                     
