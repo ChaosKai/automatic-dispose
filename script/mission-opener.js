@@ -22,13 +22,24 @@ function AutomaticDispose_CheckMissionAttention()
         }
         else if( Mission.next_check < CurrentTime )
         {
-            if( typeof AutomaticDispose_MissionWindows[ Mission.id ] === "undefined" || AutomaticDispose_MissionWindows[ Mission.id ].closed )
+            //if( typeof AutomaticDispose_MissionWindows[ Mission.id ] === "undefined" || AutomaticDispose_MissionWindows[ Mission.id ].closed )
+            if( $("#adis-mission-frame").data("mission") == "empty" )
             {
-                AutomaticDispose_MissionWindows[ Mission.id ] = window.open("https://www.leitstellenspiel.de/missions/" + Mission.id, "Mission " + Mission.id, "width=256,height=512");
-                AutomaticDispose_MissionWindows[ Mission.id ].blur();
+                //AutomaticDispose_MissionWindows[ Mission.id ] = window.open("https://www.leitstellenspiel.de/missions/" + Mission.id, "Mission " + Mission.id, "width=256,height=512");
+                //AutomaticDispose_MissionWindows[ Mission.id ].blur();
+                
+                $("#adis-mission-frame").attr("src", "https://www.leitstellenspiel.de/missions/" + Mission.id);
+                $("#adis-mission-frame").data("mission", Mission.id);
             }
         }
     });
     
     localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
+}
+
+
+function closeMission()
+{
+    $("#adis-mission-frame").attr("src", "");
+    $("#adis-mission-frame").data("mission", "empty");
 }
