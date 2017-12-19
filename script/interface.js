@@ -4,6 +4,11 @@ $(document).ready(function()
     ADis_CreateDashboard();
 
     console.log("  Automatic Dispose: UI geladen");
+    
+    setInterval(function()
+    {
+        ADis_UpdateDashboardMissionList();
+    }, 1000);
 });
 
 
@@ -28,6 +33,9 @@ function ADis_CreateDashboard()
     DashboardContent += '        <a id="adis-dashboard-switch-mode-button">';
     DashboardContent += '            Modus';
     DashboardContent += '        </a>';
+    DashboardContent += '    </section>';
+    DashboardContent += '    <section id="adis-dashboard-mission-list">';
+    
     DashboardContent += '    </section>';
     DashboardContent += '    <section id="adis-dashboard-mission-frame">';
     DashboardContent += '        <iframe id="adis-mission-frame" data-mission="empty">';
@@ -57,4 +65,46 @@ function ADis_CreateDashboard()
     {
         AutomaticDispose_SwitchMode();
     });
+}
+
+function ADis_UpdateDashboardMissionList()
+{
+    var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
+    var CurrentTime = Math.floor( new Date().getTime() / 1000 );
+    
+    if( Missions == null )
+        Missions = {};
+    
+    $("#adis-dashboard-mission-list").find(".mission").each(function()
+    {
+        if( typeof Missions[ $(this).data("mission") ] === "undefined" )
+        {
+            $(this).remove();
+        }
+    });
+    
+    $.each(Missions, function(MissionID, Mission)
+    {
+        if( Mission.mode == "semi" || Mission.mode == localStorage.getItem("AutomaticDispose-Mode") )
+        {
+            if( $("#adis-dahboard-mission-" + MissionID).length == 0 )
+            {
+                $("#adis-dashboard-mission-list").append('<div id="adis-dahboard-mission-' + MissionID + '" class="mission"></div>');
+                $("#adis-dahboard-mission-" + MissionID).append('<div class="name">' + Mission.name + '</div>');
+                $("#adis-dahboard-mission-" + MissionID).append('<div class="countdown">' + (Mission.next_check - CurrentTime) + 'sek.</div>');
+            }
+            else
+            {
+                $("#adis-dahboard-mission-" + MissionID).data("mission", Mission.id);
+                $("#adis-dahboard-mission-" + MissionID).find(".name").html(Mission.name);
+                $("#adis-dahboard-mission-" + MissionID).find(".countdown").html( (Mission.next_check - CurrentTime) + "sek.");
+            }
+        }
+        else if( $("#adis-dahboard-mission-" + MissionID).length > 0 )
+        {
+            $("#adis-dahboard-mission-" + MissionID).remove();
+        }
+    });
+
+    
 }
