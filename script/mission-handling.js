@@ -231,7 +231,18 @@ $(document).ready(function()
             console.log("  Automatic Dispose: EMS Prozess - Step 2");
             console.log(ADis_VehiclesNeed);
             
-            $("#vehicle_show_table_body_rett").find(".vehicle_select_table_tr").each( function()
+            var VehicleTable;
+            
+            if( $("#vehicle_show_table_body_all").length > 0 )
+            {
+                VehicleTable = $("#vehicle_show_table_body_all");
+            }
+            else
+            {
+                VehicleTable = $("#vehicle_show_table_body_rett");
+            }
+            
+            VehicleTable.find(".vehicle_select_table_tr").each( function()
             {
                 var VehicleID = $(this).attr("id").replace("vehicle_element_content_", "");
                 var VehicleDistanceTime = $("#vehicle_sort_" + VehicleID).attr("sortvalue");
