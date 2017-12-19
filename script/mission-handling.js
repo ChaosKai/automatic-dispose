@@ -236,7 +236,10 @@ $(document).ready(function()
                 var VehicleID = $(this).attr("id").replace("vehicle_element_content_", "");
                 var VehicleDistanceTime = $("#vehicle_sort_" + VehicleID).attr("sortvalue");
                 
-                console.log("  Automatic Dispose: " + $(this).attr("vehicle_type") + " " + ADis_VehiclesNeed["38"] );
+                console.log("  Automatic Dispose: " + $(this).attr("vehicle_type") );
+                console.log("  Automatic Dispose: KTW " + ADis_VehiclesNeed["38"] );
+                console.log("  Automatic Dispose: RTW " + ADis_VehiclesNeed["28"] );
+                console.log("  Automatic Dispose: NEF " + ADis_VehiclesNeed["28"] );
                 
                 if( $(this).attr("vehicle_type") == "KTW" && ADis_VehiclesNeed["38"] > 0 )
                 {
