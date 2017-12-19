@@ -32,17 +32,9 @@ $(document).ready(function()
     {
         var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
         
-        console.log(Missions[MissionID]);
-        console.log(typeof Missions[MissionID]);
-        console.log("  Automatic Dispose: " + Missions[MissionID].next_check + " < " + CurrentTime);
-        
         if( typeof Missions[MissionID] != "undefined" && Missions[MissionID].next_check < CurrentTime )
         {
             AD_GetMissionConfiguration();
-            
-            AD_PrepareVehicleNeedList();
-            AD_CollectInvolvedVehicles();
-            AD_CollectPatients();
         }
         else
         {
@@ -85,25 +77,19 @@ $(document).ready(function()
     {
         console.log("  Automatic Dispose: Starte Alarmierungsprozess");
         
+        setTimeout(function()       // Process Fire Department
+        {
+            ADis_CollectInvolvedVehicles();
+            ADis_CollectPatients();
+        }, 200);
+        
         setTimeout(function()       // Process Emergency Medical Service
         {
             AD_ProcessEmergencyMedicalService();
-        }, 100);
-        
-        setTimeout(function()       // Process Fire Department
-        {
             //AD_ProcessFireDepartment();
-        }, 100);
-        
-        setTimeout(function()       // Process Police Department
-        {
             //AD_ProcessPoliceDepartment();
-        }, 100);
-        
-        setTimeout(function()       // Process Technical Emergency Service
-        {
             //AD_ProcessTechnicalEmergencyService();
-        }, 100);
+        }, 500);
         
         setTimeout(function()       // Send Alarm
         {
@@ -118,7 +104,7 @@ $(document).ready(function()
             localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
             
             $("#mission_alarm_btn").first().click();
-        }, 1000);
+        }, 1500);
     }
 
 //  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
@@ -130,7 +116,7 @@ $(document).ready(function()
     var AD_Vehicles = {};
     var AD_Patients = {};
 
-    function AD_CollectInvolvedVehicles()
+    function ADis_CollectInvolvedVehicles()
     {
         $("#mission_vehicle_driving tbody").find("tr").each( function()
         {
@@ -163,7 +149,7 @@ $(document).ready(function()
     }
 
 
-    function AD_CollectPatients()
+    function ADis_CollectPatients()
     {
         var PatientCounter = 0;
         
