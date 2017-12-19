@@ -29,7 +29,7 @@ function ADis_CreateDashboard()
     DashboardContent += '            Modus';
     DashboardContent += '        </a>';
     DashboardContent += '    </section>';
-    DashboardContent += '    <section>';
+    DashboardContent += '    <section id="adis-dashboard-mission-frame">';
     DashboardContent += '        <iframe id="adis-mission-frame" data-mission="empty">';
     DashboardContent += '        </iframe>';
     DashboardContent += '    </section>';
