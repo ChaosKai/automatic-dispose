@@ -16,7 +16,7 @@ $(document).ready(function()
     
     setTimeout(function()
     {
-        AD_CheckMissionAutomatic();
+        ADis_CheckMissionAutomatic();
     }, 100);
 });
 
@@ -28,7 +28,7 @@ $(document).ready(function()
 //  -
 //  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-    function AD_CheckMissionAutomatic()
+    function ADis_CheckMissionAutomatic()
     {
         var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
         
@@ -79,6 +79,7 @@ $(document).ready(function()
         
         setTimeout(function()       // Process Fire Department
         {
+            ADis_PrepareVehicleNeedList();
             ADis_CollectInvolvedVehicles();
             ADis_CollectPatients();
         }, 200);
@@ -278,7 +279,7 @@ $(document).ready(function()
     
     var ADis_VehiclesNeed = {};
 
-    function AD_PrepareVehicleNeedList()
+    function ADis_PrepareVehicleNeedList()
     {
         for( VehicleTypeID = 0; VehicleTypeID <= 74; VehicleTypeID++ )
         {
