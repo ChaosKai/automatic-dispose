@@ -31,14 +31,14 @@ function AutomaticDispose_SetMode( Mode )
     if( Mode == "full" )
     {
         localStorage.setItem("AutomaticDispose-Mode", "full");
-        $("#automatic-dispose-open-button").find("img").attr("src", AutomaticDispose_URL + AutomaticDispose_Branch + "/images/full-automatic.svg");
-        $("#automatic-dispose-dashboard-switch-mode-button").html("Voll-Automatik");
+        $("#adis-open-button").find("img").attr("src", AutomaticDispose_URL + AutomaticDispose_Branch + "/images/full-automatic.svg");
+        $("#adis-dashboard-switch-mode-button").html("Voll-Automatik");
     }
     else
     {
         localStorage.setItem("AutomaticDispose-Mode", "semi");
-        $("#automatic-dispose-open-button").find("img").attr("src", AutomaticDispose_URL + AutomaticDispose_Branch + "/images/semi-automatic.svg");
-        $("#automatic-dispose-dashboard-switch-mode-button").html("Halb-Automatik");
+        $("#adis-open-button").find("img").attr("src", AutomaticDispose_URL + AutomaticDispose_Branch + "/images/semi-automatic.svg");
+        $("#adis-dashboard-switch-mode-button").html("Halb-Automatik");
     }
 }
 
