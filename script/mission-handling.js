@@ -286,13 +286,13 @@ $(document).ready(function()
 
 
     
-    var ADis_NeedVehicles = {};
+    var ADis_VehiclesNeed = {};
 
     function AD_PrepareVehicleNeedList()
     {
         for( VehicleTypeID = 0; VehicleTypeID <= 74; VehicleTypeID++ )
         {
-            ADis_NeedVehicles[VehicleTypeID] = 0 - AD_CountInvolvedVehiclesOfType( VehicleTypeID );
+            ADis_VehiclesNeed[VehicleTypeID] = 0 - AD_CountInvolvedVehiclesOfType( VehicleTypeID );
         }
     }
 
