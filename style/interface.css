@@ -98,6 +98,63 @@
                     border-bottom:          3px solid rgba(0,0,0,0.32);
                 }
 
+        #adis-dashboard-mission-list
+        {
+            width:                  100%;
+            max-height:             256px;
+            overflow-y:             auto;
+            
+            display:                flex;
+            flex-flow:              column nowrap;
+            justify-content:        center;
+            align-items:            center;
+            
+            border-top:             1px solid #bdbdbd;
+            background:             #eeeeee;
+        }
+
+                #adis-dashboard-mission-list .mission
+                {
+                    width:                  calc(50% - 8px);
+                    height:                 48px;
+                    margin:                 4px 0px;
+                    
+                    display:                flex;
+                    flex-flow:              row nowrap;
+                    justify-content:        center;
+                    align-items:            center;
+                    
+                    background:             #fafafa;
+                    border-radius:          4px;
+                    box-shadow:             0px 0px 6px 0px rgba(0,0,0,0.48);
+                }
+
+                    #adis-dashboard-mission-list .mission .name
+                    {
+                        width:                  60%;
+                        overflow:               hidden;
+                        
+                        display:                flex;
+                        justify-content:        flex-start;
+                        align-items:            center;
+                        
+                        font-size:              14px;
+                        white-space:            nowrap;
+                    }
+
+                    #adis-dashboard-mission-list .mission .countdown
+                    {
+                        width:                  40%;
+                        overflow:               hidden;
+                        
+                        display:                flex;
+                        justify-content:        flex-end;
+                        align-items:            center;
+                        
+                        font-size:              12px;
+                        white-space:            nowrap;
+                    }
+
                 #adis-mission-frame
                 {
                     width:                  100%;
