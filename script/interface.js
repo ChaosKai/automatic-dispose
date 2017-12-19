@@ -1,55 +1,59 @@
 $(document).ready(function()
 {
-    AutomaticDispose_CreateNavbarItem();
-    AutomaticDispose_CreateDashboard();
+    ADis_CreateNavbarItem();
+    ADis_CreateDashboard();
 
-    console.log("Automatic Dispose UI geladen");
+    console.log("  Automatic Dispose: UI geladen");
 });
 
 
-function AutomaticDispose_CreateNavbarItem()
+function ADis_CreateNavbarItem()
 {
-    $('#news_li').before('<li id="automatic-dispose-nav-item"></li>');
-    $('#automatic-dispose-nav-item').append('<a id="automatic-dispose-open-button" href="#"><img class="navbar-icon" src="" title="Automatische Disposition"></a>');
+    $('#news_li').before('<li id="adis-nav-item"></li>');
+    $('#adis-nav-item').append('<a id="adis-open-button" href="#"><img class="navbar-icon" src="" title="Automatische Disposition"></a>');
 }
 
 
-function AutomaticDispose_CreateDashboard()
+function ADis_CreateDashboard()
 {
     var DashboardContent = '';
-    DashboardContent += '<div id="automatic-dispose-dashboard">';
+    DashboardContent += '<div id="adis-dashboard">';
     DashboardContent += '    <header>';
-    DashboardContent += '        Autom. Disposition';
-    DashboardContent += '        <a id="automatic-dispose-dashboard-close-button">';
+    DashboardContent += '        Autom. Disposition (ADis)';
+    DashboardContent += '        <a id="adis-dashboard-close-button">';
     DashboardContent += '            <img src="https://tableau.eagledev.de/userscript/close.svg">';
     DashboardContent += '        </a>';
     DashboardContent += '    </header>';
     DashboardContent += '    <section>';
-    DashboardContent += '        <a id="automatic-dispose-dashboard-switch-mode-button">';
+    DashboardContent += '        <a id="adis-dashboard-switch-mode-button">';
     DashboardContent += '            Modus';
     DashboardContent += '        </a>';
     DashboardContent += '    </section>';
+    DashboardContent += '    <section>';
+    DashboardContent += '        <iframe id="adis-mission-frame" data-mission="empty">';
+    DashboardContent += '        </iframe>';
+    DashboardContent += '    </section>';
     DashboardContent += '</div>';
 
-    $("#automatic-dispose-nav-item").append(DashboardContent);
-    $("#automatic-dispose-dashboard").css({ display: "none", opacity: "0" });
+    $("#adis-nav-item").append(DashboardContent);
+    $("#adis-dashboard").css({ display: "none", opacity: "0" });
 
 
-    $("#automatic-dispose-open-button").click(function()
+    $("#adis-open-button").click(function()
     {
-        $("#automatic-dispose-dashboard").css("display", "flex");
-        $("#automatic-dispose-dashboard").animate( { opacity: 1 }, 200 );
+        $("#adis-dashboard").css("display", "flex");
+        $("#adis-dashboard").animate( { opacity: 1 }, 200 );
     });
 
-    $("#automatic-dispose-dashboard-close-button").click(function()
+    $("#adis-dashboard-close-button").click(function()
     {
-        $("#automatic-dispose-dashboard").animate( { opacity: 0 }, 200, function()
+        $("#adis-dashboard").animate( { opacity: 0 }, 200, function()
         {
             $(this).css("display", "none");
         });
     });
 
-    $("#automatic-dispose-dashboard-switch-mode-button").click(function()
+    $("#adis-dashboard-switch-mode-button").click(function()
     {
         AutomaticDispose_SwitchMode();
     });
