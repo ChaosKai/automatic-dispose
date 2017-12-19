@@ -77,12 +77,11 @@ function ADis_UpdateDashboardMissionList()
     
     $("#adis-dashboard-mission-list").find(".mission").each(function()
     {
-        console.log( typeof Missions[ $(this).data("mission") ]  );
+        console.log( $(this).data("mission") );
         
         if( typeof Missions[ $(this).data("mission") ] === "undefined" )
         {
             $(this).remove();
-            console.log("removed");
         }
     });
     
