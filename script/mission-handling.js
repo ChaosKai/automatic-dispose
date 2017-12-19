@@ -283,11 +283,11 @@ $(document).ready(function()
     {
         for( VehicleTypeID = 0; VehicleTypeID <= 74; VehicleTypeID++ )
         {
-            ADis_VehiclesNeed[VehicleTypeID] = 0 - AD_CountInvolvedVehiclesOfType( VehicleTypeID );
+            ADis_VehiclesNeed[VehicleTypeID] = 0 - ADis_CountInvolvedVehiclesOfType( VehicleTypeID );
         }
     }
 
-    function AD_CountInvolvedVehiclesOfType( VehicleType )
+    function ADis_CountInvolvedVehiclesOfType( VehicleType )
     {
         var CountedVehicles = 0;
         
@@ -297,10 +297,22 @@ $(document).ready(function()
                 CountedVehicles++;
         });
         
+        $("#mission_vehicle_driving tbody").find("tr").each( function()
+        {
+            if( $(this).find("a").first().attr("vehicle_type_id") == VehicleType )
+                CountedVehicles++;
+        });
+        
+        $("#mission_vehicle_at_mission tbody").find("tr").each( function()
+        {
+            if( $(this).find("a").first().attr("vehicle_type_id") == VehicleType )
+                CountedVehicles++;
+        });
+        
         return CountedVehicles;
     }
 
-    function AD_CountAvailableVehiclesOfType( VehicleType )
+    function ADis_CountAvailableVehiclesOfType( VehicleType )
     {
         var CountedVehicles = 0;
         
