@@ -215,7 +215,7 @@ $(document).ready(function()
 //      -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
         
         console.log("  Automatic Dispose: EMS Prozess - Step 1");
-        console.log(VehiclesNeed);
+        console.log(ADis_VehiclesNeed);
 
         
         if( typeof MissionConfig.emergency_medical_service == "object" )            // Wenn der EMS-Block in der Config definiert ist
@@ -227,53 +227,53 @@ $(document).ready(function()
                 if( MissionConfig.emergency_medical_service.use_KTW )
                 {
                     if( !Patient.need_RTW && !Patient.need_NEF && !Patient.need_RTH )
-                        VehiclesNeed["38"]++;
+                        ADis_VehiclesNeed["38"]++;
                 }
                 
                 if( MissionConfig.emergency_medical_service.use_RTW )
-                    VehiclesNeed["28"]++;
+                    ADis_VehiclesNeed["28"]++;
                 
                 if( MissionConfig.emergency_medical_service.use_NEF )
-                    VehiclesNeed["29"]++;
+                    ADis_VehiclesNeed["29"]++;
             });
             
             console.log("  Automatic Dispose: EMS Prozess - Step 2");
-            console.log(VehiclesNeed);
+            console.log(ADis_VehiclesNeed);
             
             $("#vehicle_show_table_body_rett").find(".vehicle_select_table_tr").each( function()
             {
                 var VehicleID = $(this).attr("id").replace("vehicle_element_content_", "");
                 var VehicleDistanceTime = $("#vehicle_sort_" + VehicleID).attr("sortvalue");
                 
-                console.log("  Automatic Dispose: " + $(this).attr("vehicle_type") + " " + VehiclesNeed["38"] );
+                console.log("  Automatic Dispose: " + $(this).attr("vehicle_type") + " " + ADis_VehiclesNeed["38"] );
                 
-                if( $(this).attr("vehicle_type") == "KTW" && VehiclesNeed["38"] > 0 )
+                if( $(this).attr("vehicle_type") == "KTW" && ADis_VehiclesNeed["38"] > 0 )
                 {
                     console.log("  Automatic Dispose: Fahrzeug " + VehicleID + " " + $(this).attr("vehicle_type") + " markiert");
                     $("#vehicle_checkbox_" + VehicleID).click();
-                    VehiclesNeed["38"]--;
+                    ADis_VehiclesNeed["38"]--;
                 }
-                else if( $(this).attr("vehicle_type") == "NAW" && VehiclesNeed["28"] > 0  && VehiclesNeed["29"] > 0 )
+                else if( $(this).attr("vehicle_type") == "NAW" && ADis_VehiclesNeed["28"] > 0  && ADis_VehiclesNeed["29"] > 0 )
                 {
                     $("#vehicle_checkbox_" + VehicleID).click();
-                    VehiclesNeed["74"]--;
-                    VehiclesNeed["28"]--;
-                    VehiclesNeed["29"]--;
+                    ADis_VehiclesNeed["74"]--;
+                    ADis_VehiclesNeed["28"]--;
+                    ADis_VehiclesNeed["29"]--;
                 }
-                else if( $(this).attr("vehicle_type") == "RTW" && VehiclesNeed["28"] > 0 )
+                else if( $(this).attr("vehicle_type") == "RTW" && ADis_VehiclesNeed["28"] > 0 )
                 {
                     $("#vehicle_checkbox_" + VehicleID).click();
-                    VehiclesNeed["28"]--;
+                    ADis_VehiclesNeed["28"]--;
                 }
-                else if( $(this).attr("vehicle_type") == "NEF" && VehiclesNeed["29"] > 0 )
+                else if( $(this).attr("vehicle_type") == "NEF" && ADis_VehiclesNeed["29"] > 0 )
                 {
                     $("#vehicle_checkbox_" + VehicleID).click();
-                    VehiclesNeed["29"]--;
+                    ADis_VehiclesNeed["29"]--;
                 }
             });
             
             console.log("  Automatic Dispose: EMS Prozess - Step 3");
-            console.log(VehiclesNeed);
+            console.log(ADis_VehiclesNeed);
             
         }
     }
@@ -286,13 +286,13 @@ $(document).ready(function()
 
 
     
-    var AD_NeedVehicles = {};
+    var ADis_NeedVehicles = {};
 
     function AD_PrepareVehicleNeedList()
     {
         for( VehicleTypeID = 0; VehicleTypeID <= 74; VehicleTypeID++ )
         {
-            AD_NeedVehicles[VehicleTypeID] = 0 - AD_CountInvolvedVehiclesOfType( VehicleTypeID );
+            ADis_NeedVehicles[VehicleTypeID] = 0 - AD_CountInvolvedVehiclesOfType( VehicleTypeID );
         }
     }
 
