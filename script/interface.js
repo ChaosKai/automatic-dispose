@@ -92,15 +92,13 @@ function ADis_UpdateDashboardMissionList()
             if( $("#adis-dahboard-mission-" + MissionID).length == 0 )
             {
                 $("#adis-dashboard-mission-list").append('<div id="adis-dahboard-mission-' + MissionID + '" class="mission"></div>');
-                $("#adis-dahboard-mission-" + MissionID).append('<div class="name">' + Mission.name + '</div>');
-                $("#adis-dahboard-mission-" + MissionID).append('<div class="countdown">' + (Mission.next_check - CurrentTime) + 'sek.</div>');
+                $("#adis-dahboard-mission-" + MissionID).append('<div class="name"></div>');
+                $("#adis-dahboard-mission-" + MissionID).append('<div class="countdown"></div>');
             }
-            else
-            {
-                $("#adis-dahboard-mission-" + MissionID).data("mission", Mission.id);
-                $("#adis-dahboard-mission-" + MissionID).find(".name").html(Mission.name);
-                $("#adis-dahboard-mission-" + MissionID).find(".countdown").html( (Mission.next_check - CurrentTime) + "sek.");
-            }
+            
+            $("#adis-dahboard-mission-" + MissionID).data("mission", MissionID);
+            $("#adis-dahboard-mission-" + MissionID).find(".name").html(Mission.name);
+            $("#adis-dahboard-mission-" + MissionID).find(".countdown").html( (Mission.next_check - CurrentTime) + "sek.");
         }
         else if( $("#adis-dahboard-mission-" + MissionID).length > 0 )
         {
