@@ -44,6 +44,10 @@ $(document).ready(function()
             AD_CollectInvolvedVehicles();
             AD_CollectPatients();
         }
+        else
+        {
+            window.parent.ADis_CloseMission();
+        }
     }
 
 
@@ -113,8 +117,8 @@ $(document).ready(function()
             
             localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
             
-            //$("#mission_alarm_btn").first().click();
-        }, 500);
+            $("#mission_alarm_btn").first().click();
+        }, 1000);
     }
 
 //  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
