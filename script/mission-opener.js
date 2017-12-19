@@ -1,12 +1,12 @@
 $(document).ready(function()
 {
-    setInterval( AutomaticDispose_CheckMissionAttention, 2000 );
+    setInterval( ADis_CheckMissionAttention, 2000 );
 });
 
 
-var AutomaticDispose_MissionWindows = {};
+//var AutomaticDispose_MissionWindows = {};
 
-function AutomaticDispose_CheckMissionAttention()
+function ADis_CheckMissionAttention()
 {
     var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
     var CurrentTime = Math.floor( new Date().getTime() / 1000 );
@@ -38,7 +38,7 @@ function AutomaticDispose_CheckMissionAttention()
 }
 
 
-function closeMission()
+function ADis_CloseMission()
 {
     $("#adis-mission-frame").attr("src", "");
     $("#adis-mission-frame").data("mission", "empty");
