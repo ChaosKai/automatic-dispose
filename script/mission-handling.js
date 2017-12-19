@@ -72,7 +72,7 @@ $(document).ready(function()
             }
             
             localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
-            window.close();
+            window.parent.ADis_CloseMission();
         });
     }
 
