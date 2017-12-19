@@ -99,7 +99,11 @@ $(document).ready(function()
             if( typeof Missions[ MissionID ] !== "undefined" )
             {
                 Missions[ MissionID ]["last_check"] = CurrentTime;
-                Missions[ MissionID ]["next_check"] = CurrentTime + 60;
+                if( ADis_CheckNeedMoreVehicles() )    {
+                    Missions[ MissionID ]["next_check"] = CurrentTime + 60;
+                } else {
+                    Missions[ MissionID ]["next_check"] = CurrentTime + 300;
+                }
             }
             
             localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
@@ -306,13 +310,7 @@ $(document).ready(function()
                 CountedVehicles++;
         });
         
-        $("#mission_vehicle_driving tbody").find("tr").each( function()
-        {
-            if( $(this).find("a").first().attr("vehicle_type_id") == VehicleType )
-                CountedVehicles++;
-        });
-        
-        $("#mission_vehicle_at_mission tbody").find("tr").each( function()
+        $("#mission_vehicle_driving tbody, #mission_vehicle_at_mission tbody").find("tr").each( function()
         {
             if( $(this).find("a").first().attr("vehicle_type_id") == VehicleType )
                 CountedVehicles++;
@@ -328,4 +326,19 @@ $(document).ready(function()
         
         
         return CountedVehicles;
+    }
+
+
+
+    function ADis_CheckNeedMoreVehicles(  )
+    {
+        var NeedMoreVehicles = false;
+        
+        $.each(ADis_VehiclesNeed, function( VehicleTypeID, VehicleCount )
+        {
+            if( VehicleCount > 0 )
+                NeedMoreVehicles = true;
+        });
+        
+        return NeedMoreVehicles;
     }
