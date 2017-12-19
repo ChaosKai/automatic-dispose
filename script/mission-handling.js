@@ -40,6 +40,7 @@ $(document).ready(function()
         {
             AD_GetMissionConfiguration();
             
+            AD_PrepareVehicleNeedList();
             AD_CollectInvolvedVehicles();
             AD_CollectPatients();
         }
@@ -196,17 +197,22 @@ $(document).ready(function()
 
     function AD_ProcessEmergencyMedicalService()
     {
-        var VehiclesNeed = {
-            "38": 0 - AD_CountInvolvedVehiclesOfType("38"),      // KTW
-            "28": 0 - AD_CountInvolvedVehiclesOfType("28"),      // RTW
-            "29": 0 - AD_CountInvolvedVehiclesOfType("29"),      // NEF
-            "74": 0 - AD_CountInvolvedVehiclesOfType("74"),      // NAW
-            "73": 0 - AD_CountInvolvedVehiclesOfType("73"),      // GRTW
-            "58": 0 - AD_CountInvolvedVehiclesOfType("58"),      // (SEG) KTW Typ B
-            "59": 0 - AD_CountInvolvedVehiclesOfType("59"),      // (SEG) ELW 1
-            "60": 0 - AD_CountInvolvedVehiclesOfType("60")       // (SEG) GW-San
-        };
         
+//      -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+//      -
+//      -               Emergency Medical Service: Vehicles
+//      -
+//      -                   38:     KTW
+//      -                   28:     RTW
+//      -                   28:     NEF
+//      -                   74:     NAW
+//      -                   73:     GRTW
+//      -
+//      -                   58:     (SEG) KTW Typ B
+//      -                   59:     (SEG) ELW 1
+//      -                   60:     (SEG) GW-San
+//      -
+//      -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
         
         console.log("  Automatic Dispose: EMS Prozess - Step 1");
         console.log(VehiclesNeed);
@@ -277,6 +283,19 @@ $(document).ready(function()
 
 
 
+
+
+    
+    var AD_NeedVehicles = {};
+
+    function AD_PrepareVehicleNeedList()
+    {
+        for( VehicleTypeID = 0; VehicleTypeID <= 74; VehicleTypeID++ )
+        {
+            AD_NeedVehicles[VehicleTypeID] = 0 - AD_CountInvolvedVehiclesOfType( VehicleTypeID );
+        }
+    }
+
     function AD_CountInvolvedVehiclesOfType( VehicleType )
     {
         var CountedVehicles = 0;
@@ -286,6 +305,15 @@ $(document).ready(function()
             if( Vehicle.type == VehicleType )
                 CountedVehicles++;
         });
+        
+        return CountedVehicles;
+    }
+
+    function AD_CountAvailableVehiclesOfType( VehicleType )
+    {
+        var CountedVehicles = 0;
+        
+        
         
         return CountedVehicles;
     }
