@@ -22,9 +22,9 @@
         "num_GW-G":     "0",
         "num_GW-OEL":   "0",
         "num_GW-Mess":  "0",
-        "num_GW-L":     "0",
+        "num_SW":       "0",
         "num_GW-Hoeh":  "0",
-        "num_GW-W":     "0",
+        "num_GW-W/T":   "0",
         "num_Dekon-P":  "0"
     },
     "emergency_medical_service":
