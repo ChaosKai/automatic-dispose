@@ -1,0 +1,30 @@
+{
+    "mission_id":   "211",
+    "mission_name": "Unterzuckerung",
+    
+    "fire_department":
+    {
+        "num_LF":           1,
+        "num_ELW_1":        0,
+        "num_ELW_2":        0,
+        "num_DLK":          0,
+        "num_RW":           0,
+        "num_FwK":          0,
+        "num_GW_A":         0,
+        "num_GW_G":         0,
+        "num_GW_Oel":       0,
+        "num_GW_Mess":      0,
+        "num_SW":           0,
+        "num_GW_Hoeh":      0,
+        "num_Dekon_P":      0
+    },
+    "emergency_medical_service":
+    {
+        "use_KTW":      false,
+        "use_RTW":      true,
+        "use_NEF":      true,
+        "use_RTH":      false,
+        "use_LNA":      false,
+        "use_SEG":      false
+    }
+}
