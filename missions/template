@@ -24,7 +24,6 @@
         "num_GW_Mess":  "0",
         "num_SW":       "0",
         "num_GW_Hoeh":  "0",
-        "num_GW_WRett": "0",
         "num_Dekon_P":  "0"
     },
     "emergency_medical_service":
@@ -58,7 +57,7 @@
     },
     "water-rescue":
     {
-        "num_GW-W/T":   "0",
+        "num_GW_WRett": "0",
         "num_MzB":      "0"
     }
 }
