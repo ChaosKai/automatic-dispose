@@ -459,7 +459,7 @@ $(document).ready(function()
 //      -
 //      -               Fire Department: Vehicles
 //      -
-//      -                   32:     FuStw
+//      -                   32:     FuStW
 //      -                   35:     leBefKw
 //      -                   50:     GruKw
 //      -                   51:     FüKw
@@ -471,7 +471,7 @@ $(document).ready(function()
         
         if( typeof MissionConfig.police_department == "object" )            // Wenn der FD-Block in der Config definiert ist
         {
-            ADis_VehiclesNeed["32"] += MissionConfig.fire_department.num_FuStw;
+            ADis_VehiclesNeed["32"] += MissionConfig.fire_department.num_FuStW;
             ADis_VehiclesNeed["35"] += MissionConfig.fire_department.num_leBefKw;
             ADis_VehiclesNeed["50"] += MissionConfig.fire_department.num_GruKw;
             ADis_VehiclesNeed["51"] += MissionConfig.fire_department.num_FueKw;
@@ -484,7 +484,7 @@ $(document).ready(function()
                 var VehicleID = $(this).attr("id").replace("vehicle_element_content_", "");
                 var VehicleDistanceTime = $("#vehicle_sort_" + VehicleID).attr("sortvalue");
                 
-                if( $(this).attr("vehicle_type") == "FuStw" && ADis_VehiclesNeed["32"] > 0 )                        // FuStw
+                if( $(this).attr("vehicle_type") == "FuStW" && ADis_VehiclesNeed["32"] > 0 )                        // FuStW
                 {
                     $("#vehicle_checkbox_" + VehicleID).click();
                     ADis_VehiclesNeed["23"]--;
