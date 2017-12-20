@@ -1,0 +1,15 @@
+{
+    "mission_id":   "149",
+    "mission_name": "Pannenfahrzeug",
+    
+    "police_department":
+    {
+        "num_FuStw":        1,
+        "num_leBefKw":      0,
+        "num_GruKw":        0,
+        "num_FueKw":        0,
+        "num_GefKw":        0,
+        "num_WaWe":         0,
+        "num_PHu":          0
+    }
+}
