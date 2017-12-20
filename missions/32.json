@@ -5,9 +5,9 @@
     "fire_department":
     {
         "num_LF":        1,
-        "num_ELW_1":     0,
+        "num_ELW_1":     1,
         "num_ELW_2":     0,
-        "num_DLK":       0,
+        "num_DLK":       1,
         "num_RW":        0,
         "num_FwK":       0,
         "num_GW_A":      0,
