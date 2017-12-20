@@ -94,6 +94,8 @@ function AutomaticDispose_CollectMissions()
         {
             if( $("#mission_" + Mission.id).css("display") == "none" )
                 delete Missions[ Mission.id ];
+            
+            $("#mission_" + Mission.id).animate({opacity: 0.32}, 500);
         }
     });
     
