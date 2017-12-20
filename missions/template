@@ -13,19 +13,19 @@
     "fire_department":
     {
         "num_LF":       "0",
-        "num_ELW1":     "0",
-        "num_ELW2":     "0",
+        "num_ELW_1":    "0",
+        "num_ELW_2":    "0",
         "num_DLK":      "0",
         "num_RW":       "0",
         "num_FwK":      "0",
-        "num_GW-A":     "0",
-        "num_GW-G":     "0",
-        "num_GW-OEL":   "0",
-        "num_GW-Mess":  "0",
+        "num_GW_A":     "0",
+        "num_GW_G":     "0",
+        "num_GW_OEL":   "0",
+        "num_GW_Mess":  "0",
         "num_SW":       "0",
-        "num_GW-Hoeh":  "0",
-        "num_GW-W/T":   "0",
-        "num_Dekon-P":  "0"
+        "num_GW_Hoeh":  "0",
+        "num_GW_WRett": "0",
+        "num_Dekon_P":  "0"
     },
     "emergency_medical_service":
     {
