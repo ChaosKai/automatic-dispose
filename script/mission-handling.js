@@ -487,7 +487,7 @@ $(document).ready(function()
                 if( $(this).attr("vehicle_type") == "FuStW" && ADis_VehiclesNeed["32"] > 0 )                        // FuStW
                 {
                     $("#vehicle_checkbox_" + VehicleID).click();
-                    ADis_VehiclesNeed["23"]--;
+                    ADis_VehiclesNeed["32"]--;
                 }
                 else if( $(this).attr("vehicle_type") == "leBefKw" && ADis_VehiclesNeed["35"] > 0 )                 // leBefKw
                 {
