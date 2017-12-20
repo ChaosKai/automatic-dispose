@@ -1,0 +1,14 @@
+{
+    "mission_id":   "179",
+    "mission_name": "Schädelverletzung",
+    
+    "emergency_medical_service":
+    {
+        "use_KTW":      false,
+        "use_RTW":      true,
+        "use_NEF":      false,
+        "use_RTH":      false,
+        "use_LNA":      false,
+        "use_SEG":      false
+    }
+}
