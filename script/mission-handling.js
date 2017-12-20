@@ -86,10 +86,10 @@ $(document).ready(function()
         
         setTimeout(function()       // Process Emergency Medical Service
         {
-            AD_ProcessEmergencyMedicalService();
-            AD_ProcessFireDepartment();
-            //AD_ProcessPoliceDepartment();
-            //AD_ProcessTechnicalEmergencyService();
+            ADis_ProcessEmergencyMedicalService();
+            ADis_ProcessFireDepartment();
+            ADis_ProcessPoliceDepartment();
+            //ADisfile_ProcessTechnicalEmergencyService();
         }, 500);
         
         setTimeout(function()       // Send Alarm
@@ -190,7 +190,7 @@ $(document).ready(function()
 //  -
 //  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-    function AD_ProcessEmergencyMedicalService()
+    function ADis_ProcessEmergencyMedicalService()
     {
         
 //      -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
@@ -271,11 +271,11 @@ $(document).ready(function()
 
 //  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 //  -
-//  -                   Process Emergency_Medical_Service
+//  -                   Process Fire_Department
 //  -
 //  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-    function AD_ProcessFireDepartment()
+    function ADis_ProcessFireDepartment()
     {
         
 //      -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
@@ -438,6 +438,86 @@ $(document).ready(function()
                 {
                     $("#vehicle_checkbox_" + VehicleID).click();
                     ADis_VehiclesNeed["53"]--;
+                }
+            });
+            
+        }
+    }
+
+
+
+//  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+//  -
+//  -                   Process Police_Department
+//  -
+//  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+    function ADis_ProcessPoliceDepartment()
+    {
+        
+//      -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+//      -
+//      -               Fire Department: Vehicles
+//      -
+//      -                   32:     FuStw
+//      -                   35:     leBefKw
+//      -                   50:     GruKw
+//      -                   51:     FüKw
+//      -                   52:     GefKw
+//      -                   72:     WaWe
+//      -                   61:     Polizeihubschrauber
+//      -
+//      -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+        
+        if( typeof MissionConfig.police_department == "object" )            // Wenn der FD-Block in der Config definiert ist
+        {
+            ADis_VehiclesNeed["32"] += MissionConfig.fire_department.num_FuStw;
+            ADis_VehiclesNeed["35"] += MissionConfig.fire_department.num_leBefKw;
+            ADis_VehiclesNeed["50"] += MissionConfig.fire_department.num_GruKw;
+            ADis_VehiclesNeed["51"] += MissionConfig.fire_department.num_FueKw;
+            ADis_VehiclesNeed["52"] += MissionConfig.fire_department.num_GefKw;
+            ADis_VehiclesNeed["72"] += MissionConfig.fire_department.num_WaWe;
+            ADis_VehiclesNeed["61"] += MissionConfig.fire_department.num_PHu;
+            
+            $("#vehicle_show_table_body_all").find(".vehicle_select_table_tr").each( function()
+            {
+                var VehicleID = $(this).attr("id").replace("vehicle_element_content_", "");
+                var VehicleDistanceTime = $("#vehicle_sort_" + VehicleID).attr("sortvalue");
+                
+                if( $(this).attr("vehicle_type") == "FuStw" && ADis_VehiclesNeed["32"] > 0 )                        // FuStw
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["23"]--;
+                }
+                else if( $(this).attr("vehicle_type") == "leBefKw" && ADis_VehiclesNeed["35"] > 0 )                 // leBefKw
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["35"]--;
+                }
+                else if( $(this).attr("vehicle_type") == "GruKw" && ADis_VehiclesNeed["50"] > 0 )                   // GruKw
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["50"]--;
+                }
+                else if( $(this).attr("vehicle_type") == "FüKw" && ADis_VehiclesNeed["51"] > 0 )                    // FüKw
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["51"]--;
+                }
+                else if( $(this).attr("vehicle_type") == "GefKw" && ADis_VehiclesNeed["52"] > 0 )                   // GefKw
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["52"]--;
+                }
+                else if( $(this).attr("vehicle_type") == "WaWe 10" && ADis_VehiclesNeed["72"] > 0 )                 // WaWe 10
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["72"]--;
+                }
+                else if( $(this).attr("vehicle_type") == "Polizeihubschrauber" && ADis_VehiclesNeed["61"] > 0 )     // PHu
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["33"]--;
                 }
             });
             
