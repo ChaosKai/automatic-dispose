@@ -104,10 +104,10 @@
             max-height:             256px;
             overflow-y:             auto;
             
-            display:                flex;
-            flex-flow:              column nowrap;
-            justify-content:        flex-start;
-            align-items:            center;
+            display:                flex !important;
+            flex-flow:              column nowrap !important;
+            justify-content:        flex-start !important;
+            align-items:            center !important;
             
             border-top:             1px solid #bdbdbd;
             background:             #eeeeee;
