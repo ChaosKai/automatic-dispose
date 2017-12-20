@@ -87,7 +87,7 @@ $(document).ready(function()
         setTimeout(function()       // Process Emergency Medical Service
         {
             AD_ProcessEmergencyMedicalService();
-            //AD_ProcessFireDepartment();
+            AD_ProcessFireDepartment();
             //AD_ProcessPoliceDepartment();
             //AD_ProcessTechnicalEmergencyService();
         }, 500);
