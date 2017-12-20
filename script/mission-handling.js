@@ -11,7 +11,7 @@ $(document).ready(function()
     var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
     
     MissionID   = document.location.pathname.substr( document.location.pathname.lastIndexOf("/") + 1 );
-    MissionType = Missions[ MissionID ].type;
+    MissionType = $("#mission_help").attr("href").substr( $("#mission_help").attr("href").lastIndexOf("/") + 1 );
     CurrentTime = Math.floor( new Date().getTime() / 1000 );
     
     setTimeout(function()
