@@ -209,14 +209,8 @@ $(document).ready(function()
 //      -
 //      -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
         
-        console.log("  Automatic Dispose: EMS Prozess - Step 1");
-        console.log(ADis_VehiclesNeed);
-
-        
         if( typeof MissionConfig.emergency_medical_service == "object" )            // Wenn der EMS-Block in der Config definiert ist
         {
-            console.log("  Automatic Dispose: EMS Prozess - Start");
-            
             $.each(AD_Patients, function(Key, Patient)
             {
                 if( MissionConfig.emergency_medical_service.use_KTW )
@@ -231,9 +225,6 @@ $(document).ready(function()
                 if( MissionConfig.emergency_medical_service.use_NEF )
                     ADis_VehiclesNeed["29"]++;
             });
-            
-            console.log("  Automatic Dispose: EMS Prozess - Step 2");
-            console.log(ADis_VehiclesNeed);
             
             var VehicleTable;
             
@@ -275,9 +266,180 @@ $(document).ready(function()
                     ADis_VehiclesNeed["29"]--;
                 }
             });
+        }
+    }
+
+//  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+//  -
+//  -                   Process Emergency_Medical_Service
+//  -
+//  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+    function AD_ProcessFireDepartment()
+    {
+        
+//      -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+//      -
+//      -               Fire Department: Vehicles
+//      -
+//      -                    0:     LF 20
+//      -                    1:     LF 10
+//      -                    6:     LF 8/6
+//      -                    7:     LF 20/16
+//      -                    8:     LF 10/6
+//      -                    9:     LF 16-TS
+//      -                   30:     HLF 20
+//      -                   37:     TSF-W
+//      -
+//      -                   17:     TLF 2000
+//      -                   18:     TLF 3000
+//      -                   19:     TLF 8/8
+//      -                   20:     TLF 8/18
+//      -                   21:     TLF 16/24-Tr
+//      -                   22:     TLF 16/25
+//      -                   23:     TLF 16/45
+//      -                   24:     TLF 20/40
+//      -                   25:     TLF 20/40-SL
+//      -                   26:     TLF 16
+//      -
+//      -                    2:     DLK 23
+//      -                    3:     ELW 1
+//      -                   34:     ELW 2
+//      -                   36:     MTW
+//      -                   57:     Kran
+//      -
+//      -                    4:     RW
+//      -                    5:     GW-A
+//      -                   10:     GW-Öl
+//      -                   12:     GW-Mess
+//      -                   53:     GW-Dekon-P
+//      -                   27:     GW-Gefahrgut
+//      -                   33:     GW-Höhenrettung
+//      -
+//      -                   11:     GW-L2-Wasser
+//      -                   13:     SW 1000
+//      -                   14:     SW 2000
+//      -                   15:     SW 2000-Tr
+//      -                   16:     SW KatS
+//      -
+//      -                   46:     WLF
+//      -                   47:     AB-Rüst
+//      -                   48:     AB-Atemschutz
+//      -                   49:     AB-Öl
+//      -                   54:     AB-Dekon-P
+//      -                   62:     AB-Schlauch
+//      -
+//      -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+        
+        if( typeof MissionConfig.fire_department == "object" )            // Wenn der FD-Block in der Config definiert ist
+        {
+            ADis_VehiclesNeed["0"]  += MissionConfig.fire_department.num_LF;
+            ADis_VehiclesNeed["3"]  += MissionConfig.fire_department.num_ELW_1;
+            ADis_VehiclesNeed["34"] += MissionConfig.fire_department.num_ELW_2;
+            ADis_VehiclesNeed["2"]  += MissionConfig.fire_department.num_DLK;
+            ADis_VehiclesNeed["4"]  += MissionConfig.fire_department.num_RW;
+            ADis_VehiclesNeed["57"] += MissionConfig.fire_department.num_FwK;
+            ADis_VehiclesNeed["5"]  += MissionConfig.fire_department.num_GW_A;
+            ADis_VehiclesNeed["27"] += MissionConfig.fire_department.num_GW_G;
+            ADis_VehiclesNeed["10"] += MissionConfig.fire_department.num_GW_Oel;
+            ADis_VehiclesNeed["12"] += MissionConfig.fire_department.num_GW_Mess;
+            ADis_VehiclesNeed["11"] += MissionConfig.fire_department.num_GW_SW;
+            ADis_VehiclesNeed["33"] += MissionConfig.fire_department.num_GW_Hoeh;
+            ADis_VehiclesNeed["53"] += MissionConfig.fire_department.num_Dekon_P;
             
-            console.log("  Automatic Dispose: EMS Prozess - Step 3");
-            console.log(ADis_VehiclesNeed);
+            $("#vehicle_show_table_body_all").find(".vehicle_select_table_tr").each( function()
+            {
+                var VehicleID = $(this).attr("id").replace("vehicle_element_content_", "");
+                var VehicleDistanceTime = $("#vehicle_sort_" + VehicleID).attr("sortvalue");
+                
+                if( ( $(this).attr("vehicle_type") == "LF 20" || $(this).attr("vehicle_type") == "LF 10" ||
+                      $(this).attr("vehicle_type") == "LF 8/6" || $(this).attr("vehicle_type") == "LF 20/16" ||
+                      $(this).attr("vehicle_type") == "LF 10/6" || $(this).attr("vehicle_type") == "LF 16-TS" || 
+                      $(this).attr("vehicle_type") == "HLF 20" || $(this).attr("vehicle_type") == "TSF-W" || 
+                      $(this).attr("vehicle_type") == "TLF 2000" || $(this).attr("vehicle_type") == "TLF 3000" ||
+                      $(this).attr("vehicle_type") == "TLF 8/8" || $(this).attr("vehicle_type") == "TLF 8/18" ||
+                      $(this).attr("vehicle_type") == "TLF 16/24-Tr" || $(this).attr("vehicle_type") == "TLF 16/25" ||
+                      $(this).attr("vehicle_type") == "TLF 16/45" || $(this).attr("vehicle_type") == "TLF 20/40" ||
+                      $(this).attr("vehicle_type") == "TLF 20/40-SL" || $(this).attr("vehicle_type") == "TLF 16" ) &&
+                      ADis_VehiclesNeed["0"] > 0 )
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["0"]--;
+                }
+                else if( $(this).attr("vehicle_type") == "DLK 23" && ADis_VehiclesNeed["2"] > 0 )                   // DLK 23
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["2"]--;
+                }
+                else if( $(this).attr("vehicle_type") == "ELW 1" && ADis_VehiclesNeed["3"] > 0 )                    // ELW 1
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["3"]--;
+                }
+                else if( $(this).attr("vehicle_type") == "ELW 2" && ADis_VehiclesNeed["34"] > 0 )                   // ELW 2
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["34"]--;
+                }
+                else if( $(this).attr("vehicle_type") == "MTW" && ADis_VehiclesNeed["36"] > 0 )                     // MTW
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["36"]--;
+                }
+                else if( $(this).attr("vehicle_type") == "FwK" && ADis_VehiclesNeed["57"] > 0 )                     // FwK
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["57"]--;
+                }
+                else if( ($(this).attr("vehicle_type") == "RW" ||
+                          $(this).attr("vehicle_type") == "AB-Rüst") &&
+                        ADis_VehiclesNeed["4"] > 0 )                                                                // RW
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["4"]--;
+                }
+                else if( ($(this).attr("vehicle_type") == "GW-A" ||
+                          $(this).attr("vehicle_type") == "AB-Atemschutz") &&
+                        ADis_VehiclesNeed["5"] > 0 )                                                                // GW-A
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["5"]--;
+                }
+                else if( ($(this).attr("vehicle_type") == "GW-Öl" ||
+                          $(this).attr("vehicle_type") == "AB-Öl") &&
+                        ADis_VehiclesNeed["10"] > 0 )                                                               // GW-Öl
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["10"]--;
+                }
+                else if( $(this).attr("vehicle_type") == "GW-Messtechnik" && ADis_VehiclesNeed["12"] > 0 )          // FwK
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["12"]--;
+                }
+                else if( ($(this).attr("vehicle_type") == "GW-L2-Wasser" ||
+                          $(this).attr("vehicle_type") == "SW 1000" ||
+                          $(this).attr("vehicle_type") == "SW 2000" ||
+                          $(this).attr("vehicle_type") == "SW 2000-Tr" ||
+                          $(this).attr("vehicle_type") == "SW Kats") &&
+                        ADis_VehiclesNeed["11"] > 0 )                                                               // SW
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["11"]--;
+                }
+                else if( $(this).attr("vehicle_type") == "GW-Höhenrettung" && ADis_VehiclesNeed["33"] > 0 )         // GW-Höhenrettung
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["33"]--;
+                }
+                else if( ($(this).attr("vehicle_type") == "Dekon-P" ||
+                          $(this).attr("vehicle_type") == "AB-Dekon-P") &&
+                        ADis_VehiclesNeed["53"] > 0 )                                                               // Dekon-P
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["53"]--;
+                }
+            });
             
         }
     }
