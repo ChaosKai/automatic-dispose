@@ -2,29 +2,21 @@
     "mission_id":   ">> ID <<",
     "mission_name": ">> NAME <<",
     
-    "organizations":
-    {
-        "fire_department":              false,
-        "emergency_medical_service":    false,
-        "police_department":            false,
-        "technical_emergency_service":  false
-    },
-    
     "fire_department":
     {
-        "num_LF":       "0",
-        "num_ELW_1":    "0",
-        "num_ELW_2":    "0",
-        "num_DLK":      "0",
-        "num_RW":       "0",
-        "num_FwK":      "0",
-        "num_GW_A":     "0",
-        "num_GW_G":     "0",
-        "num_GW_Oel":   "0",
-        "num_GW_Mess":  "0",
-        "num_SW":       "0",
-        "num_GW_Hoeh":  "0",
-        "num_Dekon_P":  "0"
+        "num_LF":           0,
+        "num_ELW_1":        0,
+        "num_ELW_2":        0,
+        "num_DLK":          0,
+        "num_RW":           0,
+        "num_FwK":          0,
+        "num_GW_A":         0,
+        "num_GW_G":         0,
+        "num_GW_Oel":       0,
+        "num_GW_Mess":      0,
+        "num_SW":           0,
+        "num_GW_Hoeh":      0,
+        "num_Dekon_P":      0
     },
     "emergency_medical_service":
     {
@@ -37,27 +29,28 @@
     },
     "police_department":
     {
-        "num_FuStw":    "0",
-        "num_leBefKw":  "0",
-        "num_GruKw":    "0",
-        "num_FueKw":    "0",
-        "num_GefKw":    "0",
-        "num_WaWe":     "0"
+        "num_FuStW":        0,
+        "num_leBefKw":      0,
+        "num_GruKw":        0,
+        "num_FueKw":        0,
+        "num_GefKw":        0,
+        "num_WaWe":         0,
+        "num_PHu":          0
     },
     "technical_emergency_service":
     {
-        "num_GKW":      "0",
-        "num_MzKW":     "0",
-        "num_MTW-TZ":   "0",
-        "num_LKW-K9":   "0",
-        "num_BRmG-R":   "0",
-        "num_Anh-DLE":  "0",
-        "num_MLW-5":    "0",
-        "num_LKW-7Lkr": "0"
+        "num_GKW":          0,
+        "num_MzKW":         0,
+        "num_MTW-TZ":       0,
+        "num_LKW-K9":       0,
+        "num_BRmG-R":       0,
+        "num_Anh-DLE":      0,
+        "num_MLW-5":        0,
+        "num_LKW-7Lkr":     0
     },
     "water-rescue":
     {
-        "num_GW_WRett": "0",
-        "num_MzB":      "0"
+        "num_GW_WRett":     0,
+        "num_MzB":          0
     }
 }
