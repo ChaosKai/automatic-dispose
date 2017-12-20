@@ -90,6 +90,11 @@ function AutomaticDispose_CollectMissions()
         {
             delete Missions[ Mission.id ];
         }
+        else
+        {
+            if( $("#mission_" + Mission.id).css("display") == "none" )
+                delete Missions[ Mission.id ];
+        }
     });
     
     localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
