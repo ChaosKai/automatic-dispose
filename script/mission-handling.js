@@ -343,7 +343,7 @@ $(document).ready(function()
             ADis_VehiclesNeed["27"] += MissionConfig.fire_department.num_GW_G;
             ADis_VehiclesNeed["10"] += MissionConfig.fire_department.num_GW_Oel;
             ADis_VehiclesNeed["12"] += MissionConfig.fire_department.num_GW_Mess;
-            ADis_VehiclesNeed["11"] += MissionConfig.fire_department.num_GW_SW;
+            ADis_VehiclesNeed["11"] += MissionConfig.fire_department.num_SW;
             ADis_VehiclesNeed["33"] += MissionConfig.fire_department.num_GW_Hoeh;
             ADis_VehiclesNeed["53"] += MissionConfig.fire_department.num_Dekon_P;
             
