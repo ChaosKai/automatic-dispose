@@ -471,13 +471,13 @@ $(document).ready(function()
         
         if( typeof MissionConfig.police_department == "object" )            // Wenn der FD-Block in der Config definiert ist
         {
-            ADis_VehiclesNeed["32"] += MissionConfig.fire_department.num_FuStW;
-            ADis_VehiclesNeed["35"] += MissionConfig.fire_department.num_leBefKw;
-            ADis_VehiclesNeed["50"] += MissionConfig.fire_department.num_GruKw;
-            ADis_VehiclesNeed["51"] += MissionConfig.fire_department.num_FueKw;
-            ADis_VehiclesNeed["52"] += MissionConfig.fire_department.num_GefKw;
-            ADis_VehiclesNeed["72"] += MissionConfig.fire_department.num_WaWe;
-            ADis_VehiclesNeed["61"] += MissionConfig.fire_department.num_PHu;
+            ADis_VehiclesNeed["32"] += MissionConfig.police_department.num_FuStW;
+            ADis_VehiclesNeed["35"] += MissionConfig.police_department.num_leBefKw;
+            ADis_VehiclesNeed["50"] += MissionConfig.police_department.num_GruKw;
+            ADis_VehiclesNeed["51"] += MissionConfig.police_department.num_FueKw;
+            ADis_VehiclesNeed["52"] += MissionConfig.police_department.num_GefKw;
+            ADis_VehiclesNeed["72"] += MissionConfig.police_department.num_WaWe;
+            ADis_VehiclesNeed["61"] += MissionConfig.police_department.num_PHu;
             
             $("#vehicle_show_table_body_all").find(".vehicle_select_table_tr").each( function()
             {
