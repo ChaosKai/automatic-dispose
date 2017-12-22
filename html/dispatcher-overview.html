@@ -110,7 +110,9 @@
 <section class="wrapper">
 
         <div id="adis-dispatcher-missions">
-
+            <div id="adis-dispatcher-no-mission">
+                Kein Einsatz in der Automatik.
+            </div>
         </div>
 
         <style>
@@ -134,6 +136,21 @@
 
                 font-size:          16px;
             }
+            
+                    #adis-dispatcher-no-mission
+                    {
+                        width:              100%;
+                        min-height:         96px;
+
+                        display:            flex;
+                        justify-content:    center;
+                        align-items:        center;
+                        
+                        color:              #fafafa;
+                        background:         #fb8c00;
+                        box-shadow:         0px 0px 6px 0px rgba(0,0,0,0.48);
+                        border-radius:      4px;
+                    }
 
                 #adis-dispatcher-missions .mission
                 {
@@ -204,13 +221,48 @@
 
         <div id="adis-dispatcher-workstations">
 
-            <div id="adis-dispatcher-workstations-row1" class="workstation-row">
+            <div id="adis-dispatcher-workstations-row-1" class="workstation-row">
+                <div class="workstation" dispatcher_id="1">
+                    <a class="toggle-dispatcher"></a>
+                    <div class="workstation-name">
+                        Disponent 1
+                    </div>
+                    <div class="workstation-state">
+                        Inaktiv
+                    </div>
+                    <div class="workstation-mission">
+                        Kein Einsatz
+                    </div>
+                </div>
+                <div class="workstation" dispatcher_id="2">
+                    <a class="toggle-dispatcher"></a>
+                    <div class="workstation-name">
+                        Disponent 2
+                    </div>
+                    <div class="workstation-state">
+                        Inaktiv
+                    </div>
+                    <div class="workstation-mission">
+                        Kein Einsatz
+                    </div>
+                </div>
+                <div class="workstation" dispatcher_id="3">
+                    <a class="toggle-dispatcher"></a>
+                    <div class="workstation-name">
+                        Disponent 3
+                    </div>
+                    <div class="workstation-state">
+                        Inaktiv
+                    </div>
+                    <div class="workstation-mission">
+                        Kein Einsatz
+                    </div>
+                </div>
+            </div>
+            <div id="adis-dispatcher-workstations-row-2" class="workstation-row">
 
             </div>
-            <div id="adis-dispatcher-workstations-row2" class="workstation-row">
-
-            </div>
-            <div id="adis-dispatcher-workstations-row3" class="workstation-row">
+            <div id="adis-dispatcher-workstations-row-3" class="workstation-row">
 
             </div>
 
@@ -224,6 +276,8 @@
                 height:             100%;
 
                 position:           absolute;
+                top:                0;
+                right:              0;
                 
                 display:            flex;
                 flex-flow:          column nowrap;
@@ -246,10 +300,55 @@
                     {
                         width:              300px;
                         height:             256px;
+                        position:           relative;
 
                         border:             1px solid #212121;
-                        border-radius:      4px;
                     }
+            
+                        #adis-dispatcher-workstations > .workstation-row > .workstation > .workstation-name
+                        {
+                            width:              100%;
+                            height:             48px;
+                            
+                            position:           absolute;
+                            top:                0px;
+                            left:               0px;
+
+                            font-size:          12px;
+                            font-weight:        500;
+                            background:         rgba(0,0,0,0.32);
+                            border-radius:      4px;
+                        }
+            
+                        #adis-dispatcher-workstations > .workstation-row > .workstation > .workstation-state
+                        {
+                            width:              100%;
+                            height:             48px;
+                            
+                            position:           absolute;
+                            bottom:             0px;
+                            left:               0px;
+
+                            font-size:          12px;
+                            font-weight:        500;
+                            background:         rgba(0,0,0,0.32);
+                            border-radius:      4px;
+                        }
+            
+                        #adis-dispatcher-workstations > .workstation-row > .workstation > .workstation-mission
+                        {
+                            width:              80%;
+                            height:             64px;
+                            
+                            position:           absolute;
+                            top:                96px;
+                            left:               10%;
+
+                            font-size:          12px;
+                            font-weight:        500;
+                            background:         rgba(0,0,0,0.32);
+                            border-radius:      4px;
+                        }
                 
         </style>
         
