@@ -1,0 +1,14 @@
+{
+    "mission_id":   "48",
+    "mission_name": "Krampfanfall",
+    
+    "emergency_medical_service":
+    {
+        "use_KTW":      false,
+        "use_RTW":      true,
+        "use_NEF":      true,
+        "use_RTH":      false,
+        "use_LNA":      false,
+        "use_SEG":      false
+    }
+}
