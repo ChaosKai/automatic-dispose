@@ -1,0 +1,255 @@
+<style>
+
+    #adis-dispatcher-overview
+    {
+        width:              96%;
+        height:             96%;
+        overflow:           hidden;
+        
+        position:           fixed;
+        top:                2%;
+        left:               2%;
+        right:              2%;
+        z-index:            2000;
+        
+        display:            flex;
+        flex-flow:          column nowrap;
+        justify-content:    flex-start;
+        align-items:        center;
+        
+        font-family:        "Open Sans";
+        background:         #eeeeee;
+        border-radius:      5px;
+    }
+    
+        #adis-dispatcher-overview .wrapper
+        {
+            width:              100%;
+            height:             100%;
+            overflow-x:         hidden;
+            overflow-y:         auto;
+
+            position:           relative;
+
+            display:            flex;
+            flex-flow:          column nowrap;
+            justify-content:    flex-start;
+            align-items:        center;
+        }
+
+</style>
+
+<header>
+    <div class="title">
+        Disponenten
+    </div>
+    <div class="close">
+        <i class="far fa-times-circle"></i>
+    </div>
+</header>
+
+<style>
+
+    #adis-dispatcher-overview > header
+    {
+        width:              100%;
+        height:             72px;
+
+        position:           relative;
+
+        font-size:          24px;
+        font-weight:        300;
+        color:              #fafafa;
+        background:         #212121;
+    }
+
+            #adis-dispatcher-overview > header > .title
+            {
+                width:              400px;
+                height:             100%;
+                padding:            8px 32px;
+
+                display:            flex;
+                justify-content:    flex-start;
+                align-items:        center;
+
+                font-size:          24px;
+                font-weight:        300;
+            }
+
+            #adis-dispatcher-overview > header > .close
+            {
+                width:              48px;
+                height:             48px;
+
+                position:           absolute;
+                top:                8px;
+                right:              16px;
+
+                display:            flex;
+                justify-content:    center;
+                align-items:        center;
+
+                font-size:          16px;
+            }
+
+</style>
+<script>
+
+    $("#adis-dispatcher-overview header .close").click(function()
+    {
+        $("#adis-dispatcher-overview").animate({ opacity: "0" }, 200, function()
+        {
+            $(this).css("display", "none");
+        });
+    });
+
+</script>
+
+<section class="wrapper">
+
+        <div id="adis-dispatcher-missions">
+
+        </div>
+
+        <style>
+
+            #adis-dispatcher-missions
+            {
+                width:              320px;
+                height:             100%;
+                padding:            20px 20px;
+                overflow-x:         hidden;
+                overflow-y:         auto;
+
+                position:           absolute;
+                top:                0;
+                left:               0;
+
+                display:            flex;
+                flex-flow:          column nowrap;
+                justify-content:    flex-start;
+                align-items:        center;
+
+                font-size:          16px;
+            }
+
+                #adis-dispatcher-missions .mission
+                {
+                    width:              100%;
+                    min-height:         96px;
+                    margin:             4px 12px;
+
+                    position:           relative;
+
+                    display:            flex;
+                    flex-flow:          row nowrap;
+                    justify-content:    flex-start;
+                    align-items:        center;
+
+                    background:         #fafafa;
+                    box-shadow:         0px 0px 6px 0px rgba(0,0,0,0.48);
+                    border-radius:      4px;
+                }
+
+                    #adis-dispatcher-missions .mission .name,
+                    #adis-dispatcher-missions .mission .street,
+                    #adis-dispatcher-missions .mission .village
+                    {
+                        width:              100%;
+                        overflow:           hidden;
+
+                        position:           absolute;
+                        left:               0px;
+
+                        font-size:          12px;
+                        text-align:         left;
+                        text-overflow:      ellipsis;
+                        white-space:        nowrap;
+                    }
+
+                    #adis-dispatcher-missions .mission .name
+                    {
+                        padding:            8px 16px;
+                        top:                0px;
+
+                        font-size:          16px;
+                        font-weight:        700;
+                    }
+                    #adis-dispatcher-missions .mission .street
+                    {
+                        padding:            4px 16px;
+                        top:                36px;
+                    }
+                    #adis-dispatcher-missions .mission .village
+                    {
+                        padding:            4px 16px;
+                        top:                52px;
+                    }
+                    #adis-dispatcher-missions .mission .countdown
+                    {
+                        width:              128px;
+                        padding:            8px 16px;
+
+                        position:           absolute;
+                        bottom:             0px;
+                        right:              0px;
+
+                        font-size:          12px;
+                        text-align:         right;
+                    }
+
+        </style>
+
+        <div id="adis-dispatcher-workstations">
+
+            <div id="adis-dispatcher-workstations-row1" class="workstation-row">
+
+            </div>
+            <div id="adis-dispatcher-workstations-row2" class="workstation-row">
+
+            </div>
+            <div id="adis-dispatcher-workstations-row3" class="workstation-row">
+
+            </div>
+
+        </div>
+
+        <style>
+
+            #adis-dispatcher-workstations
+            {
+                width:              calc(100% - 320px);
+                height:             100%;
+
+                position:           absolute;
+
+                font-size:          24px;
+                font-weight:        300;
+                color:              #fafafa;
+                background:         #212121;
+            } 
+
+                #adis-dispatcher-workstations > .workstation-row
+                {
+                    width:              100%;
+                    height:             72px;
+
+                    font-size:          24px;
+                    font-weight:        300;
+                    color:              #fafafa;
+                    background:         #212121;
+                }
+
+                    #adis-dispatcher-workstations > .workstation-row > .workstation
+                    {
+                        width:              300px;
+                        height:             256px;
+
+                        border:             1px solid #212121;
+                        border-radius:      4px;
+                    }
+                
+        </style>
+        
+</section>
