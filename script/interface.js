@@ -33,6 +33,9 @@ function ADis_CreateDashboard()
     DashboardContent += '        <a id="adis-dashboard-switch-mode-button">';
     DashboardContent += '            Modus';
     DashboardContent += '        </a>';
+    DashboardContent += '        <a id="adis-dashboard-open-dispatcher-button">';
+    DashboardContent += '            Disponenten';
+    DashboardContent += '        </a>';
     DashboardContent += '    </section>';
     DashboardContent += '    <section id="adis-dashboard-mission-list">';
     
@@ -64,6 +67,12 @@ function ADis_CreateDashboard()
     $("#adis-dashboard-switch-mode-button").click(function()
     {
         AutomaticDispose_SwitchMode();
+    });
+
+    $("#adis-dashboard-open-dispatcher-button").click(function()
+    {
+        $("#adis-dispatcher-overview").css("display", "flex");
+        $("#adis-dispatcher-overview").animate({ opacity: 1 }, 200);
     });
 }
 
