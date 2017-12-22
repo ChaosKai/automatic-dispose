@@ -8,8 +8,11 @@ $(document).ready(function()
         localStorage.setItem("AutomaticDispose-Mode", "semi");
     }
     
-    AutomaticDispose_SetMode( localStorage.getItem("AutomaticDispose-Mode") );
-
+    setTimeout(function()
+    {
+        AutomaticDispose_SetMode( localStorage.getItem("AutomaticDispose-Mode") );
+    }, 1000);
+    
     console.log("  Automatic Dispose: UI geladen");
 });
 
