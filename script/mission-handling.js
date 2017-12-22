@@ -276,6 +276,11 @@ $(document).ready(function()
                     $("#vehicle_checkbox_" + VehicleID).click();
                     ADis_VehiclesNeed["29"]--;
                 }
+                else if( $(this).attr("vehicle_type") == "KdoW-LNA" && ADis_VehiclesNeed["55"] > 0 )
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["55"]--;
+                }
             });
         }
     }
