@@ -62,13 +62,13 @@ function ADis_UpdateDispatcherMissions()
             {
                 $("#adis-dispatcher-missions").append('<div id="adis-dahboard-mission-' + MissionID + '" class="mission"></div>');
                 $("#adis-dahboard-mission-" + MissionID).append('<div class="name"></div>');
-                $("#adis-dahboard-mission-" + MissionID).append('<div class="strasse"></div>');
+                $("#adis-dahboard-mission-" + MissionID).append('<div class="street"></div>');
                 $("#adis-dahboard-mission-" + MissionID).append('<div class="countdown"></div>');
             }
             
             $("#adis-dahboard-mission-" + MissionID).data("mission", MissionID);
             $("#adis-dahboard-mission-" + MissionID).find(".name").html(Mission.name);
-            $("#adis-dahboard-mission-" + MissionID).find(".strasse").html(Mission.strasse);
+            $("#adis-dahboard-mission-" + MissionID).find(".street").html(Mission.street);
             $("#adis-dahboard-mission-" + MissionID).find(".countdown").html( (Mission.next_check - CurrentTime) + "sek.");
         }
         else if( $("#adis-dahboard-mission-" + MissionID).length > 0 )
