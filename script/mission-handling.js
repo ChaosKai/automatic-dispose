@@ -164,17 +164,25 @@ $(document).ready(function()
             var PatientNeedRTW = false;
             var PatientNeedNEF = false;
             var PatientNeedRTH = false;
+            var PatientNeedLNA = false;
             
             if( $(this).find(".alert-danger").length > 0 && $(this).find(".alert-danger").text().indexOf("Wir benötigen ein NEF") != -1 )
             {
                 PatientNeedNEF = true;
             }
             
+            if( $(this).find(".alert-danger").length > 0 && $(this).find(".alert-danger").text().indexOf("Wir benötigen einen LNA") != -1 )
+            {
+                if(  )
+                PatientNeedLNA = true;
+            }
+            
             AD_Patients[ PatientCounter ] = {
                 "name":     PatientName,
                 "need_RTW": PatientNeedRTW,
                 "need_NEF": PatientNeedNEF,
-                "need_RTH": PatientNeedRTH
+                "need_RTH": PatientNeedRTH,
+                "need_LNA": PatientNeedLNA
             }
             
             PatientCounter++;
@@ -202,6 +210,7 @@ $(document).ready(function()
 //      -                   28:     NEF
 //      -                   74:     NAW
 //      -                   73:     GRTW
+//      -                   55:     LNA
 //      -
 //      -                   58:     (SEG) KTW Typ B
 //      -                   59:     (SEG) ELW 1
@@ -218,6 +227,9 @@ $(document).ready(function()
                     if( !Patient.need_RTW && !Patient.need_NEF && !Patient.need_RTH )
                         ADis_VehiclesNeed["38"]++;
                 }
+                
+                if( Patient.need_LNA && ADis_VehiclesNeed["55"] < 1 )
+                    ADis_VehiclesNeed["55"]++;
                 
                 if( MissionConfig.emergency_medical_service.use_RTW )
                     ADis_VehiclesNeed["28"]++;
