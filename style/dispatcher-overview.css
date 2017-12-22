@@ -126,6 +126,7 @@
                         #adis-dispatcher-missions .mission .name
                         {
                             width:              100%;
+                            overflow:           hidden;
                             padding:            8px 16px;
                             
                             position:           absolute;
@@ -134,18 +135,38 @@
 
                             text-align:         left;
                             font-weight:        700;
+                            text-overflow:      ellipsis;
+                            white-space:        nowrap;
                         }
                         #adis-dispatcher-missions .mission .street
                         {
                             width:              100%;
-                            min-height:         72px;
+                            overflow:           hidden;
                             padding:            4px 16px;
                             
                             position:           absolute;
                             top:                36px;
                             left:               0px;
 
+                            font-size:          12px;
                             text-align:         left;
+                            text-overflow:      ellipsis;
+                            white-space:        nowrap;
+                        }
+                        #adis-dispatcher-missions .mission .valley
+                        {
+                            width:              100%;
+                            overflow:           hidden;
+                            padding:            4px 16px;
+                            
+                            position:           absolute;
+                            top:                52px;
+                            left:               0px;
+
+                            font-size:          12px;
+                            text-align:         left;
+                            text-overflow:      ellipsis;
+                            white-space:        nowrap;
                         }
                         #adis-dispatcher-missions .mission .countdown
                         {
@@ -156,5 +177,6 @@
                             bottom:             0px;
                             right:              0px;
 
+                            font-size:          12px;
                             text-align:         right;
                         }
