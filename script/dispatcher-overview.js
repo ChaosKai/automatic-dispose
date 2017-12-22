@@ -12,31 +12,14 @@ var DispatcherTable = {
 $(document).ready(function()
 {
     ADis_BuildDispatcherInterface();
-    setInterval(ADis_UpdateDispatcherMissions, 1000);
+    setInterval(ADis_UpdateDispatcherMissions, 2000);
 });
 
 
 function ADis_BuildDispatcherInterface()
 {
     $("body").append('<div id="adis-dispatcher-overview"></div>');
-    $("#adis-dispatcher-overview").append('<header></header>');
-    $("#adis-dispatcher-overview").append('<div class="wrapper"></div>');
-    
-    $("#adis-dispatcher-overview").css({ display: "none", opacity: "0" });
-    
-    $("#adis-dispatcher-overview").find("header").append('<div id="adis-dispatcher-overview-title">Disponenten</div>');
-    $("#adis-dispatcher-overview").find("header").append('<div id="adis-dispatcher-overview-close"><i class="far fa-times-circle"></a></div>');
-    
-    $("#adis-dispatcher-overview-close").click(function()
-    {
-        $("#adis-dispatcher-overview").animate({ opacity: "0" }, 200, function()
-        {
-            $(this).css("display", "none");
-        });
-    });
-    
-    $("#adis-dispatcher-overview").find(".wrapper").append('<div id="adis-dispatcher-missions"></div>');
-    $("#adis-dispatcher-overview").find(".wrapper").append('<div id="adis-dispatcher-table"></div>');
+    $("#adis-dispatcher-overview").load(AutomaticDispose_URL + AutomaticDispose_Branch + "/html/dispatcher-overview.html";);
 }
 
 
