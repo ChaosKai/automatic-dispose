@@ -173,7 +173,6 @@ $(document).ready(function()
             
             if( $(this).find(".alert-danger").length > 0 && $(this).find(".alert-danger").text().indexOf("Wir benötigen einen LNA") != -1 )
             {
-                if(  )
                 PatientNeedLNA = true;
             }
             
