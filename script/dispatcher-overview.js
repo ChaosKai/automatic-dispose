@@ -37,6 +37,15 @@ function ADis_UpdateDispatcherMissions()
             $(this).remove();
     });
     
+    if( Object.keys(Missions).length == 0 )
+    {
+        $("#adis-dispatcher-no-mission").show();
+    }
+    else
+    {
+        $("#adis-dispatcher-no-mission").hide();
+    }
+    
     $.each(Missions, function(MissionID, Mission)
     {
         if( Mission.mode == "semi" || Mission.mode == localStorage.getItem("AutomaticDispose-Mode") )
