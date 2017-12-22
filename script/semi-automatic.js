@@ -57,12 +57,16 @@ function AutomaticDispose_AddMission( ID, Mode )
         
         var MissionID = MissionElement.attr("mission_id");
         var MissionType = MissionElement.attr("mission_type_id");
-        var MissionName = MissionElement.find(".map_position_mover").text();
+        var MissionName = MissionElement.find(".map_position_mover").text().split(",")[0];
+        var MissionStreet = MissionElement.find(".map_position_mover").text().split(",")[1];
+        var MissionVillage = MissionElement.find(".map_position_mover").text().split(",")[3];
         
         Missions[ ID ] = {
             "id": MissionID,
             "type": MissionType,
             "name": MissionName,
+            "street": MissionStreet,
+            "village": MissionVillage,
             "mode": Mode,
             "last_check": Math.floor( new Date().getTime() / 1000 ),
             "next_check": Math.floor( new Date().getTime() / 1000 ) + 1
