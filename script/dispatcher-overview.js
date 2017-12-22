@@ -27,6 +27,14 @@ function ADis_BuildDispatcherInterface()
     $("#adis-dispatcher-overview").find("header").append('<div id="adis-dispatcher-overview-title">Disponenten</div>');
     $("#adis-dispatcher-overview").find("header").append('<div id="adis-dispatcher-overview-close"><i class="far fa-times-circle"></a></div>');
     
+    $("#adis-dispatcher-overview-close").click(function()
+    {
+        $("#adis-dispatcher-overview").animate({ opacity: "0" }, 200, function()
+        {
+            $(this).css("display", "none");
+        });
+    });
+    
     $("#adis-dispatcher-overview").find(".wrapper").append('<div id="adis-dispatcher-missions"></div>');
     $("#adis-dispatcher-overview").find(".wrapper").append('<div id="adis-dispatcher-table"></div>');
 }
