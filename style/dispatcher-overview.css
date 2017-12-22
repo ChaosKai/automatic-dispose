@@ -132,10 +132,10 @@
                             top:                0px;
                             left:               0px;
 
-                            text-align:         center;
+                            text-align:         left;
                             font-weight:        700;
                         }
-                        #adis-dispatcher-missions .mission .strasse
+                        #adis-dispatcher-missions .mission .street
                         {
                             width:              100%;
                             min-height:         72px;
@@ -145,8 +145,7 @@
                             top:                36px;
                             left:               0px;
 
-                            text-align:         center;
-                            font-weight:        700;
+                            text-align:         left;
                         }
                         #adis-dispatcher-missions .mission .countdown
                         {
@@ -157,6 +156,5 @@
                             bottom:             0px;
                             right:              0px;
 
-                            text-align:         center;
-                            font-weight:        700;
+                            text-align:         right;
                         }
