@@ -20,10 +20,10 @@
 //      -           FontAwesome 5
 //      -
 
-        var styleElement = document.createElement("link");
-        styleElement.rel = "stylesheet";
-        styleElement.href = "https://use.fontawesome.com/releases/v5.0.2/js/all.js";
-        document.body.appendChild(styleElement);
+        var scriptElement = document.createElement("script");
+        scriptElement.type = "text/javascript";
+        scriptElement.src = "https://use.fontawesome.com/releases/v5.0.2/js/all.js";
+        document.body.appendChild(scriptElement);
 
 //      -
 //      -           Navbar Dashboard
