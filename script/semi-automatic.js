@@ -1,12 +1,5 @@
 $(document).ready(function()
-{
-    if( typeof localStorage.getItem("AutomaticDispose-Mode") == "undefined" )
-    {
-        localStorage.setItem("AutomaticDispose-Mode", "semi");
-    }
-    
-    AutomaticDispose_SetMode( localStorage.getItem("AutomaticDispose-Mode") );
-    
+{   
     if( typeof localStorage.getItem("AutomaticDispose-Missions") == "undefined" )
     {
         localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify({}) );
