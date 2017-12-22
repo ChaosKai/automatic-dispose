@@ -10,7 +10,7 @@
         top:                1%;
         left:               1%;
         right:              1%;
-        z-index:            100;
+        z-index:            2000;
         
         display:            flex;
         flex-flow:          column nowrap;
@@ -32,7 +32,7 @@
             font-size:          24px;
             font-weight:        300;
             color:              #fafafa;
-            background:         #eeeeee;
+            background:         #212121;
         }
 
                 #adis-dispatcher-overview-title
@@ -41,9 +41,13 @@
                     height:             100%;
                     padding:            8px 32px;
 
-                    position:           abolute;
+                    position:           absolute;
                     top:                0;
                     left:               0;
+                    
+                    display:            flex;
+                    justify-content:    flex-start;
+                    align-items:        center;
 
                     font-family:        "Open Sans";
                     font-size:          24px;
@@ -55,9 +59,9 @@
                     width:              48px;
                     height:             48px;
 
-                    position:           abolute;
-                    top:                0;
-                    left:               0;
+                    position:           absolute;
+                    top:                8px;
+                    right:              16px;
                     
                     display:            flex;
                     justify-content:    center;
