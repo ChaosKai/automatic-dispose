@@ -3,13 +3,14 @@
 
     #adis-dispatcher-overview
     {
-        width:              98%;
-        height:             98%;
+        width:              96%;
+        height:             96%;
+        overflow:           hidden;
         
         position:           fixed;
-        top:                1%;
-        left:               1%;
-        right:              1%;
+        top:                2%;
+        left:               2%;
+        right:              2%;
         z-index:            2000;
         
         display:            flex;
@@ -87,7 +88,7 @@
             
                 #adis-dispatcher-missions
                 {
-                    width:              256px;
+                    width:              320px;
                     height:             100%;
                     padding:            20px 20px;
                     overflow-x:         hidden;
@@ -99,13 +100,18 @@
                     flex-flow:          column nowrap;
                     justify-content:    flex-start;
                     align-items:        center;
+                    
+                    font-family:        "Open Sans";
+                    font-size:          16px;
                 }
                 
                     #adis-dispatcher-missions .mission
                     {
-                        width:              256px;
-                        height:             100%;
+                        width:              100%;
+                        min-height:         96px;
                         margin:             4px 12px;
+                        
+                        position:           relative;
 
                         display:            flex;
                         flex-flow:          row nowrap;
@@ -116,3 +122,41 @@
                         box-shadow:         0px 0px 6px 0px rgba(0,0,0,0.48);
                         border-radius:      4px;
                     }
+ 
+                        #adis-dispatcher-missions .mission .name
+                        {
+                            width:              100%;
+                            padding:            8px 16px;
+                            
+                            position:           absolute;
+                            top:                0px;
+                            left:               0px;
+
+                            text-align:         center;
+                            font-weight:        700;
+                        }
+                        #adis-dispatcher-missions .mission .strasse
+                        {
+                            width:              100%;
+                            min-height:         72px;
+                            padding:            4px 16px;
+                            
+                            position:           absolute;
+                            top:                36px;
+                            left:               0px;
+
+                            text-align:         center;
+                            font-weight:        700;
+                        }
+                        #adis-dispatcher-missions .mission .countdown
+                        {
+                            width:              72px;
+                            padding:            8px 16px;
+                            
+                            position:           absolute;
+                            bottom:             0px;
+                            right:              0px;
+
+                            text-align:         center;
+                            font-weight:        700;
+                        }
