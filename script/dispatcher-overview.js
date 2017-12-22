@@ -70,7 +70,7 @@ function ADis_UpdateDispatcherMissions()
             $("#adis-dahboard-mission-" + MissionID).data("mission", MissionID);
             $("#adis-dahboard-mission-" + MissionID).find(".name").html(Mission.name);
             $("#adis-dahboard-mission-" + MissionID).find(".street").html(Mission.street);
-            $("#adis-dahboard-mission-" + MissionID).find(".street").html(Mission.valley);
+            $("#adis-dahboard-mission-" + MissionID).find(".valley").html(Mission.valley);
             $("#adis-dahboard-mission-" + MissionID).find(".countdown").html( (Mission.next_check - CurrentTime) + "sek.");
         }
         else if( $("#adis-dahboard-mission-" + MissionID).length > 0 )
