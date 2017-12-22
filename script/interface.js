@@ -2,13 +2,15 @@ $(document).ready(function()
 {
     ADis_CreateNavbarItem();
     ADis_CreateDashboard();
+    
+    if( typeof localStorage.getItem("AutomaticDispose-Mode") == "undefined" )
+    {
+        localStorage.setItem("AutomaticDispose-Mode", "semi");
+    }
+    
+    AutomaticDispose_SetMode( localStorage.getItem("AutomaticDispose-Mode") );
 
     console.log("  Automatic Dispose: UI geladen");
-    
-    setInterval(function()
-    {
-        ADis_UpdateDashboardMissionList();
-    }, 1000);
 });
 
 
