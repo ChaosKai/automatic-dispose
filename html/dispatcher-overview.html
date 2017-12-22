@@ -79,12 +79,12 @@
 
             #adis-dispatcher-overview > header > .close
             {
-                width:              48px;
-                height:             48px;
+                width:              32px;
+                height:             32px;
 
                 position:           absolute;
-                top:                8px;
-                right:              16px;
+                top:                0px;
+                right:              0px;
 
                 display:            flex;
                 justify-content:    center;
@@ -146,6 +146,7 @@
                         justify-content:    center;
                         align-items:        center;
                         
+                        font-size:          12px;
                         color:              #fafafa;
                         background:         #fb8c00;
                         box-shadow:         0px 0px 6px 0px rgba(0,0,0,0.48);
@@ -224,9 +225,9 @@
             <div id="adis-dispatcher-workstations-row-1" class="workstation-row">
                 <div class="workstation" dispatcher_id="1">
                     <a class="toggle-dispatcher"></a>
-                    <div class="workstation-name">
+                    <!--div class="workstation-name">
                         Disponent 1
-                    </div>
+                    </div-->
                     <div class="workstation-state">
                         Inaktiv
                     </div>
@@ -236,9 +237,9 @@
                 </div>
                 <div class="workstation" dispatcher_id="2">
                     <a class="toggle-dispatcher"></a>
-                    <div class="workstation-name">
+                    <!--div class="workstation-name">
                         Disponent 2
-                    </div>
+                    </div-->
                     <div class="workstation-state">
                         Inaktiv
                     </div>
@@ -248,9 +249,9 @@
                 </div>
                 <div class="workstation" dispatcher_id="3">
                     <a class="toggle-dispatcher"></a>
-                    <div class="workstation-name">
+                    <!--div class="workstation-name">
                         Disponent 3
-                    </div>
+                    </div-->
                     <div class="workstation-state">
                         Inaktiv
                     </div>
@@ -305,21 +306,6 @@
                         border:             1px solid #212121;
                     }
             
-                        #adis-dispatcher-workstations > .workstation-row > .workstation > .workstation-name
-                        {
-                            width:              100%;
-                            height:             48px;
-                            
-                            position:           absolute;
-                            top:                0px;
-                            left:               0px;
-
-                            font-size:          12px;
-                            font-weight:        500;
-                            background:         rgba(0,0,0,0.32);
-                            border-radius:      4px;
-                        }
-            
                         #adis-dispatcher-workstations > .workstation-row > .workstation > .workstation-state
                         {
                             width:              100%;
@@ -328,11 +314,15 @@
                             position:           absolute;
                             bottom:             0px;
                             left:               0px;
-
+                            
+                            display:            flex;
+                            justify-content:    center;
+                            align-items:        center;
+                            
                             font-size:          12px;
                             font-weight:        500;
-                            background:         rgba(0,0,0,0.32);
-                            border-radius:      4px;
+                            color:              #fafafa;
+                            background:         rgba(25,118,210,0.32);
                         }
             
                         #adis-dispatcher-workstations > .workstation-row > .workstation > .workstation-mission
