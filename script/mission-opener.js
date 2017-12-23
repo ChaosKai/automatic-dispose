@@ -42,16 +42,16 @@ function ADis_CheckMissionAttention()
                 {
                     if( !Dispatcher.mission && ADis_Available_Missions[Mission.type] == Dispatcher.org )
                     {
-                        Dispatcher.mission = Mission.id;
+                        Dispatcher.mission = MissionID;
                         Missions[ Dispatchers[DispatcherID].mission ].dispatcher = Dispatcher.id;
                     }
                 });
             }
             
-            if( Missions[Mission.id].dispatcher != false )
+            if( Missions[MissionID].dispatcher != false )
             {
-                $("#adis_dispatcher_workstation_" + Missions[Mission.id].dispatcher).find("iframe").attr("src", "https://www.leitstellenspiel.de/missions/" + Mission.id);
-                $("#adis_dispatcher_workstation_" + Missions[Mission.id].dispatcher).find("iframe").data("mission", Mission.id);
+                $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).find("iframe").attr("src", "https://www.leitstellenspiel.de/missions/" + Mission.id);
+                $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).find("iframe").data("mission", Mission.id);
                 
                 MissionFrameWatchDog[Mission.id] = setTimeout(function()
                 {
