@@ -38,7 +38,7 @@ $(document).ready(function()
         }
         else
         {
-            window.parent.ADis_CloseMission();
+            window.parent.ADis_CloseMission(MissionID);
         }
     }
 
@@ -66,7 +66,7 @@ $(document).ready(function()
                 }
 
                 localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
-                window.parent.ADis_CloseMission();
+                window.parent.ADis_CloseMission(MissionID);
             }
         })
         .done( function()
@@ -86,7 +86,7 @@ $(document).ready(function()
             }
             
             localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
-            window.parent.ADis_CloseMission();
+            window.parent.ADis_CloseMission(MissionID);
         });
     }
 
