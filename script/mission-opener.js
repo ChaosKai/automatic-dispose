@@ -40,7 +40,7 @@ function ADis_CheckMissionAttention()
             {
                 $.each(Dispatchers, function(DispatcherID, Dispatcher)
                 {
-                    if( !Dispatcher.mission && ADis_Available_Missions[Mission.type] == Dispatcher.org )
+                    if( !Dispatcher.mission && ADis_Available_Missions[Mission.type].type == Dispatcher.org )
                     {
                         Dispatcher.mission = MissionID;
                         Missions[ Dispatchers[DispatcherID].mission ].dispatcher = Dispatcher.id;
