@@ -68,10 +68,32 @@ function ADis_ToggleDispatcherState( DispatcherID )
 {
     var Dispatchers = JSON.parse( localStorage.getItem("ADis-Dispatchers") );
     
-    if( Dispatchers[DispatcherID].state ){
+    if( Dispatchers[DispatcherID].state ) {
         Dispatchers[DispatcherID].state = false;
     } else {
         Dispatchers[DispatcherID].state = true;
+    }
+    
+    localStorage.setItem( "ADis-Dispatchers", JSON.stringify(Dispatchers) );
+    ADis_UpdateDispatcherWorkspace();
+}
+
+function ADis_ToggleDispatcherOrg( DispatcherID )
+{
+    var Dispatchers = JSON.parse( localStorage.getItem("ADis-Dispatchers") );
+    
+    if( !Dispatchers[DispatcherID].org ) {
+        Dispatchers[DispatcherID].org = "fire_department";
+    } else if( Dispatchers[DispatcherID].org == "fire_department" ) {
+        Dispatchers[DispatcherID].org = "emergency_medical_service";
+    } else if( Dispatchers[DispatcherID].org == "emergency_medical_service" ) {
+        Dispatchers[DispatcherID].org = "police_department";
+    } else if( Dispatchers[DispatcherID].org == "police_department" ) {
+        Dispatchers[DispatcherID].org = "technical_emergency_service";
+    } else if( Dispatchers[DispatcherID].org == "technical_emergency_service" ) {
+        Dispatchers[DispatcherID].org = "water_rescue";
+    } else if( Dispatchers[DispatcherID].org == "water_rescue" ) {
+        Dispatchers[DispatcherID].org = false;
     }
     
     localStorage.setItem( "ADis-Dispatchers", JSON.stringify(Dispatchers) );
