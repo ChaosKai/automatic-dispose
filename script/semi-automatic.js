@@ -54,20 +54,20 @@ function AutomaticDispose_AddMission( ID, Mode )
         var MissionStreet = MissionElement.find(".map_position_mover").text().split(",")[1];
         var MissionVillage = MissionElement.find(".map_position_mover").text().split(",")[2];
         
-        Missions[ ID ] = {
-            "id": MissionID,
-            "type": MissionType,
-            "name": MissionName,
-            "street": MissionStreet,
-            "village": MissionVillage,
-            "mode": Mode,
-            "last_check": Math.floor( new Date().getTime() / 1000 ),
-            "next_check": Math.floor( new Date().getTime() / 1000 ) + 1
+        if( typeof ADis_Available_Missions[ MissionType ] != "undefined" )
+        {
+            Missions[ ID ] = {
+                "id": MissionID,
+                "type": MissionType,
+                "name": MissionName,
+                "street": MissionStreet,
+                "village": MissionVillage,
+                "available": false,
+                "mode": Mode,
+                "last_check": Math.floor( new Date().getTime() / 1000 ),
+                "next_check": Math.floor( new Date().getTime() / 1000 ) + 1
+            }
         }
-    }
-    else
-    {
-        Missions[ ID ]["mode"] = Mode;
     }
     
     localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) ); 
@@ -78,6 +78,7 @@ function AutomaticDispose_AddMission( ID, Mode )
 function AutomaticDispose_CollectMissions()
 {
     var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
+    
     if( Missions == null )
         Missions = {};
     
