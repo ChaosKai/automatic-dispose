@@ -47,7 +47,8 @@ $(document).ready(function()
     {
         console.log("  Automatic Dispose: Lade Einsatzkonfiguration aus GitHub...");
         
-        $.getJSON( AutomaticDispose_URL + AutomaticDispose_Branch + "/missions/" + MissionType + ".json", function( Response )
+        //$.getJSON( AutomaticDispose_URL + AutomaticDispose_Branch + "/missions/" + MissionType + ".json", function( Response )
+        $.getJSON( "https://automatic-disposer.000webhostapp.com/lss-bridge/get-mission.php?mission=" + MissionType, function( Response )
         {
             MissionConfig = Response;
         })
