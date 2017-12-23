@@ -5,8 +5,6 @@ var ADis_Available_Missions = {};
 $(document).ready(function()
 {   
     setInterval( ADis_FullAutomatic_CollectMissions, 10000 );
-    setInterval( ADis_GetAvailableMissions, 60000 );
-    
     setTimeout( ADis_GetAvailableMissions, 1000 );
 });
 
@@ -18,6 +16,7 @@ function ADis_GetAvailableMissions()
         if( Response.status == "success" )
         {
             ADis_Available_Missions = Response.missions;
+            localStorage.setItem( "ADis-Available-Mission", ADis_Available_Missions );
         }
     });
 }
