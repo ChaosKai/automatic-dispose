@@ -239,7 +239,7 @@ $(document).ready(function()
         {
             $.each(AD_Patients, function(Key, Patient)
             {
-                if( MissionConfig.emergency_medical_service.use_KTW )
+                if( MissionConfig.emergency_medical_service.use_KTW == "true" )
                 {
                     if( !Patient.need_RTW && !Patient.need_NEF && !Patient.need_RTH )
                         ADis_VehiclesNeed["38"]++;
@@ -248,10 +248,10 @@ $(document).ready(function()
                 if( Patient.need_LNA && ADis_VehiclesNeed["55"] < 1 )
                     ADis_VehiclesNeed["55"]++;
                 
-                if( MissionConfig.emergency_medical_service.use_RTW )
+                if( MissionConfig.emergency_medical_service.use_RTW == "true" )
                     ADis_VehiclesNeed["28"]++;
                 
-                if( MissionConfig.emergency_medical_service.use_NEF )
+                if( MissionConfig.emergency_medical_service.use_NEF == "true" )
                     ADis_VehiclesNeed["29"]++;
             });
             
