@@ -21,6 +21,7 @@ function ADis_InitDispatcherWorkspace()
 {
     if( localStorage.getItem("ADis-Dispatchers") == "null" )
     {
+        console.log("Init Dispatcher Workspace");
         var Dispatchers = {};
         
         for( var DispatcherID = 0; DispatcherID < 7; DispatcherID++ )
@@ -28,13 +29,14 @@ function ADis_InitDispatcherWorkspace()
             Dispatchers[ DispatcherID ] = {
                 "id":       DispatcherID,
                 "state":    false,
-                "org":      "none",
+                "org":      false,
                 "mission":  false
             }
         }
         
         localStorage.setItem( "ADis-Dispatchers", JSON.stringify(Dispatchers) );
     }
+    console.log( localStorage.getItem("ADis-Dispatchers") );
 }
 
 function ADis_UpdateDispatcherWorkspace()
