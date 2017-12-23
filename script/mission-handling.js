@@ -45,49 +45,17 @@ $(document).ready(function()
 
     function AD_GetMissionConfiguration()
     {
-        console.log("  Automatic Dispose: Lade Einsatzkonfiguration aus GitHub...");
+        var AvailableMissions = localStorage.getItem("ADis-Available-Missions");
         
-        //$.getJSON( AutomaticDispose_URL + AutomaticDispose_Branch + "/missions/" + MissionType + ".json", function( Response )
-        $.getJSON( "https://automatic-disposer.000webhostapp.com/lss-bridge/get-mission.php?mission=" + MissionType, function( Response )
+        if( AvailableMissions != null && typeof AvailableMissions[MissionType] == "object" )
         {
-            if( Response.status == "success" )
-            {
-                MissionConfig = Response;
-            }
-            else
-            {
-                console.log("  Automatic Dispose: Die Konfiguration für den Einsatz " + MissionType + " ist nicht verfügbar!");
-                var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
-
-                if( typeof Missions[ MissionID ] !== "undefined" )
-                {
-                    Missions[ MissionID ]["last_check"] = CurrentTime;
-                    Missions[ MissionID ]["next_check"] = CurrentTime + 300;
-                }
-
-                localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
-                window.parent.ADis_CloseMission(MissionID);
-            }
-        })
-        .done( function()
-        {
-            console.log("  Automatic Dispose: Einsatzkonfiguration erfolgreich geladen.");
+            MissionConfig = AvailableMissions[MissionType];
             AD_StartAlarmProcess();
-        })
-        .fail( function()
+        }
+        else
         {
-            console.log("  Automatic Dispose: Die Konfiguration für den Einsatz " + MissionType + " ist nicht verfügbar!");
-            var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
-
-            if( typeof Missions[ MissionID ] !== "undefined" )
-            {
-                Missions[ MissionID ]["last_check"] = CurrentTime;
-                Missions[ MissionID ]["next_check"] = CurrentTime + 300;
-            }
-            
-            localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
             window.parent.ADis_CloseMission(MissionID);
-        });
+        }
     }
 
 
