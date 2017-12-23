@@ -50,7 +50,24 @@ $(document).ready(function()
         //$.getJSON( AutomaticDispose_URL + AutomaticDispose_Branch + "/missions/" + MissionType + ".json", function( Response )
         $.getJSON( "https://automatic-disposer.000webhostapp.com/lss-bridge/get-mission.php?mission=" + MissionType, function( Response )
         {
-            MissionConfig = Response;
+            if( Response.status == "success" )
+            {
+                MissionConfig = Response;
+            }
+            else
+            {
+                console.log("  Automatic Dispose: Die Konfiguration für den Einsatz " + MissionType + " ist nicht verfügbar!");
+                var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
+
+                if( typeof Missions[ MissionID ] !== "undefined" )
+                {
+                    Missions[ MissionID ]["last_check"] = CurrentTime;
+                    Missions[ MissionID ]["next_check"] = CurrentTime + 300;
+                }
+
+                localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
+                window.parent.ADis_CloseMission();
+            }
         })
         .done( function()
         {
