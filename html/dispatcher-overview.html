@@ -433,5 +433,19 @@
                         }
                 
         </style>
+    
+        <script>
+            
+            $(".workstation").each(function()
+            {
+                var DispatcherID = $(this).attr("dispatcher_id");
+                
+                $(this).find(".workstation-state").click(function()
+                {
+                    ADis_ToggleDispatcherState( DispatcherID );
+                });
+            });
+            
+        </script>
         
 </section>
