@@ -22,7 +22,6 @@ function ADis_CheckMissionAttention()
         }
         else if( Mission.next_check < CurrentTime )
         {
-            //if( typeof AutomaticDispose_MissionWindows[ Mission.id ] === "undefined" || AutomaticDispose_MissionWindows[ Mission.id ].closed )
             if( $("#adis-mission-frame").data("mission") == "empty" )
             {
                 $("#adis-mission-frame").attr("src", "https://www.leitstellenspiel.de/missions/" + Mission.id);
