@@ -57,15 +57,16 @@ function AutomaticDispose_AddMission( ID, Mode )
         if( typeof ADis_Available_Missions[ MissionType ] != "undefined" )
         {
             Missions[ ID ] = {
-                "id": MissionID,
-                "type": MissionType,
-                "name": MissionName,
-                "street": MissionStreet,
-                "village": MissionVillage,
-                "available": false,
-                "mode": Mode,
-                "last_check": Math.floor( new Date().getTime() / 1000 ),
-                "next_check": Math.floor( new Date().getTime() / 1000 ) + 1
+                "id":           MissionID,
+                "type":         MissionType,
+                "name":         MissionName,
+                "street":       MissionStreet,
+                "village":      MissionVillage,
+                "available":    false,
+                "mode":         Mode,
+                "dispatcher":   false,
+                "last_check":   Math.floor( new Date().getTime() / 1000 ),
+                "next_check":   Math.floor( new Date().getTime() / 1000 ) + 1
             }
         }
     }
