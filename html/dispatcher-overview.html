@@ -223,7 +223,7 @@
         <div id="adis-dispatcher-workstations">
 
             <div id="adis-dispatcher-workstations-row-1" class="workstation-row">
-                <div class="workstation" dispatcher_id="1">
+                <div id="adis_dispatcher_workstation_1" class="workstation" dispatcher_id="1">
                     <a class="toggle-dispatcher"></a>
                     <a class="toggle-state">
                         <i class="fas fa-power-off"></i>
@@ -234,8 +234,9 @@
                     <div class="workstation-mission">
                         Kein Einsatz
                     </div>
+                    <iframe data-mission="empty">
                 </div>
-                <div class="workstation" dispatcher_id="2">
+                <div id="adis_dispatcher_workstation_2" class="workstation" dispatcher_id="2">
                     <a class="toggle-dispatcher"></a>
                     <a class="toggle-state">
                         <i class="fas fa-power-off"></i>
@@ -246,8 +247,9 @@
                     <div class="workstation-mission">
                         Kein Einsatz
                     </div>
+                    <iframe data-mission="empty">
                 </div>
-                <div class="workstation" dispatcher_id="3">
+                <div id="adis_dispatcher_workstation_3" class="workstation" dispatcher_id="3">
                     <a class="toggle-dispatcher"></a>
                     <a class="toggle-state">
                         <i class="fas fa-power-off"></i>
@@ -258,9 +260,10 @@
                     <div class="workstation-mission">
                         Kein Einsatz
                     </div>
+                    <iframe data-mission="empty">
                 </div>
             </div>
-            <div id="adis-dispatcher-workstations-row-2" class="workstation-row">
+            <div id="adis_dispatcher_workstation_4" id="adis-dispatcher-workstations-row-2" class="workstation-row">
                 <div class="workstation" dispatcher_id="4">
                     <a class="toggle-dispatcher"></a>
                     <a class="toggle-state">
@@ -272,8 +275,9 @@
                     <div class="workstation-mission">
                         Kein Einsatz
                     </div>
+                    <iframe data-mission="empty">
                 </div>
-                <div class="workstation" dispatcher_id="5">
+                <div id="adis_dispatcher_workstation_5" class="workstation" dispatcher_id="5">
                     <a class="toggle-dispatcher"></a>
                     <a class="toggle-state">
                         <i class="fas fa-power-off"></i>
@@ -284,10 +288,11 @@
                     <div class="workstation-mission">
                         Kein Einsatz
                     </div>
+                    <iframe data-mission="empty">
                 </div>
             </div>
             <div id="adis-dispatcher-workstations-row-3" class="workstation-row">
-                <div class="workstation" dispatcher_id="6">
+                <div id="adis_dispatcher_workstation_6" class="workstation" dispatcher_id="6">
                     <a class="toggle-dispatcher"></a>
                     <a class="toggle-state">
                         <i class="fas fa-power-off"></i>
@@ -298,8 +303,9 @@
                     <div class="workstation-mission">
                         Kein Einsatz
                     </div>
+                    <iframe data-mission="empty">
                 </div>
-                <div class="workstation" dispatcher_id="7">
+                <div id="adis_dispatcher_workstation_7" class="workstation" dispatcher_id="7">
                     <a class="toggle-dispatcher"></a>
                     <a class="toggle-state">
                         <i class="fas fa-power-off"></i>
@@ -310,6 +316,7 @@
                     <div class="workstation-mission">
                         Kein Einsatz
                     </div>
+                    <iframe data-mission="empty">
                 </div>
             </div>
 
@@ -415,6 +422,19 @@
                             font-weight:        700;
                             background:         rgba(250,250,250,0.95);
                             box-shadow:         0px 0px 6px 0px rgba(0,0,0,0.48);
+                            border-radius:      4px;
+                        }
+            
+                        #adis-dispatcher-workstations > .workstation-row > .workstation > iframe
+                        {
+                            width:              100%;
+                            height:             calc(100% - 48px);
+                            
+                            position:           absolute;
+                            top:                48px;
+                            left:               0px;
+                            
+                            border:             1px solid #212121;
                             border-radius:      4px;
                         }
                 
