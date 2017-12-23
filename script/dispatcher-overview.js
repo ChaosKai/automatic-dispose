@@ -1,18 +1,12 @@
 
 
-var DispatcherTable = {
-    "1":
-    {
-        "id":           1,
-        "name":         "Rainer Vogler",
-        "occupied":     false
-    }
-}
-
 $(document).ready(function()
 {
     ADis_BuildDispatcherInterface();
     setInterval(ADis_UpdateDispatcherMissions, 2000);
+    
+    ADis_InitDispatcherWorkspace();
+    setInterval(ADis_UpdateDispatcherWorkspace, 2000);
 });
 
 
@@ -20,6 +14,68 @@ function ADis_BuildDispatcherInterface()
 {
     $("body").append('<div id="adis-dispatcher-overview"></div>');
     $("#adis-dispatcher-overview").load( AutomaticDispose_URL + AutomaticDispose_Branch + "/html/dispatcher-overview.html" );
+}
+
+
+function ADis_InitDispatcherWorkspace()
+{
+    if( typeof localStorage.getItem("ADis-Dispatchers") == "undefined" )
+    {
+        var Dispatchers = {};
+        
+        for( var DispatcherID = 0; DispatcherID < 7; DispatcherID++ )
+        {
+            Dispatchers[ DispatcherID ] = {
+                "id":       DispatcherID,
+                "state":    false,
+                "org":      "none",
+                "mission":  false
+            }
+        }
+        
+        localStorage.setItem( "ADis-Dispatchers", JSON.stringify(Dispatchers) );
+    }
+}
+
+function ADis_UpdateDispatcherWorkspace()
+{
+    var Dispatchers = JSON.parse( localStorage.getItem("ADis-Dispatchers") );
+    var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
+    
+    $.each(Dispatchers, function(DispatcherID, Dispatcher)
+    {
+        if( Dispatcher.state ) {
+            $("#adis_dispatcher_workstation_" + Dispatcher.id).find(".workstation-state").css("color", "#388e3c");
+        } else {
+            $("#adis_dispatcher_workstation_" + Dispatcher.id).find(".workstation-state").css("color", "#e53935");
+        }
+        
+        if( !Dispatcher.mission ) {
+            $("#adis_dispatcher_workstation_" + Dispatcher.id).find(".workstation-mission").html("Kein Einsatz");
+        } else {
+            $("#adis_dispatcher_workstation_" + Dispatcher.id).find(".workstation-mission").html( Missions[Dispatcher.mission].name );
+        }
+        
+        if( !Dispatcher.org ) {
+            $("#adis_dispatcher_workstation_" + Dispatcher.id).find(".workstation-organization").html("Inaktiv");
+        } else {
+            $("#adis_dispatcher_workstation_" + Dispatcher.id).find(".workstation-organization").html( Dispatcher.org );
+        }
+    });
+}
+
+function ADis_ToggleDispatcherState( DispatcherID )
+{
+    var Dispatchers = JSON.parse( localStorage.getItem("ADis-Dispatchers") );
+    
+    if( Dispatchers[DispatcherID].state ){
+        Dispatchers[DispatcherID].state = false;
+    } else {
+        Dispatchers[DispatcherID].state = true;
+    }
+    
+    localStorage.setItem( "ADis-Dispatchers", JSON.stringify(Dispatchers) );
+    ADis_UpdateDispatcherWorkspace();
 }
 
 
