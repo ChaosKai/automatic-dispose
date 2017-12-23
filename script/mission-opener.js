@@ -40,9 +40,9 @@ function ADis_CheckMissionAttention()
             {
                 $.each(Dispatchers, function(DispatcherID, Dispatcher)
                 {
-                    if( !Dispatcher.mission && ADis_Available_Missions[Mission.type].type == Dispatcher.org )
+                    if( Dispatcher.state && !Dispatcher.mission && ADis_Available_Missions[Mission.type].type == Dispatcher.org )
                     {
-                        Dispatcher.mission = MissionID;
+                        Dispatchers[DispatcherID].mission = MissionID;
                         Missions[ Dispatchers[DispatcherID].mission ].dispatcher = Dispatcher.id;
                     }
                 });
@@ -53,9 +53,9 @@ function ADis_CheckMissionAttention()
                 $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).find("iframe").attr("src", "https://www.leitstellenspiel.de/missions/" + Mission.id);
                 $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).find("iframe").data("mission", Mission.id);
                 
-                MissionFrameWatchDog[Mission.id] = setTimeout(function()
+                MissionFrameWatchDog[MissionID] = setTimeout(function()
                 {
-                    ADis_CloseMission( Mission.id );
+                    ADis_CloseMission( MissionID );
                 }, 10000);
             }
         }
@@ -68,7 +68,7 @@ function ADis_CheckMissionAttention()
 
 function ADis_CloseMission( MissionID )
 {
-    var Missions    = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
+    var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
     
     $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).find("iframe").attr("src", "");
     $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).data("mission", "empty");
