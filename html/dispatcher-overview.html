@@ -441,11 +441,11 @@
             {
                 var DispatcherID = $(this).attr("dispatcher_id");
                 
+                $(this).find("iframe").hide();
                 $(this).find(".workstation-state").click(function()
                 {
                     ADis_ToggleDispatcherState( DispatcherID );
                 });
-                
                 $(this).find(".workstation-organization").click(function()
                 {
                     ADis_ToggleDispatcherOrg( DispatcherID );
