@@ -434,6 +434,11 @@ $(document).ready(function()
                     $("#vehicle_checkbox_" + VehicleID).click();
                     ADis_VehiclesNeed["11"]--;
                 }
+                else if( $(this).attr("vehicle_type") == "GW-Gefahrgut" && ADis_VehiclesNeed["27"] > 0 )            // GW-Gefahrgut
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["27"]--;
+                }
                 else if( $(this).attr("vehicle_type") == "GW-Höhenrettung" && ADis_VehiclesNeed["33"] > 0 )         // GW-Höhenrettung
                 {
                     $("#vehicle_checkbox_" + VehicleID).click();
