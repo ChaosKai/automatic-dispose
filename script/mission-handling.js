@@ -46,6 +46,7 @@ $(document).ready(function()
     function AD_GetMissionConfiguration()
     {
         var AvailableMissions = JSON.parse(localStorage.getItem("ADis-Available-Missions"));
+        var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
         
         if( AvailableMissions != null && typeof AvailableMissions[MissionType] == "object" )
         {
@@ -54,6 +55,10 @@ $(document).ready(function()
         }
         else
         {
+            Missions[ MissionID ]["available"] = false;
+            Missions[ MissionID ]["next_check"] = CurrentTime + 60;
+            localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
+            
             window.parent.ADis_CloseMission(MissionID);
         }
     }
