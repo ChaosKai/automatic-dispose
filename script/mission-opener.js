@@ -71,7 +71,7 @@ function ADis_CloseMission( MissionID )
     var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
     
     $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).find("iframe").attr("src", "");
-    $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).data("mission", "empty");
+    $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).find("iframe").data("mission", "empty");
     
     clearTimeout( MissionFrameWatchDog[MissionID] );
 }
