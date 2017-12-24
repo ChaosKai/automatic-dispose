@@ -369,7 +369,11 @@ $(document).ready(function()
                       $(this).attr("vehicle_type") == "TLF 16/24-Tr" || $(this).attr("vehicle_type") == "TLF 16/25" ||
                       $(this).attr("vehicle_type") == "TLF 16/45" || $(this).attr("vehicle_type") == "TLF 20/40" ||
                       $(this).attr("vehicle_type") == "TLF 20/40-SL" || $(this).attr("vehicle_type") == "TLF 16" ) &&
-                      ADis_VehiclesNeed["0"] > 0 )
+                      ADis_VehiclesNeed["0"] + ADis_VehiclesNeed["1"] + ADis_VehiclesNeed["6"] + ADis_VehiclesNeed["7"] +
+                      ADis_VehiclesNeed["8"] + ADis_VehiclesNeed["9"] + ADis_VehiclesNeed["30"] + ADis_VehiclesNeed["37"] +
+                      ADis_VehiclesNeed["17"] + ADis_VehiclesNeed["18"] + ADis_VehiclesNeed["19"] + ADis_VehiclesNeed["20"] +
+                      ADis_VehiclesNeed["21"] + ADis_VehiclesNeed["22"] + ADis_VehiclesNeed["23"] + ADis_VehiclesNeed["24"] +
+                      ADis_VehiclesNeed["25"] + ADis_VehiclesNeed["26"] > 0 )
                 {
                     $("#vehicle_checkbox_" + VehicleID).click();
                     ADis_VehiclesNeed["0"]--;
@@ -622,15 +626,6 @@ $(document).ready(function()
             if( $(this).find("a").first().attr("vehicle_type_id") == VehicleType )
                 CountedVehicles++;
         });
-        
-        return CountedVehicles;
-    }
-
-    function ADis_CountAvailableVehiclesOfType( VehicleType )
-    {
-        var CountedVehicles = 0;
-        
-        
         
         return CountedVehicles;
     }
