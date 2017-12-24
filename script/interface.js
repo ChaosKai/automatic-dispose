@@ -26,31 +26,9 @@ function ADis_CreateNavbarItem()
 
 function ADis_CreateDashboard()
 {
-    var DashboardContent = '';
-    DashboardContent += '<div id="adis-dashboard">';
-    DashboardContent += '    <header>';
-    DashboardContent += '        Autom. Disposition (ADis)';
-    DashboardContent += '        <a id="adis-dashboard-close-button">';
-    DashboardContent += '            <img src="https://tableau.eagledev.de/userscript/close.svg">';
-    DashboardContent += '        </a>';
-    DashboardContent += '    </header>';
-    DashboardContent += '    <section>';
-    DashboardContent += '        <a id="adis-dashboard-switch-mode-button">';
-    DashboardContent += '            Modus';
-    DashboardContent += '        </a>';
-    DashboardContent += '        <a id="adis-dashboard-open-dispatcher-button">';
-    DashboardContent += '            Disponenten';
-    DashboardContent += '        </a>';
-    DashboardContent += '    </section>';
-    DashboardContent += '    <section id="adis-dashboard-mission-frame">';
-    DashboardContent += '        <iframe id="adis-mission-frame" data-mission="empty">';
-    DashboardContent += '        </iframe>';
-    DashboardContent += '    </section>';
-    DashboardContent += '</div>';
-
-    $("#adis-nav-item").append(DashboardContent);
+    $("body").append('<div id="adis-dispatcher-overview"></div>');
+    $("#adis-nav-item").load( AutomaticDispose_URL + AutomaticDispose_Branch + "/html/navbar.html" );
     $("#adis-dashboard").css({ display: "none", opacity: "0" });
-
 
     $("#adis-open-button").click(function()
     {
