@@ -1,6 +1,5 @@
 $(document).ready(function()
 {
-    ADis_CreateNavbarItem();
     ADis_CreateDashboard();
     
     if( typeof localStorage.getItem("AutomaticDispose-Mode") == "undefined" )
@@ -17,17 +16,10 @@ $(document).ready(function()
 });
 
 
-function ADis_CreateNavbarItem()
-{
-    $('#news_li').before('<li id="adis-nav-item"></li>');
-    $('#adis-nav-item').append('<a id="adis-open-button" href="#"><img class="navbar-icon" src="" title="Automatische Disposition"></a>');
-}
-
-
 function ADis_CreateDashboard()
 {
-    $("#adis-nav-item").append('<div id="adis-dashboard"></div>');
-    $("#adis-dashboard").load( AutomaticDispose_URL + AutomaticDispose_Branch + "/html/navbar.html" );
+    $('#news_li').before('<li id="adis-nav-item"></li>');
+    $('#adis-nav-item').load( AutomaticDispose_URL + AutomaticDispose_Branch + "/html/navbar.html" );
     $("#adis-dashboard").css({ display: "none", opacity: "0" });
 
     $("#adis-open-button").click(function()
