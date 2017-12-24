@@ -105,3 +105,15 @@
             scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/mission-handling.js";
             document.body.appendChild(scriptElement);
         }
+        
+//      -
+//      -           Sprechwunsch Handler
+//      -
+        
+        if (window.location.pathname.indexOf("/vehicles/") !== -1)
+        {
+            var scriptElement = document.createElement("script");
+            scriptElement.type = "text/javascript";
+            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/sprechwunsch-handler.js";
+            document.body.appendChild(scriptElement);
+        }
