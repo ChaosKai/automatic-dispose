@@ -45,7 +45,7 @@ $(document).ready(function()
 
     function AD_GetMissionConfiguration()
     {
-        var AvailableMissions = localStorage.getItem("ADis-Available-Missions");
+        var AvailableMissions = JSON.parse(localStorage.getItem("ADis-Available-Missions"));
         
         if( AvailableMissions != null && typeof AvailableMissions[MissionType] == "object" )
         {
