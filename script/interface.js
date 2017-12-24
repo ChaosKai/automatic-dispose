@@ -26,8 +26,8 @@ function ADis_CreateNavbarItem()
 
 function ADis_CreateDashboard()
 {
-    $("body").append('<div id="adis-dispatcher-overview"></div>');
-    $("#adis-nav-item").load( AutomaticDispose_URL + AutomaticDispose_Branch + "/html/navbar.html" );
+    $("#adis-nav-item").append('<div id="adis-dashboard"></div>');
+    $("#adis-dashboard").load( AutomaticDispose_URL + AutomaticDispose_Branch + "/html/navbar.html" );
     $("#adis-dashboard").css({ display: "none", opacity: "0" });
 
     $("#adis-open-button").click(function()
