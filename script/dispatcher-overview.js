@@ -25,7 +25,7 @@ function ADis_InitDispatcherWorkspace()
     {
         var Dispatchers = {};
         
-        for( var DispatcherID = 0; DispatcherID < 7; DispatcherID++ )
+        for( var DispatcherID = 1; DispatcherID <= 7; DispatcherID++ )
         {
             Dispatchers[ DispatcherID ] = {
                 "id":       DispatcherID,
