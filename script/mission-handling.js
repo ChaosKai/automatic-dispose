@@ -81,6 +81,7 @@ $(document).ready(function()
             ADis_ProcessFireDepartment();
             ADis_ProcessPoliceDepartment();
             //ADisfile_ProcessTechnicalEmergencyService();
+            ADis_ProcessWaterRescue();
         }, 500);
         
         setTimeout(function()       // Send Alarm
@@ -530,6 +531,58 @@ $(document).ready(function()
                 {
                     $("#vehicle_checkbox_" + VehicleID).click();
                     ADis_VehiclesNeed["33"]--;
+                }
+            });
+            
+        }
+    }
+
+
+
+//  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+//  -
+//  -                   Process Water_Rescue
+//  -
+//  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+    function ADis_ProcessWaterRescue()
+    {
+        
+//      -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+//      -
+//      -               Water Rescue: Vehicles
+//      -
+//      -                   63:     GW-Taucher
+//      -                   64:     GW-Wasserrettung
+//      -                   70:     MZB
+//      -
+//      -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+        
+        if( typeof MissionConfig.water_rescue == "object" )
+        {
+            ADis_VehiclesNeed["63"] += MissionConfig.police_department.num_GW_T;
+            ADis_VehiclesNeed["64"] += MissionConfig.police_department.num_GW_W;
+            ADis_VehiclesNeed["70"] += MissionConfig.police_department.num_MZB;
+            
+            $("#vehicle_show_table_body_all").find(".vehicle_select_table_tr").each( function()
+            {
+                var VehicleID = $(this).attr("id").replace("vehicle_element_content_", "");
+                var VehicleDistanceTime = $("#vehicle_sort_" + VehicleID).attr("sortvalue");
+                
+                if( $(this).attr("vehicle_type") == "GW-Taucher" && ADis_VehiclesNeed["63"] > 0 )                   // GW-Taucher
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["63"]--;
+                }
+                else if( $(this).attr("vehicle_type") == "GW-Wasserrettung" && ADis_VehiclesNeed["64"] > 0 )        // GW-Wasserrettung
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["64"]--;
+                }
+                else if( $(this).attr("vehicle_type") == "MZB" && ADis_VehiclesNeed["70"] > 0 )                     // MZB
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["70"]--;
                 }
             });
             
