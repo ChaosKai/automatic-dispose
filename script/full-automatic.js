@@ -18,7 +18,7 @@ function ADis_GetAvailableMissions()
         if( Response.status == "success" )
         {
             ADis_Available_Missions = Response.missions;
-            localStorage.setItem( "ADis-Available-Mission", JSON.stringify(ADis_Available_Missions) );
+            localStorage.setItem( "ADis-Available-Missions", JSON.stringify(ADis_Available_Missions) );
         }
     });
 }
