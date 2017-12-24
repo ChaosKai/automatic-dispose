@@ -13,10 +13,12 @@ function ADis_GetAvailableMissions()
 {
     $.getJSON( "https://automatic-disposer.000webhostapp.com/lss-bridge/available-missions.php", function( Response )
     {
+        console.log(Response);
+        
         if( Response.status == "success" )
         {
             ADis_Available_Missions = Response.missions;
-            localStorage.setItem( "ADis-Available-Mission", ADis_Available_Missions );
+            localStorage.setItem( "ADis-Available-Mission", JSON.stringify(ADis_Available_Missions) );
         }
     });
 }
