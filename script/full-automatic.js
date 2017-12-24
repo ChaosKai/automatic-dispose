@@ -5,6 +5,8 @@ var ADis_Available_Missions = {};
 $(document).ready(function()
 {   
     setInterval( ADis_FullAutomatic_CollectMissions, 10000 );
+    setInterval( ADis_GetAvailableMissions, 300000 );
+    
     setTimeout( ADis_GetAvailableMissions, 1000 );
 });
 
@@ -13,8 +15,6 @@ function ADis_GetAvailableMissions()
 {
     $.getJSON( "https://automatic-disposer.000webhostapp.com/lss-bridge/available-missions.php", function( Response )
     {
-        console.log(Response);
-        
         if( Response.status == "success" )
         {
             ADis_Available_Missions = Response.missions;
