@@ -341,6 +341,8 @@ $(document).ready(function()
         
         if( typeof MissionConfig.fire_department == "object" )            // Wenn der FD-Block in der Config definiert ist
         {
+            console.log(ADis_VehiclesNeed);
+            
             ADis_VehiclesNeed["0"]  += MissionConfig.fire_department.num_LF;
             ADis_VehiclesNeed["3"]  += MissionConfig.fire_department.num_ELW_1;
             ADis_VehiclesNeed["34"] += MissionConfig.fire_department.num_ELW_2;
@@ -354,6 +356,8 @@ $(document).ready(function()
             ADis_VehiclesNeed["11"] += MissionConfig.fire_department.num_SW;
             ADis_VehiclesNeed["33"] += MissionConfig.fire_department.num_GW_Hoeh;
             ADis_VehiclesNeed["53"] += MissionConfig.fire_department.num_Dekon_P;
+            
+            console.log(ADis_VehiclesNeed);
             
             $("#vehicle_show_table_body_all").find(".vehicle_select_table_tr").each( function()
             {
@@ -377,6 +381,8 @@ $(document).ready(function()
                 {
                     $("#vehicle_checkbox_" + VehicleID).click();
                     ADis_VehiclesNeed["0"]--;
+                    
+                    console.log("Vehicle " + VehicleID + " markiert");
                 }
                 else if( $(this).attr("vehicle_type") == "DLK 23" && ADis_VehiclesNeed["2"] > 0 )                   // DLK 23
                 {
@@ -458,6 +464,7 @@ $(document).ready(function()
                 }
             });
             
+            console.log(ADis_VehiclesNeed);
         }
     }
 
