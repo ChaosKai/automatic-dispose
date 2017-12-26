@@ -17,6 +17,11 @@
             Disponenten
         </a>
     </section>
+    <section id="adis-dashboard-settings">
+        <a id="adis-dashboard-switch-sprechwunschbearbeitung-button">
+            Sprechwunsch Automatik
+        </a>
+    </section>
 </div>
 
 <style>
@@ -123,10 +128,46 @@
                         border-radius:          4px;
                         border-bottom:          3px solid rgba(0,0,0,0.32);
                     }
+    
+            #adis-dashboard-settings
+            {
+                background:             #757575;
+                border-top:             1px solid #e0e0e0;
+            }
+    
+                    #adis-dashboard-switch-sprechwunschbearbeitung-button
+                    {
+                        width:                  80%;
+                        height:                 40px;
+                        margin:                 4px 0px;
+
+                        display:                flex;
+                        justify-content:        center;
+                        align-items:            center;
+
+                        text-decoration:        none;
+                        color:                  #fafafa;
+                        cursor:                 pointer;
+
+                        background:             #43a047;
+                        border-radius:          4px;
+                        border-bottom:          3px solid rgba(0,0,0,0.32);
+                    }
+    
+                            #adis-dashboard-switch-sprechwunschbearbeitung-button.deactivated
+                            {
+                                background:             #e53935;
+                            }
 
 </style>
 
 <script>
+    
+    if( localStorage.getItem("ADis-Sprechwunsch-Automatic") == "null" )
+    {
+        localStorage.setItem("ADis-Sprechwunsch-Automatic", "false");
+        $("#adis-dashboard-switch-sprechwunschbearbeitung-button").addClass("deactivated");
+    }
     
     $("#adis-open-button").click(function()
     {
@@ -151,6 +192,20 @@
     {
         $("#adis-dispatcher-overview").css("display", "flex");
         $("#adis-dispatcher-overview").animate({ opacity: 1 }, 200);
+    });
+
+    $("#adis-dashboard-switch-sprechwunschbearbeitung-button").click(function()
+    {
+        if( localStorage.getItem("ADis-Sprechwunsch-Automatic") == "false" )
+        {
+            localStorage.setItem("ADis-Sprechwunsch-Automatic", "true");
+            $("#adis-dashboard-switch-sprechwunschbearbeitung-button").removeClass("deactivated");
+        }
+        else
+        {
+            localStorage.setItem("ADis-Sprechwunsch-Automatic", "false");
+            $("#adis-dashboard-switch-sprechwunschbearbeitung-button").addClass("deactivated");
+        }
     });
     
 </script>
