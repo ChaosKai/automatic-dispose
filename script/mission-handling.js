@@ -343,19 +343,19 @@ $(document).ready(function()
         {
             console.log(ADis_VehiclesNeed);
             
-            ADis_VehiclesNeed["0"]  += MissionConfig.fire_department.num_LF;
-            ADis_VehiclesNeed["3"]  += MissionConfig.fire_department.num_ELW_1;
-            ADis_VehiclesNeed["34"] += MissionConfig.fire_department.num_ELW_2;
-            ADis_VehiclesNeed["2"]  += MissionConfig.fire_department.num_DLK;
-            ADis_VehiclesNeed["4"]  += MissionConfig.fire_department.num_RW;
-            ADis_VehiclesNeed["57"] += MissionConfig.fire_department.num_FwK;
-            ADis_VehiclesNeed["5"]  += MissionConfig.fire_department.num_GW_A;
-            ADis_VehiclesNeed["27"] += MissionConfig.fire_department.num_GW_G;
-            ADis_VehiclesNeed["10"] += MissionConfig.fire_department.num_GW_Oel;
-            ADis_VehiclesNeed["12"] += MissionConfig.fire_department.num_GW_Mess;
-            ADis_VehiclesNeed["11"] += MissionConfig.fire_department.num_SW;
-            ADis_VehiclesNeed["33"] += MissionConfig.fire_department.num_GW_Hoeh;
-            ADis_VehiclesNeed["53"] += MissionConfig.fire_department.num_Dekon_P;
+            ADis_VehiclesNeed["0"]  += parseInt(MissionConfig.fire_department.num_LF);
+            ADis_VehiclesNeed["3"]  += parseInt(MissionConfig.fire_department.num_ELW_1);
+            ADis_VehiclesNeed["34"] += parseInt(MissionConfig.fire_department.num_ELW_2);
+            ADis_VehiclesNeed["2"]  += parseInt(MissionConfig.fire_department.num_DLK);
+            ADis_VehiclesNeed["4"]  += parseInt(MissionConfig.fire_department.num_RW);
+            ADis_VehiclesNeed["57"] += parseInt(MissionConfig.fire_department.num_FwK);
+            ADis_VehiclesNeed["5"]  += parseInt(MissionConfig.fire_department.num_GW_A);
+            ADis_VehiclesNeed["27"] += parseInt(MissionConfig.fire_department.num_GW_G);
+            ADis_VehiclesNeed["10"] += parseInt(MissionConfig.fire_department.num_GW_Oel);
+            ADis_VehiclesNeed["12"] += parseInt(MissionConfig.fire_department.num_GW_Mess);
+            ADis_VehiclesNeed["11"] += parseInt(MissionConfig.fire_department.num_SW);
+            ADis_VehiclesNeed["33"] += parseInt(MissionConfig.fire_department.num_GW_Hoeh);
+            ADis_VehiclesNeed["53"] += parseInt(MissionConfig.fire_department.num_Dekon_P);
             
             console.log(ADis_VehiclesNeed);
             
@@ -495,13 +495,13 @@ $(document).ready(function()
         
         if( typeof MissionConfig.police_department == "object" )            // Wenn der FD-Block in der Config definiert ist
         {
-            ADis_VehiclesNeed["32"] += MissionConfig.police_department.num_FuStW;
-            ADis_VehiclesNeed["35"] += MissionConfig.police_department.num_leBefKw;
-            ADis_VehiclesNeed["50"] += MissionConfig.police_department.num_GruKw;
-            ADis_VehiclesNeed["51"] += MissionConfig.police_department.num_FueKw;
-            ADis_VehiclesNeed["52"] += MissionConfig.police_department.num_GefKw;
-            ADis_VehiclesNeed["72"] += MissionConfig.police_department.num_WaWe;
-            ADis_VehiclesNeed["61"] += MissionConfig.police_department.num_PHu;
+            ADis_VehiclesNeed["32"] += parseInt(MissionConfig.police_department.num_FuStW);
+            ADis_VehiclesNeed["35"] += parseInt(MissionConfig.police_department.num_leBefKw);
+            ADis_VehiclesNeed["50"] += parseInt(MissionConfig.police_department.num_GruKw);
+            ADis_VehiclesNeed["51"] += parseInt(MissionConfig.police_department.num_FueKw);
+            ADis_VehiclesNeed["52"] += parseInt(MissionConfig.police_department.num_GefKw);
+            ADis_VehiclesNeed["72"] += parseInt(MissionConfig.police_department.num_WaWe);
+            ADis_VehiclesNeed["61"] += parseInt(MissionConfig.police_department.num_PHu);
             
             $("#vehicle_show_table_body_all").find(".vehicle_select_table_tr").each( function()
             {
@@ -571,9 +571,9 @@ $(document).ready(function()
         
         if( typeof MissionConfig.water_rescue == "object" )
         {
-            ADis_VehiclesNeed["63"] += MissionConfig.police_department.num_GW_T;
-            ADis_VehiclesNeed["64"] += MissionConfig.police_department.num_GW_W;
-            ADis_VehiclesNeed["70"] += MissionConfig.police_department.num_MZB;
+            ADis_VehiclesNeed["63"] += parseInt(MissionConfig.police_department.num_GW_T);
+            ADis_VehiclesNeed["64"] += parseInt(MissionConfig.police_department.num_GW_W);
+            ADis_VehiclesNeed["70"] += parseInt(MissionConfig.police_department.num_MZB);
             
             $("#vehicle_show_table_body_all").find(".vehicle_select_table_tr").each( function()
             {
