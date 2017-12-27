@@ -27,32 +27,35 @@ function ADis_GetAvailableMissions()
 
 function ADis_FullAutomatic_CollectMissions()
 {
-    var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
-    
-    if( Missions == null )
-        Missions = {};
-    
-    $("#mission_list").find(".missionSideBarEntry").each(function()
+    if( localStorage.getItem("AutomaticDispose-Mode") )
     {
-        var MissionID = $(this).attr("mission_id");
-        var MissionType = $(this).attr("mission_type_id");
-        var MissionName = $(this).find(".map_position_mover").text();
+        var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
 
-        if( typeof Missions[ MissionID ] == "undefined" && typeof ADis_Available_Missions[ MissionType ] != "undefined" )
-        {
-            AutomaticDispose_AddMission( MissionID, "full" );
-        }
-    });
-    
-    $("#mission_list_krankentransporte").find(".missionSideBarEntry").each(function()
-    {
-        var MissionID = $(this).attr("mission_id");
-        var MissionType = $(this).attr("mission_type_id");
-        var MissionName = $(this).find(".map_position_mover").text();
+        if( Missions == null )
+            Missions = {};
 
-        if( typeof Missions[ MissionID ] == "undefined" && typeof ADis_Available_Missions[ MissionType ] != "undefined" )
+        $("#mission_list").find(".missionSideBarEntry").each(function()
         {
-            AutomaticDispose_AddMission( MissionID, "full" );
-        }
-    });
+            var MissionID = $(this).attr("mission_id");
+            var MissionType = $(this).attr("mission_type_id");
+            var MissionName = $(this).find(".map_position_mover").text();
+
+            if( typeof Missions[ MissionID ] == "undefined" && typeof ADis_Available_Missions[ MissionType ] != "undefined" )
+            {
+                AutomaticDispose_AddMission( MissionID, "full" );
+            }
+        });
+
+        $("#mission_list_krankentransporte").find(".missionSideBarEntry").each(function()
+        {
+            var MissionID = $(this).attr("mission_id");
+            var MissionType = $(this).attr("mission_type_id");
+            var MissionName = $(this).find(".map_position_mover").text();
+
+            if( typeof Missions[ MissionID ] == "undefined" && typeof ADis_Available_Missions[ MissionType ] != "undefined" )
+            {
+                AutomaticDispose_AddMission( MissionID, "full" );
+            }
+        });
+    }
 }
