@@ -13,7 +13,7 @@ $(document).ready(function()
 function ADis_BuildDispatcherInterface()
 {
     $("body").append('<div id="adis-dispatcher-overview"></div>');
-    $("#adis-dispatcher-overview").load( AutomaticDispose_URL + AutomaticDispose_Branch + "/html/dispatcher-overview.html" );
+    $("#adis-dispatcher-overview").load( AutomaticDispose_URL + AutomaticDispose_Branch + "/html/dispatchers.html" );
     
     $("#adis-dispatcher-overview").css({ display: "none", opacity: "0" });
 }
