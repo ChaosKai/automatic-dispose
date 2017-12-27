@@ -55,7 +55,7 @@ function ADis_UpdateDispatcherWorkspace()
         if( !Dispatcher.mission ) {
             $("#adis_dispatcher_workstation_" + Dispatcher.id).find(".workstation-mission").html("Kein Einsatz");
         } else {
-            $("#adis_dispatcher_workstation_" + Dispatcher.id).find(".workstation-mission").html( Missions[Dispatcher.mission].name );
+            //$("#adis_dispatcher_workstation_" + Dispatcher.id).find(".workstation-mission").html( Missions[Dispatcher.mission].name );
         }
         
         if( !Dispatcher.org ) {
