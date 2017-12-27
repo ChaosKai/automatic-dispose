@@ -20,7 +20,7 @@ function ADis_CheckMissionAttention()
     {
         console.log("      Mission: " + Mission.id + " " + Mission.name + ":");
         
-        if( $("#mission_" + MissionID).length == 0 || Mission.mode != localStorage.getItem("AutomaticDispose-Mode") )
+        if( $("#mission_" + MissionID).length == 0 || Mission.mode != localStorage.getItem("AutomaticDispose-Mode") || typeof ADis_Available_Missions[Missions[MissionID].type] === "undefined" )
         {
             delete Missions[MissionID]
             console.log("      - gelöscht");
@@ -28,7 +28,7 @@ function ADis_CheckMissionAttention()
         else if( Mission.next_check < CurrentTime )
         {
             console.log("      - braucht aufmerksamkeit");
-            if( !Missions[MissionID].dispatcher && typeof ADis_Available_Missions[Missions[MissionID].type] !== "undefined" )
+            if( !Missions[MissionID].dispatcher )
             {
                 console.log("      - wird vermittelt...");
                 $.each(Dispatchers, function(DispatcherID, Dispatcher)
@@ -65,11 +65,6 @@ function ADis_CheckMissionAttention()
                 {
                     ADis_CloseMission( MissionID );
                 }, 10000);
-            }
-            else
-            {
-                Missions[ MissionID ].dispatcher = false;
-                console.log("      - von Disponent entfernt");
             }
         }
     });
