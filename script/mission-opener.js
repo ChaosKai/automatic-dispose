@@ -11,23 +11,7 @@ function ADis_CheckMissionAttention()
     var Dispatchers = JSON.parse( localStorage.getItem("ADis-Dispatchers") );
     var Missions    = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
     var CurrentTime = Math.floor( new Date().getTime() / 1000 );
-    
-    $.each(Dispatchers, function(DispatcherID, Dispatcher)
-    {
-        if( !Dispatcher.state )
-        {
-            if( Dispatchers[DispatcherID].mission != false )
-                Missions[ Dispatchers[DispatcherID].mission ].dispatcher = false;
-            
-            Dispatchers[DispatcherID].mission = false;
-        }
-        
-        if( typeof Missions[Dispatcher.mission] == "undefined" )
-            Dispatchers[DispatcherID].mission = false;
-    });
-    
-    
-        
+       
     $.each(Missions, function(MissionID, Mission)
     {
         if( $("#mission_" + MissionID).length == 0 )
@@ -40,7 +24,7 @@ function ADis_CheckMissionAttention()
             {
                 $.each(Dispatchers, function(DispatcherID, Dispatcher)
                 {
-                    if( Dispatcher.state && !Dispatcher.mission && ADis_Available_Missions[Mission.type].type == Dispatcher.org )
+                    if( Dispatchers[DispatcherID].state && !Dispatchers[DispatcherID].mission && ADis_Available_Missions[Mission.type].type == Dispatchers[DispatcherID].org )
                     {
                         Dispatchers[DispatcherID].mission = MissionID;
                         Missions[ Dispatchers[DispatcherID].mission ].dispatcher = Dispatcher.id;
