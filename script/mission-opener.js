@@ -37,6 +37,7 @@ function ADis_CheckMissionAttention()
 
                     if( Dispatchers[DispatcherID].state && ADis_Available_Missions[Missions[MissionID].type].type == Dispatchers[DispatcherID].org )
                     {
+                        console.log(Dispatchers[DispatcherID].mission + " - " + Missions );
                         Missions[ Dispatchers[DispatcherID].mission ].dispatcher = DispatcherID;
                         
                     }
