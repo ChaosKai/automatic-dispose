@@ -52,16 +52,26 @@ function ADis_UpdateDispatcherWorkspace()
             $("#adis_dispatcher_workstation_" + Dispatcher.id).find(".workstation-state").css("color", "#e53935");
         }
         
-        if( !Dispatcher.mission ) {
-            $("#adis_dispatcher_workstation_" + Dispatcher.id).find(".workstation-mission").html("Kein Einsatz");
-        } else {
-            //$("#adis_dispatcher_workstation_" + Dispatcher.id).find(".workstation-mission").html( Missions[Dispatcher.mission].name );
-        }
-        
         if( !Dispatcher.org ) {
             $("#adis_dispatcher_workstation_" + Dispatcher.id).find(".workstation-organization").html("Inaktiv");
         } else {
             $("#adis_dispatcher_workstation_" + Dispatcher.id).find(".workstation-organization").html( Dispatcher.org );
+        }
+        
+        var DispatcherMission = false;
+                    
+        $.each(Missions, function(SubMissionID, SubMission)
+        {
+            if( Missions[SubMissionID].dispatcher == DispatcherID )
+            {
+                DispatcherMission = SubMissionID;
+            }
+        }); 
+        
+        if( !DispatcherMission ) {
+            $("#adis_dispatcher_workstation_" + Dispatcher.id).find(".workstation-mission").html("Kein Einsatz");
+        } else {
+            $("#adis_dispatcher_workstation_" + Dispatcher.id).find(".workstation-mission").html( Missions[DispatcherMission].name );
         }
     });
 }
