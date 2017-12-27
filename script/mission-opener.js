@@ -20,19 +20,29 @@ function ADis_CheckMissionAttention()
         }
         else if( Mission.next_check < CurrentTime )
         {
-            if( !Mission.dispatcher )
+            if( !Missions[MissionID].dispatcher && typeof ADis_Available_Missions[Missions[MissionID].type] !== "undefined" )
             {
                 $.each(Dispatchers, function(DispatcherID, Dispatcher)
                 {
-                    if( Dispatchers[DispatcherID].state && !Dispatchers[DispatcherID].mission && ADis_Available_Missions[Mission.type].type == Dispatchers[DispatcherID].org )
+                    // count missions with this dispatcher and validate
+                    var Num_Dispatcher_Missions = 0;
+                    
+                    $.each(Missions, function(SubMissionID, SubMission)
                     {
-                        Dispatchers[DispatcherID].mission = MissionID;
-                        Missions[ Dispatchers[DispatcherID].mission ].dispatcher = Dispatcher.id;
+                        if( Missions[SubMissionID].dispatcher == Dispatcher.id )
+                        {
+                            Num_Dispatcher_Missions++;
+                        }
+                    });
+
+                    if( Dispatchers[DispatcherID].state && ADis_Available_Missions[Missions[MissionID].type].type == Dispatchers[DispatcherID].org )
+                    {
+                        Missions[ Dispatchers[DispatcherID].mission ].dispatcher = DispatcherID;
+                        
                     }
                 });
             }
-            
-            if( Missions[MissionID].dispatcher != false && $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).find("iframe").data("mission") == "empty" )
+            else if( Missions[MissionID].dispatcher != false && $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).find("iframe").data("mission") == "empty" )
             {
                 $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).find("iframe").attr("src", "https://www.leitstellenspiel.de/missions/" + Mission.id);
                 $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).find("iframe").data("mission", Mission.id);
@@ -41,6 +51,10 @@ function ADis_CheckMissionAttention()
                 {
                     ADis_CloseMission( MissionID );
                 }, 10000);
+            }
+            else
+            {
+                Missions[ Dispatchers[DispatcherID].mission ].dispatcher = false;
             }
         }
     });
