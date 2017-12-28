@@ -66,7 +66,7 @@ function ADis_CheckMissionAttention()
         if( !Missions[MissionID].dispatcher )
             return true;
         
-        if( $("#mission_" + MissionID).length == 0 || Mission.mode != localStorage.getItem("AutomaticDispose-Mode") || typeof ADis_Available_Missions[Missions[MissionID].type] === "undefined" )
+        if( $("#mission_" + MissionID).length == 0 || Mission.mode != localStorage.getItem("ADis-Mode") || typeof ADis_Available_Missions[Missions[MissionID].type] === "undefined" )
         {
             delete Missions[MissionID]
         }
