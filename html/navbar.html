@@ -10,17 +10,27 @@
         </a>
     </header>
     <section>
-        <a id="adis-dashboard-switch-mode-button">
-            Modus
-        </a>
         <a id="adis-dashboard-open-dispatcher-button">
             Disponenten
         </a>
     </section>
     <section id="adis-dashboard-settings">
-        <a id="adis-dashboard-switch-sprechwunschbearbeitung-button">
-            Sprechwunsch Automatik
-        </a>
+        <div title="Arbeitet die ausgewählten Einsätze automatisch ab">
+            <a id="adis-setting-semi-automatic" class="adis-setting-switch">
+            Halb-Automatik
+        </div>
+        <div title="Arbeitet alle Einsätze automatisch ab">
+            <a id="adis-setting-full-automatic" class="adis-setting-switch">
+            Voll-Automatik
+        </div>
+        <div title="Arbeitet die Sprechwünsche automatisch ab">
+            <a id="adis-setting-sprechwunsch-automatic" class="adis-setting-switch">
+            Sprechwunsch-Automatik
+        </div>
+        <div title="Sendet automatisch Fahrzeuge zu Verbandseinsätzen, welche gerade abgearbeitet werden">
+            <a id="adis-setting-alliance-automatic" class="adis-setting-switch">
+            Verbands-Automatik
+        </div>
     </section>
 </div>
 
@@ -135,39 +145,101 @@
                 border-top:             1px solid #757575;
             }
     
-                    #adis-dashboard-switch-sprechwunschbearbeitung-button
+                #adis-dashboard-settings > div
+                {
+                    width:                  80%;
+                    height:                 32px;
+
+                    display:                flex;
+                    flex-flow:              row nowrap;
+                    justify-content:        center;
+                    align-items:            center;
+                }
+    
+    
+    
+                .adis-setting-switch
+                {
+                    width:                  40px;
+                    height:                 24px;
+                    margin-right:           16px;
+
+                    border-radius:          12px;
+                }
+    
+                        .adis-setting-switch.active
+                        {
+                            background:             #689f38;
+                        }
+    
+                        .adis-setting-switch.inactive
+                        {
+                            background:             #f44336;
+                        }
+    
+                   .adis-setting-switch:before
                     {
-                        width:                  80%;
-                        height:                 40px;
-                        margin:                 4px 0px;
+                        width:                  24px;
+                        height:                 24px;
 
-                        display:                flex;
-                        justify-content:        center;
-                        align-items:            center;
-
-                        text-decoration:        none;
-                        color:                  #fafafa;
-                        cursor:                 pointer;
-
-                        background:             #43a047;
-                        border-radius:          4px;
-                        border-bottom:          3px solid rgba(0,0,0,0.32);
+                        background:             #fafafa;
+                        border-radius:          12px;
                     }
     
-                            #adis-dashboard-switch-sprechwunschbearbeitung-button.deactivated
-                            {
-                                background:             #e53935;
-                            }
+                        .adis-setting-switch.active:before
+                        {
+                            right:                  0px;
+                        }
+    
+                        .adis-setting-switch.inactive:before
+                        {
+                            left:                   0px;
+                        }
 
 </style>
 
 <script>
     
-    if( localStorage.getItem("ADis-Sprechwunsch-Automatic") == "null" )
+//
+//      Setting-Events
+//
+    
+    $(document).ready(function()
     {
-        localStorage.setItem("ADis-Sprechwunsch-Automatic", "false");
-        $("#adis-dashboard-switch-sprechwunschbearbeitung-button").addClass("deactivated");
-    }
+        $("#adis-setting-semi-automatic").click(function()
+        {
+            if( localStorage.getItem("ADis-Settings-Semi-Automatic") ) {
+                localStorage.setItem("ADis-Settings-Semi-Automatic", false)
+            } else {
+                localStorage.setItem("ADis-Settings-Semi-Automatic", true)
+            }
+
+            ADis_UpdateSettings();
+        });
+
+        $("#adis-setting-full-automatic").click(function()
+        {
+            if( localStorage.getItem("ADis-Settings-Full-Automatic") ) {
+                localStorage.setItem("ADis-Settings-Full-Automatic", false)
+            } else {
+                localStorage.setItem("ADis-Settings-Full-Automatic", true)
+            }
+
+            ADis_UpdateSettings();
+        });
+
+        $("#adis-dashboard-open-dispatcher-button").click(function()
+        {
+            $("#adis-dispatcher-overview").css("display", "flex");
+            $("#adis-dispatcher-overview").animate({ opacity: 1 }, 200);
+        });
+        
+        ADis_UpdateSettings();
+    });
+    
+//
+//      Dashboard Functions
+//
     
     $("#adis-open-button").click(function()
     {
@@ -182,30 +254,36 @@
             $(this).css("display", "none");
         });
     });
-
-    $("#adis-dashboard-switch-mode-button").click(function()
+    
+//
+//      Display Settings
+//
+    
+    function ADis_UpdateSettings()
     {
-        ADis_SwitchMode();
-    });
-
-    $("#adis-dashboard-open-dispatcher-button").click(function()
-    {
-        $("#adis-dispatcher-overview").css("display", "flex");
-        $("#adis-dispatcher-overview").animate({ opacity: 1 }, 200);
-    });
-
-    $("#adis-dashboard-switch-sprechwunschbearbeitung-button").click(function()
-    {
-        if( localStorage.getItem("ADis-Sprechwunsch-Automatic") == "false" )
-        {
-            localStorage.setItem("ADis-Sprechwunsch-Automatic", "true");
-            $("#adis-dashboard-switch-sprechwunschbearbeitung-button").removeClass("deactivated");
+        if( localStorage.getItem("ADis-Settings-Semi-Automatic") ) {
+            $("#adis-setting-semi-automatic").removeClass("inactive").addClass("active");
+        } else {
+            $("#adis-setting-semi-automatic").removeClass("active").addClass("inactive");
         }
-        else
-        {
-            localStorage.setItem("ADis-Sprechwunsch-Automatic", "false");
-            $("#adis-dashboard-switch-sprechwunschbearbeitung-button").addClass("deactivated");
+        
+        if( localStorage.getItem("ADis-Settings-Full-Automatic") ) {
+            $("#adis-setting-full-automatic").removeClass("inactive").addClass("active");
+        } else {
+            $("#adis-setting-full-automatic").removeClass("active").addClass("inactive");
         }
-    });
+        
+        if( localStorage.getItem("ADis-Settings-Sprechwunsch-Automatic") ) {
+            $("#adis-setting-sprechwunsch-automatic").removeClass("inactive").addClass("active");
+        } else {
+            $("#adis-setting-sprechwunsch-automatic").removeClass("active").addClass("inactive");
+        }
+        
+        if( localStorage.getItem("ADis-Settings-Alliance-Automatic") ) {
+            $("#adis-setting-alliance-automatic").removeClass("inactive").addClass("active");
+        } else {
+            $("#adis-setting-alliance-automatic").removeClass("active").addClass("inactive");
+        }
+    }
     
 </script>
