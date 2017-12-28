@@ -152,7 +152,7 @@
 
                     display:                flex;
                     flex-flow:              row nowrap;
-                    justify-content:        center;
+                    justify-content:        flex-start;
                     align-items:            center;
                 }
     
@@ -178,6 +178,7 @@
                     {
                         width:                  26px;
                         height:                 26px;
+                        content:                "";
 
                         top:                    -3px;
                         left:                   -3px;
@@ -210,7 +211,7 @@
     {
         $("#adis-setting-semi-automatic").click(function()
         {
-            if( localStorage.getItem("ADis-Settings-Semi-Automatic") ) {
+            if( localStorage.getItem("ADis-Settings-Semi-Automatic") == "true" ) {
                 localStorage.setItem("ADis-Settings-Semi-Automatic", false)
             } else {
                 localStorage.setItem("ADis-Settings-Semi-Automatic", true)
@@ -221,7 +222,7 @@
 
         $("#adis-setting-full-automatic").click(function()
         {
-            if( localStorage.getItem("ADis-Settings-Full-Automatic") ) {
+            if( localStorage.getItem("ADis-Settings-Full-Automatic") == "true" ) {
                 localStorage.setItem("ADis-Settings-Full-Automatic", false)
             } else {
                 localStorage.setItem("ADis-Settings-Full-Automatic", true)
