@@ -23,3 +23,31 @@ function ADis_CreateDashboard()
         $("#adis-dashboard").css({ display: "none", opacity: "0" });
     } );
 }
+
+
+
+
+function AutomaticDispose_SwitchMode()
+{
+    if( localStorage.getItem("AutomaticDispose-Mode") == "semi" ) {
+        AutomaticDispose_SetMode("full");
+    } else {
+        AutomaticDispose_SetMode("semi");
+    }
+}
+
+function AutomaticDispose_SetMode( Mode )
+{
+    if( Mode == "full" )
+    {
+        localStorage.setItem("AutomaticDispose-Mode", "full");
+        $("#adis-open-button").find("img").attr("src", AutomaticDispose_URL + AutomaticDispose_Branch + "/images/full-automatic.svg");
+        $("#adis-dashboard-switch-mode-button").html("Voll-Automatik");
+    }
+    else
+    {
+        localStorage.setItem("AutomaticDispose-Mode", "semi");
+        $("#adis-open-button").find("img").attr("src", AutomaticDispose_URL + AutomaticDispose_Branch + "/images/semi-automatic.svg");
+        $("#adis-dashboard-switch-mode-button").html("Halb-Automatik");
+    }
+}
