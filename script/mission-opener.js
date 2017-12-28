@@ -1,5 +1,6 @@
 $(document).ready(function()
 {
+    setInterval( ADis_AsignMissions, 1600 );
     setInterval( ADis_CheckMissionAttention, 2000 );
 });
 
