@@ -2,14 +2,14 @@ $(document).ready(function()
 {
     ADis_CreateDashboard();
     
-    if( typeof localStorage.getItem("AutomaticDispose-Mode") == "undefined" )
+    if( typeof localStorage.getItem("ADis-Mode") == "undefined" )
     {
         localStorage.setItem("AutomaticDispose-Mode", "semi");
     }
     
     setTimeout(function()
     {
-        AutomaticDispose_SetMode( localStorage.getItem("AutomaticDispose-Mode") );
+        ADis_SetMode( localStorage.getItem("ADis-Mode") );
     }, 1000);
     
     console.log("  Automatic Dispose: UI geladen");
@@ -27,7 +27,7 @@ function ADis_CreateDashboard()
 
 
 
-function AutomaticDispose_SwitchMode()
+function ADis_SwitchMode()
 {
     if( localStorage.getItem("AutomaticDispose-Mode") == "semi" ) {
         AutomaticDispose_SetMode("full");
@@ -36,17 +36,17 @@ function AutomaticDispose_SwitchMode()
     }
 }
 
-function AutomaticDispose_SetMode( Mode )
+function ADis_SetMode( Mode )
 {
     if( Mode == "full" )
     {
-        localStorage.setItem("AutomaticDispose-Mode", "full");
+        localStorage.setItem("ADis-Mode", "full");
         $("#adis-open-button").find("img").attr("src", AutomaticDispose_URL + AutomaticDispose_Branch + "/images/full-automatic.svg");
         $("#adis-dashboard-switch-mode-button").html("Voll-Automatik");
     }
     else
     {
-        localStorage.setItem("AutomaticDispose-Mode", "semi");
+        localStorage.setItem("ADis-Mode", "semi");
         $("#adis-open-button").find("img").attr("src", AutomaticDispose_URL + AutomaticDispose_Branch + "/images/semi-automatic.svg");
         $("#adis-dashboard-switch-mode-button").html("Halb-Automatik");
     }
