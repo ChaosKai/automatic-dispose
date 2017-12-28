@@ -174,7 +174,7 @@
                             background:             #8bc34a;
                         }
     
-                   .adis-setting-switch::after
+                   .adis-setting-switch:after
                     {
                         width:                  26px;
                         height:                 26px;
@@ -190,7 +190,7 @@
                         transition:             all 200ms;
                     }
     
-                        .adis-setting-switch.active::after
+                        .adis-setting-switch.active:after
                         {
                             left:                   auto;
                             right:                  -3px;
@@ -264,25 +264,25 @@
     
     function ADis_UpdateSettings()
     {
-        if( localStorage.getItem("ADis-Settings-Semi-Automatic") ) {
+        if( localStorage.getItem("ADis-Settings-Semi-Automatic") == "true" ) {
             $("#adis-setting-semi-automatic").addClass("active");
         } else {
             $("#adis-setting-semi-automatic").removeClass("active");
         }
         
-        if( localStorage.getItem("ADis-Settings-Full-Automatic") ) {
+        if( localStorage.getItem("ADis-Settings-Full-Automatic") == "true" ) {
             $("#adis-setting-full-automatic").addClass("active");
         } else {
             $("#adis-setting-full-automatic").removeClass("active");
         }
         
-        if( localStorage.getItem("ADis-Settings-Sprechwunsch-Automatic") ) {
+        if( localStorage.getItem("ADis-Settings-Sprechwunsch-Automatic") == "true" ) {
             $("#adis-setting-sprechwunsch-automatic").addClass("active");
         } else {
             $("#adis-setting-sprechwunsch-automatic").removeClass("active");
         }
         
-        if( localStorage.getItem("ADis-Settings-Alliance-Automatic") ) {
+        if( localStorage.getItem("ADis-Settings-Alliance-Automatic") == "true" ) {
             $("#adis-setting-alliance-automatic").addClass("active");
         } else {
             $("#adis-setting-alliance-automatic").removeClass("active");
