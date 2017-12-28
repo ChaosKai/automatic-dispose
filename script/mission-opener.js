@@ -6,30 +6,34 @@ $(document).ready(function()
 
 var MissionFrameWatchDog = {};
 
-function ADis_CheckMissionAttention()
-{
-    var Dispatchers = JSON.parse( localStorage.getItem("ADis-Dispatchers") );
-    var Missions    = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
-    var CurrentTime = Math.floor( new Date().getTime() / 1000 );
-    
-    console.log("-------------------------------------------------------------------------------");
-    console.log("    ADis - Check Mission Attention");
-    console.log("");
-       
-    $.each(Missions, function(MissionID, Mission)
+//  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+//  -
+//  -           Assign & Unassign Missions to Dispatchers
+//  -
+//  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+    function ADis_AsignMissions()
     {
-        console.log("      Mission: " + Mission.id + " " + Mission.name + ":");
-        
-        if( $("#mission_" + MissionID).length == 0 || Mission.mode != localStorage.getItem("AutomaticDispose-Mode") || typeof ADis_Available_Missions[Missions[MissionID].type] === "undefined" )
+        var Missions    = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
+        var Dispatchers = JSON.parse( localStorage.getItem("ADis-Dispatchers") );
+
+        console.log("-------------------------------------------------------------------------------");
+        console.log("    ADis - Asign Missions to Dispatchers");
+        console.log("");
+
+        $.each(Missions, function(MissionID, Mission)
         {
-            delete Missions[MissionID]
-            console.log("      - gelöscht");
-        }
-        else if( Mission.next_check < CurrentTime )
-        {
-            console.log("      - braucht aufmerksamkeit");
+            if( Missions[MissionID].dispatcher != false && !Dispatchers[ Missions[MissionID].dispatcher ].state  )
+            {
+                console.log("      Mission: " + Mission.id + " " + Mission.name + ":");
+                console.log("      - wird freigestellt");
+                
+                Missions[ MissionID ].dispatcher = false;
+            }
+            
             if( !Missions[MissionID].dispatcher )
             {
+                console.log("      Mission: " + Mission.id + " " + Mission.name + ":");
                 console.log("      - wird vermittelt...");
                 $.each(Dispatchers, function(DispatcherID, Dispatcher)
                 {
@@ -53,7 +57,40 @@ function ADis_CheckMissionAttention()
                     }
                 });
             }
-            else if( Missions[MissionID].dispatcher != false && $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).find("iframe").data("mission") == "empty" )
+        });
+        
+        localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
+        localStorage.setItem( "ADis-Dispatchers", JSON.stringify(Dispatchers) );
+    }
+
+
+
+function ADis_CheckMissionAttention()
+{
+    var Dispatchers = JSON.parse( localStorage.getItem("ADis-Dispatchers") );
+    var Missions    = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
+    var CurrentTime = Math.floor( new Date().getTime() / 1000 );
+    
+    console.log("-------------------------------------------------------------------------------");
+    console.log("    ADis - Check Mission Attention");
+    console.log("");
+       
+    $.each(Missions, function(MissionID, Mission)
+    {
+        if( Mission.next_check > CurrentTime )
+            return true;
+        
+        console.log("      Mission: " + Mission.id + " " + Mission.name + ":");
+        
+        if( $("#mission_" + MissionID).length == 0 || Mission.mode != localStorage.getItem("AutomaticDispose-Mode") || typeof ADis_Available_Missions[Missions[MissionID].type] === "undefined" )
+        {
+            delete Missions[MissionID]
+            console.log("      - gelöscht");
+        }
+        else if( Mission.next_check < CurrentTime )
+        {
+            console.log("      - braucht aufmerksamkeit");
+            if( Missions[MissionID].dispatcher != false && $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).find("iframe").data("mission") == "empty" )
             {
                 console.log("      - bereits disponiert");
                 console.log("      - öffnen zum alarmieren");
