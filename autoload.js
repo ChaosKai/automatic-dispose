@@ -8,6 +8,30 @@
         var AutomaticDispose_URL    = "https://rawgit.com/ChaosKai/automatic-dispose/";
 
 //      -
+//      -           Settings
+//      -
+
+        if( localStorage.getItem("ADis-Settings-Semi-Automatic") == "null" )
+        {
+            localStorage.setItem("ADis-Settings-Semi-Automatic", false);
+        }
+
+        if( localStorage.getItem("ADis-Settings-Full-Automatic") == "null" )
+        {
+            localStorage.setItem("ADis-Settings-Full-Automatic", false);
+        }
+
+        if( localStorage.getItem("ADis-Settings-Sprechwunsch-Automatic") == "null" )
+        {
+            localStorage.setItem("ADis-Settings-Sprechwunsch-Automatic", false);
+        }
+
+        if( localStorage.getItem("ADis-Settings-Alliance-Automatic") == "null" )
+        {
+            localStorage.setItem("ADis-Settings-Alliance-Automatic", false);
+        }
+
+//      -
 //      -           Google Font
 //      -
 
