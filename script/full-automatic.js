@@ -27,7 +27,7 @@ function ADis_GetAvailableMissions()
 
 function ADis_FullAutomatic_CollectMissions()
 {
-    if( localStorage.getItem("AutomaticDispose-Mode") == "full" )
+    if( localStorage.getItem("ADis-Mode") == "full" )
     {
         var Missions = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
 
