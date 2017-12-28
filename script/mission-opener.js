@@ -46,7 +46,7 @@ function ADis_CheckMissionAttention()
                     
                     console.log("      - Anzahl der Disponenten: " + Num_Dispatcher_Missions);
 
-                    if( Dispatchers[DispatcherID].state && ADis_Available_Missions[Missions[MissionID].type].type == Dispatchers[DispatcherID].org )
+                    if( Num_Dispatcher_Missions == 0 && Dispatchers[DispatcherID].state && ADis_Available_Missions[Missions[MissionID].type].type == Dispatchers[DispatcherID].org && !Missions[MissionID].dispatcher )
                     {
                         Missions[ MissionID ].dispatcher = DispatcherID;
                         console.log("      - an Dispontent " + DispatcherID + " übergeben");
