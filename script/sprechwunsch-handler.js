@@ -3,10 +3,17 @@ var Hospitals = [];
 
 $(document).ready(function()
 {
-    setTimeout(function()
+    if( document.location.href.indexOf("/patient/") == -1 )
     {
-        ADis_Check_Call_Active();
-    }, 500);
+        setTimeout(function()
+        {
+            ADis_Check_Call_Active();
+        }, 500);
+    }
+    else
+    {
+        window.parent.ADis_CloseSprechwunsch();
+    }
 });
 
 
@@ -57,6 +64,9 @@ function ADis_Collect_Hospitals()
             var HospitalFreeBeds = parseInt( $(this).find("td").eq("2").text() );
             var HospitalTaxes    = parseInt( $(this).find("td").eq("3").text() );
             
+            // Add Button-ID to Alliance-Hospital
+            $(this).find("a").attr("id", "btn_approach_" + HospitalID);
+            
             var HospitalValue = HospitalDistance * 1000 * -1;
             
             if( $("this").find(".label:contains('Ja')").length > 0 ) {
@@ -102,5 +112,17 @@ function ADis_Send_Vehicle_To_Hospital()
 {
     var HospitalID = Hospitals[0].id;
     
-    document.location.href = document.location.href + "/patient/" + HospitalID;
+    if( localStorage.getItem("ADis-Mode") == "full" )
+    {
+        document.location.href = document.location.href + "/patient/" + HospitalID;
+    }
+    else
+    {
+        $("#btn_approach" + HospitalID).removeClass("btn-success").addClass("btn-warning");
+        
+        setTimeout(function()
+        {
+            document.location.href = document.location.href + "/patient/" + HospitalID;
+        }, 8000);
+    }
 }
