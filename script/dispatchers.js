@@ -138,7 +138,7 @@ function ADis_UpdateDispatcherMissions()
     
     $.each(Missions, function(MissionID, Mission)
     {
-        if( Mission.mode == "semi" || Mission.mode == localStorage.getItem("AutomaticDispose-Mode") )
+        if( Mission.mode == "semi" || Mission.mode == localStorage.getItem("ADis-Mode") )
         {
             if( $("#adis-dahboard-mission-" + MissionID).length == 0 )
             {
