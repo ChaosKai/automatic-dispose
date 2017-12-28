@@ -21,8 +21,6 @@ function ADis_BuildDispatcherInterface()
 
 function ADis_InitDispatcherWorkspace()
 {
-    if(  )
-    
     if( localStorage.getItem("ADis-Dispatchers") == "null" )
     {
         var Dispatchers = {};
