@@ -82,18 +82,6 @@
         }
         
 //      -
-//      -           Load Mission Opener
-//      -
-        
-        if (window.location.pathname === "/" || window.location.pathname === "/#")
-        {
-            var scriptElement = document.createElement("script");
-            scriptElement.type = "text/javascript";
-            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/mission-opener.js";
-            document.body.appendChild(scriptElement);
-        }
-        
-//      -
 //      -           Load Dispatcher Overview
 //      -
         
@@ -111,6 +99,30 @@
             styleElement.media = "screen";
             styleElement.href = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/style/dispatcher-overview.css";
             document.body.appendChild(styleElement);
+        }
+        
+//      -
+//      -           Load Mission Opener
+//      -
+        
+        if (window.location.pathname === "/" || window.location.pathname === "/#")
+        {
+            var scriptElement = document.createElement("script");
+            scriptElement.type = "text/javascript";
+            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/mission-opener.js";
+            document.body.appendChild(scriptElement);
+        }
+        
+//      -
+//      -           Load Sprechwunsch Opener
+//      -
+        
+        if (window.location.pathname === "/" || window.location.pathname === "/#")
+        {
+            var scriptElement = document.createElement("script");
+            scriptElement.type = "text/javascript";
+            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/sprechwunsch-opener.js";
+            document.body.appendChild(scriptElement);
         }
         
 //      -
