@@ -58,6 +58,9 @@ function ADis_CheckMissionAttention()
     var Missions    = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
     var CurrentTime = Math.floor( new Date().getTime() / 1000 );
     
+    var SemiAutomatic = localStorage.getItem("ADis-Settings-Semi-Automatic");
+    var FullAutomatic = localStorage.getItem("ADis-Settings-Full-Automatic");
+    
     $.each(Missions, function(MissionID, Mission)
     {
         if( Mission.next_check > CurrentTime )
@@ -66,7 +69,17 @@ function ADis_CheckMissionAttention()
         if( !Missions[MissionID].dispatcher )
             return true;
         
-        if( $("#mission_" + MissionID).length == 0 || Mission.mode != localStorage.getItem("ADis-Mode") || typeof ADis_Available_Missions[Missions[MissionID].type] === "undefined" )
+        if( SemiAutomatic == "false" && FullAutomatic == "false" )
+            return true;
+        
+        if( SemiAutomatic == "true" && Missions[MissionID].mode == "full" )
+            return true;
+        
+        if( FullAutomatic == "false" && Missions[MissionID].mode == "full" )
+            return true;
+        
+        
+        if( $("#mission_" + MissionID).length == 0 || typeof ADis_Available_Missions[Missions[MissionID].type] === "undefined" )
         {
             delete Missions[MissionID]
         }
