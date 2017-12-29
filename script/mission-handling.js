@@ -38,7 +38,7 @@ $(document).ready(function()
         }
         else
         {
-            window.parent.ADis_CloseMission(MissionID);
+            window.parent.ADis_CloseMission();
         }
     }
 
@@ -59,7 +59,7 @@ $(document).ready(function()
             Missions[ MissionID ]["next_check"] = CurrentTime + 60;
             localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
             
-            window.parent.ADis_CloseMission(MissionID);
+            window.parent.ADis_CloseMission();
         }
     }
 
