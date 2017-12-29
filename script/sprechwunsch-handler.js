@@ -10,10 +10,6 @@ $(document).ready(function()
             ADis_Check_Call_Active();
         }, 500);
     }
-    else
-    {
-        window.parent.ADis_CloseSprechwunsch();
-    }
 });
 
 
@@ -112,17 +108,12 @@ function ADis_Send_Vehicle_To_Hospital()
 {
     var HospitalID = Hospitals[0].id;
     
-    if( localStorage.getItem("ADis-Mode") == "full" )
+    if( localStorage.getItem("ADis-Settings-Sprechwunsch-Automatic") == "true" )
     {
         document.location.href = document.location.href + "/patient/" + HospitalID;
     }
     else
     {
         $("#btn_approach" + HospitalID).removeClass("btn-success").addClass("btn-warning");
-        
-        setTimeout(function()
-        {
-            document.location.href = document.location.href + "/patient/" + HospitalID;
-        }, 8000);
     }
 }
