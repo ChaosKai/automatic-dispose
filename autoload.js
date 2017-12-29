@@ -77,12 +77,7 @@
         {
             var scriptElement = document.createElement("script");
             scriptElement.type = "text/javascript";
-            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/semi-automatic.js";
-            document.body.appendChild(scriptElement);
-                
-            var scriptElement = document.createElement("script");
-            scriptElement.type = "text/javascript";
-            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/full-automatic.js";
+            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/mission-manager.js";
             document.body.appendChild(scriptElement);
         }
         
