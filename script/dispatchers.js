@@ -138,26 +138,19 @@ function ADis_UpdateDispatcherMissions()
     
     $.each(Missions, function(MissionID, Mission)
     {
-        if( Mission.mode == "semi" || Mission.mode == localStorage.getItem("ADis-Mode") )
+        if( $("#adis-dahboard-mission-" + MissionID).length == 0 )
         {
-            if( $("#adis-dahboard-mission-" + MissionID).length == 0 )
-            {
-                $("#adis-dispatcher-missions").append('<div id="adis-dahboard-mission-' + MissionID + '" class="mission"></div>');
-                $("#adis-dahboard-mission-" + MissionID).append('<div class="name"></div>');
-                $("#adis-dahboard-mission-" + MissionID).append('<div class="street"></div>');
-                $("#adis-dahboard-mission-" + MissionID).append('<div class="village"></div>');
-                $("#adis-dahboard-mission-" + MissionID).append('<div class="countdown"></div>');
-            }
-            
-            $("#adis-dahboard-mission-" + MissionID).data("mission", MissionID);
-            $("#adis-dahboard-mission-" + MissionID).find(".name").html(Mission.name);
-            $("#adis-dahboard-mission-" + MissionID).find(".street").html(Mission.street);
-            $("#adis-dahboard-mission-" + MissionID).find(".village").html(Mission.village);
-            $("#adis-dahboard-mission-" + MissionID).find(".countdown").html( (Mission.next_check - CurrentTime) + "sek.");
+            $("#adis-dispatcher-missions").append('<div id="adis-dahboard-mission-' + MissionID + '" class="mission"></div>');
+            $("#adis-dahboard-mission-" + MissionID).append('<div class="name"></div>');
+            $("#adis-dahboard-mission-" + MissionID).append('<div class="street"></div>');
+            $("#adis-dahboard-mission-" + MissionID).append('<div class="village"></div>');
+            $("#adis-dahboard-mission-" + MissionID).append('<div class="countdown"></div>');
         }
-        else if( $("#adis-dahboard-mission-" + MissionID).length > 0 )
-        {
-            $("#adis-dahboard-mission-" + MissionID).remove();
-        }
+
+        $("#adis-dahboard-mission-" + MissionID).data("mission", MissionID);
+        $("#adis-dahboard-mission-" + MissionID).find(".name").html(Mission.name);
+        $("#adis-dahboard-mission-" + MissionID).find(".street").html(Mission.street);
+        $("#adis-dahboard-mission-" + MissionID).find(".village").html(Mission.village);
+        $("#adis-dahboard-mission-" + MissionID).find(".countdown").html( (Mission.next_check - CurrentTime) + "sek.");
     });
 }
