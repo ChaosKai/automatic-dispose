@@ -41,12 +41,6 @@ var MissionFrameWatchDog = {};
                 return true;
             }
             
-            if( SemiAutomatic == "true" && Missions[MissionID].mode == "full" )
-            {
-                Missions[ MissionID ].dispatcher = false;
-                return true;
-            }
-            
             if( Missions[MissionID].dispatcher != false )
             {
                 return true;
