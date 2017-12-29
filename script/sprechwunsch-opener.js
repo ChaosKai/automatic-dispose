@@ -17,6 +17,9 @@ var VehicleFrameWatchDog;
     {
         var Sprechwuensche = JSON.parse( localStorage.getItem("ADis-Sprechwuensche") );
         
+        if( Sprechwuensche == "null" )
+            Sprechwuensche = {};
+        
         if( localStorage.getItem("ADis-Settings-Sprechwunsch-Automatic") == "true" )
         {
             $.each(Sprechwuensche, function(VehicleID)
@@ -58,11 +61,14 @@ var VehicleFrameWatchDog;
             if( $("#adis-sprechwunsch-frame").attr("vehicle_id") == "empty" )
             {
                 $("#adis-sprechwunsch-frame").attr("src", "https://www.leitstellenspiel.de/vehicles/" + VehicleID);
-                ADis_RemoveSprechwunschFromQueue( VehicleID );
+                $("#adis-sprechwunsch-frame").attr("vehicle_id", VehicleID);
                 
                 VehicleFrameWatchDog = setTimeout(function()
                 {
+                    ADis_RemoveSprechwunschFromQueue( $("#adis-sprechwunsch-frame").attr("vehicle_id") );
+                    
                     $("#adis-sprechwunsch-frame").attr("src", "");
+                    $("#adis-sprechwunsch-frame").attr("vehicle_id", "");
                 }, 6000); 
             }
         });
