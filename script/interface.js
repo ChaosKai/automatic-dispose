@@ -17,8 +17,8 @@ function ADis_CreateDashboard()
 
 function ADis_CreateIframes()
 {
-    $("body").append('<div id="adis-iframe-container"></div>');
-    $("#adis-iframe-container").load( AutomaticDispose_URL + AutomaticDispose_Branch + "/html/iframes.html" );
+    $("body").append('<div id="adis-frame-container"></div>');
+    $("#adis-frame-container").load( AutomaticDispose_URL + AutomaticDispose_Branch + "/html/iframes.html" );
     
-    $("#adis-iframe-container").css({ display: "none", opacity: "0" });
+    $("#adis-frame-container").css({ display: "none", opacity: "0" });
 }
