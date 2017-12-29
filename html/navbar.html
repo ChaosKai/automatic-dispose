@@ -230,6 +230,28 @@
             ADis_UpdateSettings();
         });
 
+        $("#adis-setting-sprechwunsch-automatic").click(function()
+        {
+            if( localStorage.getItem("ADis-Settings-Sprechwunsch-Automatic") == "true" ) {
+                localStorage.setItem("ADis-Settings-Sprechwunsch-Automatic", false)
+            } else {
+                localStorage.setItem("ADis-Settings-Sprechwunsch-Automatic", true)
+            }
+
+            ADis_UpdateSettings();
+        });
+
+        $("#adis-setting-alliance-automatic").click(function()
+        {
+            if( localStorage.getItem("ADis-Settings-Alliance-Automatic") == "true" ) {
+                localStorage.setItem("ADis-Settings-Alliance-Automatic", false)
+            } else {
+                localStorage.setItem("ADis-Settings-Alliance-Automatic", true)
+            }
+
+            ADis_UpdateSettings();
+        });
+
         $("#adis-dashboard-open-dispatcher-button").click(function()
         {
             $("#adis-dispatcher-overview").css("display", "flex");
