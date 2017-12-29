@@ -202,6 +202,7 @@ $(document).ready(function()
 //      -                   74:     NAW
 //      -                   73:     GRTW
 //      -                   55:     LNA
+//      -                   56:     OrgL
 //      -
 //      -                   58:     (SEG) KTW Typ B
 //      -                   59:     (SEG) ELW 1
@@ -211,6 +212,16 @@ $(document).ready(function()
         
         if( typeof MissionConfig.emergency_medical_service == "object" )            // Wenn der EMS-Block in der Config definiert ist
         {
+            if( Object.keys(AD_Patients).length >= 5 )
+            {
+                ADis_VehiclesNeed["55"]++;
+            }
+            
+            if( Object.keys(AD_Patients).length >= 10 )
+            {
+                ADis_VehiclesNeed["56"]++;
+            }
+            
             $.each(AD_Patients, function(Key, Patient)
             {
                 if( MissionConfig.emergency_medical_service.use_KTW == "true" )
@@ -219,8 +230,8 @@ $(document).ready(function()
                         ADis_VehiclesNeed["38"]++;
                 }
                 
-                if( Patient.need_LNA && ADis_VehiclesNeed["55"] < 1 )
-                    ADis_VehiclesNeed["55"]++;
+                //if( Patient.need_LNA && ADis_VehiclesNeed["55"] < 1 )
+                    // ADis_VehiclesNeed["55"]++;
                 
                 if( MissionConfig.emergency_medical_service.use_RTW == "true" )
                     ADis_VehiclesNeed["28"]++;
@@ -272,6 +283,11 @@ $(document).ready(function()
                 {
                     $("#vehicle_checkbox_" + VehicleID).click();
                     ADis_VehiclesNeed["55"]--;
+                }
+                else if( $(this).attr("vehicle_type") == "KdoW-OrgL" && ADis_VehiclesNeed["56"] > 0 )
+                {
+                    $("#vehicle_checkbox_" + VehicleID).click();
+                    ADis_VehiclesNeed["56"]--;
                 }
             });
         }
