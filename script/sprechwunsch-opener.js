@@ -68,7 +68,7 @@ var VehicleFrameWatchDog;
                     ADis_RemoveSprechwunschFromQueue( $("#adis-sprechwunsch-frame").attr("vehicle_id") );
                     
                     $("#adis-sprechwunsch-frame").attr("src", "");
-                    $("#adis-sprechwunsch-frame").attr("vehicle_id", "");
+                    $("#adis-sprechwunsch-frame").attr("vehicle_id", "empty");
                 }, 6000); 
             }
         });
