@@ -117,5 +117,5 @@ function ADis_CloseMission()
     $("#adis-mission-frame").attr("src", "");
     $("#adis-mission-frame").attr("mission_id", "empty");
     
-    clearTimeout( MissionFrameWatchDog[MissionID] );
+    clearTimeout( MissionFrameWatchDog );
 }
