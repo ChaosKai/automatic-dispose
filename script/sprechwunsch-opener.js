@@ -65,7 +65,7 @@ var VehicleFrameWatchDog;
                 
                 VehicleFrameWatchDog = setTimeout(function()
                 {
-                    ADis_RemoveSprechwunschFromQueue( $("#adis-sprechwunsch-frame").attr("vehicle_id") );
+                    localStorage.setItem("ADis-Sprechwuensche", "{}")
                     
                     $("#adis-sprechwunsch-frame").attr("src", "");
                     $("#adis-sprechwunsch-frame").attr("vehicle_id", "empty");
