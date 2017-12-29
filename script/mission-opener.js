@@ -35,13 +35,13 @@ var MissionFrameWatchDog = {};
                 return true;
             }
             
-            if( SemiAutomatic == "true" && Missions[MissionID].mode == "full" )
+            if( FullAutomatic == "false" && Missions[ MissionID ] == "full" )
             {
                 Missions[ MissionID ].dispatcher = false;
                 return true;
             }
             
-            if( FullAutomatic == "false" && Missions[ MissionID ] == "full" )
+            if( SemiAutomatic == "true" && Missions[MissionID].mode == "full" )
             {
                 Missions[ MissionID ].dispatcher = false;
                 return true;
