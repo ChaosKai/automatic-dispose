@@ -308,6 +308,19 @@
         } else {
             $("#adis-setting-alliance-automatic").removeClass("active");
         }
+        
+        if( localStorage.getItem("ADis-Settings-Semi-Automatic") == "true" )
+        {
+            if( localStorage.getItem("ADis-Settings-Full-Automatic") == "true" ) {
+                $("#adis-open-button").find("img").attr("src", AutomaticDispose_URL + AutomaticDispose_Branch + "/images/full-automatic.svg");
+            } else {
+                $("#adis-open-button").find("img").attr("src", AutomaticDispose_URL + AutomaticDispose_Branch + "/images/semi-automatic.svg");
+            }
+        }
+        else
+        {
+            $("#adis-open-button").find("img").attr("src", AutomaticDispose_URL + AutomaticDispose_Branch + "/images/no-automatic.svg");
+        }
     }
     
 </script>
