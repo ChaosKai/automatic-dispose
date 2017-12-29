@@ -49,7 +49,7 @@ function ADis_CollectMissions()
             return true;
         }
         
-        if( typeof ADis_Available_Missions[ MissionType ] == "undefined" )
+        if( typeof ADis_Available_Missions[ Mission.type ] == "undefined" )
         {
             delete Missions[ Mission.id ];
             $("#mission_" + Mission.id).animate({opacity: 1.0}, 500);
