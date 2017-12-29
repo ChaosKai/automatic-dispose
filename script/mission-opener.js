@@ -17,33 +17,64 @@ var MissionFrameWatchDog = {};
     {
         var Missions    = JSON.parse( localStorage.getItem("AutomaticDispose-Missions") );
         var Dispatchers = JSON.parse( localStorage.getItem("ADis-Dispatchers") );
+        
+        var SemiAutomatic = localStorage.getItem("ADis-Settings-Semi-Automatic");
+        var FullAutomatic = localStorage.getItem("ADis-Settings-Full-Automatic");
 
         $.each(Missions, function(MissionID, Mission)
         {
-            if( Missions[MissionID].dispatcher != false && !Dispatchers[ Missions[MissionID].dispatcher ].state  )
+            if( typeof ADis_Available_Missions[Missions[MissionID].type] == "undefined" )
             {
                 Missions[ MissionID ].dispatcher = false;
+                return true;
             }
             
-            if( !Missions[MissionID].dispatcher )
+            if( SemiAutomatic == "false" && FullAutomatic == "false" )
             {
-                $.each(Dispatchers, function(DispatcherID, Dispatcher)
-                {
-                    // count missions with this dispatcher and validate
-                    var Num_Dispatcher_Missions = 0;
-                    
-                    $.each(Missions, function(SubMissionID, SubMission)
-                    {
-                        if( Missions[SubMissionID].dispatcher == Dispatcher.id )
-                            Num_Dispatcher_Missions++;
-                    });
-                    
-                    if( Num_Dispatcher_Missions == 0 && Dispatchers[DispatcherID].state && ADis_Available_Missions[Missions[MissionID].type].type == Dispatchers[DispatcherID].org && !Missions[MissionID].dispatcher )
-                    {
-                        Missions[ MissionID ].dispatcher = DispatcherID;
-                    }
-                });
+                Missions[ MissionID ].dispatcher = false;
+                return true;
             }
+            
+            if( SemiAutomatic == "true" && Missions[MissionID].mode == "full" )
+            {
+                Missions[ MissionID ].dispatcher = false;
+                return true;
+            }
+            
+            if( FullAutomatic == "false" && Missions[ MissionID ] == "full" )
+            {
+                Missions[ MissionID ].dispatcher = false;
+                return true;
+            }
+            
+            if( Missions[MissionID].dispatcher != false )
+            {
+                return true;
+            }
+            
+            if( Dispatchers[ Missions[MissionID].dispatcher ].state == false  )
+            {
+                Missions[ MissionID ].dispatcher = false;
+                return true;
+            }
+            
+            $.each(Dispatchers, function(DispatcherID, Dispatcher)
+            {
+                // count missions with this dispatcher and validate
+                var Num_Dispatcher_Missions = 0;
+
+                $.each(Missions, function(SubMissionID, SubMission)
+                {
+                    if( Missions[SubMissionID].dispatcher == Dispatcher.id )
+                        Num_Dispatcher_Missions++;
+                });
+
+                if( Num_Dispatcher_Missions == 0 && Dispatchers[DispatcherID].state && ADis_Available_Missions[Missions[MissionID].type].type == Dispatchers[DispatcherID].org && !Missions[MissionID].dispatcher )
+                {
+                    Missions[ MissionID ].dispatcher = DispatcherID;
+                }
+            });
+            
         });
         
         localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify(Missions) );
@@ -69,32 +100,16 @@ function ADis_CheckMissionAttention()
         if( !Missions[MissionID].dispatcher )
             return true;
         
-        if( SemiAutomatic == "false" && FullAutomatic == "false" )
-            return true;
         
-        if( SemiAutomatic == "true" && Missions[MissionID].mode == "full" )
-            return true;
-        
-        if( FullAutomatic == "false" && Missions[MissionID].mode == "full" )
-            return true;
-        
-        
-        if( $("#mission_" + MissionID).length == 0 || typeof ADis_Available_Missions[Missions[MissionID].type] === "undefined" )
+        if( Missions[MissionID].dispatcher != false && $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).find("iframe").data("mission") == "empty" )
         {
-            delete Missions[MissionID]
-        }
-        else if( Mission.next_check < CurrentTime )
-        {
-            if( Missions[MissionID].dispatcher != false && $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).find("iframe").data("mission") == "empty" )
+            $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).find("iframe").attr("src", "https://www.leitstellenspiel.de/missions/" + Mission.id);
+            $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).find("iframe").data("mission", Mission.id);
+
+            MissionFrameWatchDog[MissionID] = setTimeout(function()
             {
-                $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).find("iframe").attr("src", "https://www.leitstellenspiel.de/missions/" + Mission.id);
-                $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).find("iframe").data("mission", Mission.id);
-                
-                MissionFrameWatchDog[MissionID] = setTimeout(function()
-                {
-                    ADis_CloseMission( MissionID );
-                }, 10000);
-            }
+                ADis_CloseMission( MissionID );
+            }, 10000);
         }
     });
     
