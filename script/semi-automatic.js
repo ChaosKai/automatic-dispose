@@ -5,7 +5,7 @@ $(document).ready(function()
         localStorage.setItem( "AutomaticDispose-Missions", JSON.stringify({}) );
     }
 
-    setInterval( AutomaticDispose_CollectMissions, 1000 );
+    setInterval( AutomaticDispose_CollectMissions, 10000 );
 });
 
 
