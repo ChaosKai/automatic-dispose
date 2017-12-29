@@ -103,7 +103,7 @@ function ADis_CollectMissions()
 //      -           Emergency Missions  |  Full-Automatic
 //      - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-        if( typeof Missions[ MissionID ] == "undefined" && typeof ADis_Available_Missions[ MissionType ] != "undefined" )
+        if( FullAutomatic == "true" )
         {
             ADis_AddMission( MissionID, "full" );
         }
@@ -135,7 +135,7 @@ function ADis_CollectMissions()
 //      -           Ambulance Service  |  Full-Automatic
 //      - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-        if( typeof Missions[ MissionID ] == "undefined" && typeof ADis_Available_Missions[ MissionType ] != "undefined" )
+        if( FullAutomatic == "true" )
         {
             ADis_AddMission( MissionID, "full" );
         }
