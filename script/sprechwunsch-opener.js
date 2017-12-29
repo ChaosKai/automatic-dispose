@@ -1,10 +1,11 @@
 $(document).ready(function()
 {
     setInterval( ADis_CollectSprechwuensche, 10000 );
+    setInterval( ADis_OpenNextSprechwunsch, 10000 );
 });
 
 
-var MissionFrameWatchDog = {};
+var VehicleFrameWatchDog;
 
 //  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 //  -
@@ -43,6 +44,33 @@ var MissionFrameWatchDog = {};
             localStorage.setItem( "ADis-Sprechwuensche", "{}" );
         }
     }
+
+
+
+
+
+    function ADis_OpenNextSprechwunsch(  )
+    {
+        var Sprechwuensche = JSON.parse( localStorage.getItem("ADis-Sprechwuensche") );
+        
+        $.each(Sprechwuensche, function(VehicleID)
+        {
+            if( $("#adis-sprechwunsch-frame").attr("vehicle_id") == "empty" )
+            {
+                $("#adis-sprechwunsch-frame").attr("src", "https://www.leitstellenspiel.de/vehicles/" + VehicleID);
+                ADis_RemoveSprechwunschFromQueue( VehicleID );
+                
+                VehicleFrameWatchDog = setTimeout(function()
+                {
+                    $("#adis-sprechwunsch-frame").attr("src", "");
+                }, 6000); 
+            }
+        });
+    }
+
+
+
+
     
     function ADis_AddSprechwunschToQueue( VehicleID )
     {
