@@ -43,11 +43,14 @@ function ADis_Collect_Hospitals()
                 var HospitalSpecialDepartment = false;
             }
             
-            Hospitals.push({
-                "id": HospitalID,
-                "value": HospitalValue,
-                "distance": HospitalDistance
-            });
+            if( HospitalFreeBeds > 0 )
+            {
+                Hospitals.push({
+                    "id": HospitalID,
+                    "value": HospitalValue,
+                    "distance": HospitalDistance
+                });
+            }
         });
     }
     
@@ -82,7 +85,7 @@ function ADis_Collect_Hospitals()
                 HospitalValue -= 5000;
             }
             
-            if( HospitalID.indexOf("?") == -1 )
+            if( HospitalID.indexOf("?") == -1 && HospitalFreeBeds > 0 )
             {
                 Hospitals.push({
                     "id": HospitalID,
