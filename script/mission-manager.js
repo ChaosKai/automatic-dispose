@@ -103,7 +103,7 @@ function ADis_CollectMissions()
 //      -           Emergency Missions  |  Full-Automatic
 //      - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-        if( FullAutomatic == "true" )
+        if( FullAutomatic == "true" && $(this).css("display") != "none" )
         {
             ADis_AddMission( MissionID, "full" );
         }
@@ -135,7 +135,7 @@ function ADis_CollectMissions()
 //      -           Ambulance Service  |  Full-Automatic
 //      - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-        if( FullAutomatic == "true" )
+        if( FullAutomatic == "true" && $(this).css("display") != "none" )
         {
             ADis_AddMission( MissionID, "full" );
         }
