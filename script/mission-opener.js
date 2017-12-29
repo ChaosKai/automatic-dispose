@@ -1,7 +1,7 @@
 $(document).ready(function()
 {
-    setInterval( ADis_AsignMissions, 1600 );
-    setInterval( ADis_CheckMissionAttention, 2000 );
+    setInterval( ADis_AsignMissions, 4900 );
+    setInterval( ADis_CheckMissionAttention, 5000 );
 });
 
 
@@ -52,12 +52,6 @@ var MissionFrameWatchDog = {};
                 return true;
             }
             
-            if( Dispatchers[ Missions[MissionID].dispatcher ].state == false  )
-            {
-                Missions[ MissionID ].dispatcher = false;
-                return true;
-            }
-            
             $.each(Dispatchers, function(DispatcherID, Dispatcher)
             {
                 // count missions with this dispatcher and validate
@@ -99,6 +93,12 @@ function ADis_CheckMissionAttention()
         
         if( !Missions[MissionID].dispatcher )
             return true;
+            
+        if( Dispatchers[ Missions[MissionID].dispatcher ].state == false  )
+        {
+            Missions[ MissionID ].dispatcher = false;
+            return true;
+        }
         
         
         if( Missions[MissionID].dispatcher != false && $("#adis_dispatcher_workstation_" + Missions[MissionID].dispatcher).find("iframe").data("mission") == "empty" )
