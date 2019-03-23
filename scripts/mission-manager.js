@@ -63,8 +63,9 @@
             {
                 collectMission( $(this), "ambulance" )
             });
-
-            localStorage.setItem( "AllianceVehicleAlert-MissionList", JSON.stringify(UpdatedMissions) );
+                
+            MissionList = UpdatedMissions;
+            setMissionList();
         }
         
         
