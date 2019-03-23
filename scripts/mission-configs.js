@@ -7,7 +7,18 @@
 
         $(document).ready( function()
         {
-            setMissionConfigs();
+            if( localStorage.getItem("Leitstellenspiel-ChaosKai-MissionConfigsUpdate") == "null" )
+            {
+                setMissionConfigs();
+            }
+            
+            setInterval( function()
+            {
+                if( parseInt( localStorage.getItem("Leitstellenspiel-ChaosKai-MissionConfigsUpdate") ) + 3600000 > Date.now() )
+                {
+                    setMissionConfigs();
+                }
+            });
         });
         
 //      - --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
@@ -22,6 +33,7 @@
                 if( Response.status == "success" )
                 {
                     localStorage.setItem( "Leitstellenspiel-ChaosKai-MissionConfigs", JSON.stringify(Response.missions) );
+                    localStorage.setItem( "Leitstellenspiel-ChaosKai-MissionConfigsUpdate", Date.now() );
                 }
             });
         }
