@@ -40,6 +40,20 @@
         
         
         
+        function getMission( MissionId )
+        {
+            var MissionList = JSON.parse( localStorage.getItem("Leitstellenspiel-ChaosKai-MissionList") );
+            
+            if( typeof MissionList[MissionId] == "undefined" )
+            {
+                return false;
+            }
+            
+            return MissionList[MissionId];
+        }
+        
+        
+        
         function collectMissions()
         {
             let UpdatedMissionList  = {};
@@ -76,6 +90,10 @@
                 index     : MissionElement.attr("mission_id"),
                 type      : MissionElement.attr("mission_type_id"),
                 category  : MissionCategory,
+                vehicles  : {
+                    involved : {},
+                    required : {}
+                },
                 name      : MissionElement.find(".map_position_mover").text(),
                 state     : "red",
                 actions   : [],
@@ -92,6 +110,9 @@
                 Mission.actions   = MissionList[Mission.index].actions;
                 Mission.entered   = MissionList[Mission.index].entered;
                 Mission.processed = MissionList[Mission.index].processed;
+                
+                Mission.vehicles.involved = MissionList[Mission.index].vehicles.involved;
+                Mission.vehicles.required = MissionList[Mission.index].vehicles.required;
             }
 
             if( MissionElement.children("div").hasClass("mission_panel_green") )
