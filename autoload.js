@@ -4,8 +4,7 @@
 //  -
 //  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-        var AutomaticDispose_Branch = "master";
-        var AutomaticDispose_URL    = "https://rawgit.com/ChaosKai/automatic-dispose/";
+        var AutomaticDispose_URL    = "https://chaoskai.github.io/automatic-dispose/";
 
 //      -
 //      -           Settings
@@ -48,26 +47,6 @@
         scriptElement.type = "text/javascript";
         scriptElement.src = "https://use.fontawesome.com/releases/v5.0.2/js/all.js";
         document.body.appendChild(scriptElement);
-
-//      -
-//      -           Navbar Dashboard
-//      -
-        
-        if (window.location.pathname === "/" || window.location.pathname === "/#")
-        {
-            var scriptElement = document.createElement("script");
-            scriptElement.type = "text/javascript";
-            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/interface.js";
-            document.body.appendChild(scriptElement);
-            
-            
-            var styleElement = document.createElement("link");
-            styleElement.rel = "stylesheet";
-            styleElement.type = "text/css";
-            styleElement.media = "screen";
-            styleElement.href = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/style/interface.css";
-            document.body.appendChild(styleElement);
-        }
         
 //      -
 //      -           Load Automatic Modes
@@ -77,39 +56,7 @@
         {
             var scriptElement = document.createElement("script");
             scriptElement.type = "text/javascript";
-            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/mission-manager.js";
-            document.body.appendChild(scriptElement);
-        }
-        
-//      -
-//      -           Load Dispatcher Overview
-//      -
-        
-        if (window.location.pathname === "/" || window.location.pathname === "/#")
-        {
-            var scriptElement = document.createElement("script");
-            scriptElement.type = "text/javascript";
-            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/dispatchers.js";
-            document.body.appendChild(scriptElement);
-            
-            
-            var styleElement = document.createElement("link");
-            styleElement.rel = "stylesheet";
-            styleElement.type = "text/css";
-            styleElement.media = "screen";
-            styleElement.href = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/style/dispatcher-overview.css";
-            document.body.appendChild(styleElement);
-        }
-        
-//      -
-//      -           Load Mission Opener
-//      -
-        
-        if (window.location.pathname === "/" || window.location.pathname === "/#")
-        {
-            var scriptElement = document.createElement("script");
-            scriptElement.type = "text/javascript";
-            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/mission-opener.js";
+            scriptElement.src = AutomaticDispose_URL + "/scripts/mission-manager.js";
             document.body.appendChild(scriptElement);
         }
         
@@ -121,7 +68,7 @@
         {
             var scriptElement = document.createElement("script");
             scriptElement.type = "text/javascript";
-            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/sprechwunsch-opener.js";
+            scriptElement.src = AutomaticDispose_URL + "/scripts/call-manager.js";
             document.body.appendChild(scriptElement);
         }
         
@@ -133,18 +80,6 @@
         {
             var scriptElement = document.createElement("script");
             scriptElement.type = "text/javascript";
-            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/mission-handling.js";
-            document.body.appendChild(scriptElement);
-        }
-        
-//      -
-//      -           Sprechwunsch Handler
-//      -
-        
-        if (window.location.pathname.indexOf("/vehicles/") !== -1)
-        {
-            var scriptElement = document.createElement("script");
-            scriptElement.type = "text/javascript";
-            scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/" + AutomaticDispose_Branch + "/script/sprechwunsch-handler.js";
+            scriptElement.src = AutomaticDispose_URL + "/scripts/mission-handler.js";
             document.body.appendChild(scriptElement);
         }
