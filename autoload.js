@@ -61,7 +61,7 @@
         }
         
 //      -
-//      -           Load Sprechwunsch Opener
+//      -           Load Call Handler
 //      -
         
         if (window.location.pathname === "/" || window.location.pathname === "/#")
@@ -69,6 +69,14 @@
             var scriptElement = document.createElement("script");
             scriptElement.type = "text/javascript";
             scriptElement.src = AutomaticDispose_URL + "/scripts/call-manager.js";
+            document.body.appendChild(scriptElement);
+        }
+
+        if (document.location.href.indexOf("/vehicle/") > -1)
+        {
+            var scriptElement = document.createElement("script");
+            scriptElement.type = "text/javascript";
+            scriptElement.src = AutomaticDispose_URL + "/scripts/call-handler.js";
             document.body.appendChild(scriptElement);
         }
         
