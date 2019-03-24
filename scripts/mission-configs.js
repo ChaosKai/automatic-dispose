@@ -38,9 +38,35 @@
             });
         }
         
-        
-        
-        function getMissionConfigs()
+        function getMissionConfig( MissionTypeId )
         {
-            return JSON.parse( localStorage.getItem("Leitstellenspiel-ChaosKai-MissionConfigs") );
+            var MissionConfigs = JSON.parse( localStorage.getItem("Leitstellenspiel-ChaosKai-MissionConfigs") );
+            
+            if( typeof MissionConfigs[MissionTypeId] == "undefined" )
+            {
+                return false;
+            }
+            
+            return MissionConfigs[MissionTypeId];
+        }
+        
+//      - --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+//      -
+//      -           Mission Configs   |   Get Required Vehicles
+//      - --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+        function getRequiredVehiclesFromConfig( MissionId )
+        {
+            var MissionList = getMissionList();
+            var MissionConfigs = getMissionConfigs();
+            
+            if( typeof MissionList[MissionId] == "undefined" )
+            {
+                return false;
+            }
+            
+            if( typeof MissionConfigs[ MissionList[MissionId].type ] == "undefined" )
+            {
+                return false;
+            }
         }
