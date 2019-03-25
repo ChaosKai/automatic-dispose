@@ -11,5 +11,5 @@
 
 var scriptElement = document.createElement("script");
 scriptElement.type = "text/javascript";
-scriptElement.src = "https://rawgit.com/ChaosKai/automatic-dispose/master/autoload.js";
+scriptElement.src = "https://chaoskai.github.io/automatic-dispose/autoload.js";
 document.body.appendChild(scriptElement);
