@@ -26,9 +26,9 @@
 //      -           Mission Manager   |   Mission List
 //      - --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
-        function setMissionList()
+        function setMissionList( updatedMissionList )
         {
-            localStorage.setItem("Leitstellenspiel-ChaosKai-MissionList", JSON.stringify(MissionList));
+            localStorage.setItem("Leitstellenspiel-ChaosKai-MissionList", JSON.stringify(updatedMissionList));
         }
         
         
@@ -42,7 +42,7 @@
         
         function getMission( MissionId )
         {
-            var MissionList = JSON.parse( localStorage.getItem("Leitstellenspiel-ChaosKai-MissionList") );
+            var MissionList = getMissionList();
             
             if( typeof MissionList[MissionId] == "undefined" )
             {
@@ -56,30 +56,42 @@
         
         function collectMissions()
         {
-            let UpdatedMissionList  = {};
+            let updatedMissionList  = {};
 
 //          - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 //          -
-//          -           Mission Manager   |   Collect Alliance Missions
+//          -           Mission Manager   |   Collect Emergency Missions
 //          - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
             $("#mission_list").find(".missionSideBarEntry").each(function()
             {
-                collectMission( $(this), "emergency" )
+                var collectedMission = collectMission( $(this), "emergency" );
+                updatedMissionList[collectedMission.id] = collectedMission;
             });
+                
+//          - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+//          -
+//          -           Mission Manager   |   Collect Alliance Missions
+//          - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
             
             $("#mission_list_alliance").find(".missionSideBarEntry").each(function()
             {
-                collectMission( $(this), "alliance" )
+                var collectedMission = collectMission( $(this), "alliance" );
+                updatedMissionList[collectedMission.id] = collectedMission;
             });
+                
+//          - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+//          -
+//          -           Mission Manager   |   Collect Medical Services
+//          - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
             
             $("#mission_list_krankentransporte").find(".missionSideBarEntry").each(function()
             {
-                collectMission( $(this), "ambulance" )
+                var collectedMission = collectMission( $(this), "ambulance" );
+                updatedMissionList[collectedMission.id] = collectedMission;
             });
                 
-            MissionList = UpdatedMissions;
-            setMissionList();
+            setMissionList( updatedMissionList );
         }
         
         
@@ -90,6 +102,7 @@
                 index     : MissionElement.attr("mission_id"),
                 type      : MissionElement.attr("mission_type_id"),
                 category  : MissionCategory,
+                config    : {},
                 vehicles  : {
                     involved : {},
                     required : {}
