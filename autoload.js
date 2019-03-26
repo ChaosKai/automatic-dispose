@@ -4,7 +4,7 @@
 //  -
 //  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-        var AutomaticDispose_URL    = "https://chaoskai.github.io/automatic-dispose/";
+        var AutomaticDispose_URL    = "https://chaoskai.github.io/automatic-dispose";
 
 //      -
 //      -           Settings
@@ -56,12 +56,12 @@
         {
             var scriptElement = document.createElement("script");
             scriptElement.type = "text/javascript";
-            scriptElement.src = AutomaticDispose_URL + "/scripts/mission-windows.js";
+            scriptElement.src = AutomaticDispose_URL + "/scripts/window-manager.js";
             document.body.appendChild(scriptElement);
             
             var styleElement = document.createElement("link");
             styleElement.rel = "stylesheet";
-            styleElement.href = AutomaticDispose_URL + "/styles/mission-windows.css";
+            styleElement.href = AutomaticDispose_URL + "/styles/window-manager.css";
             document.body.appendChild(styleElement);
         }
         
@@ -78,14 +78,14 @@
         }
         
 //      -
-//      -           Load Call Handler
+//      -           Load Speaking Request Handler
 //      -
         
         if (window.location.pathname === "/" || window.location.pathname === "/#")
         {
             var scriptElement = document.createElement("script");
             scriptElement.type = "text/javascript";
-            scriptElement.src = AutomaticDispose_URL + "/scripts/call-manager.js";
+            scriptElement.src = AutomaticDispose_URL + "/scripts/request-manager.js";
             document.body.appendChild(scriptElement);
         }
 
@@ -93,7 +93,7 @@
         {
             var scriptElement = document.createElement("script");
             scriptElement.type = "text/javascript";
-            scriptElement.src = AutomaticDispose_URL + "/scripts/call-handler.js";
+            scriptElement.src = AutomaticDispose_URL + "/scripts/request-handler.js";
             document.body.appendChild(scriptElement);
         }
         
