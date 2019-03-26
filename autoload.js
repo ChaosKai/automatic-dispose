@@ -49,7 +49,24 @@
         document.body.appendChild(scriptElement);
         
 //      -
-//      -           Load Automatic Modes
+//      -           Load Mission Windows
+//      -
+        
+        if (window.location.pathname === "/" || window.location.pathname === "/#")
+        {
+            var scriptElement = document.createElement("script");
+            scriptElement.type = "text/javascript";
+            scriptElement.src = AutomaticDispose_URL + "/scripts/mission-windows.js";
+            document.body.appendChild(scriptElement);
+            
+            var styleElement = document.createElement("link");
+            styleElement.rel = "stylesheet";
+            styleElement.href = AutomaticDispose_URL + "/styles/mission-windows.css";
+            document.body.appendChild(styleElement);
+        }
+        
+//      -
+//      -           Load Mission Manager
 //      -
         
         if (window.location.pathname === "/" || window.location.pathname === "/#")
