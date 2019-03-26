@@ -16,7 +16,7 @@
                     }
                     
                     // Auswahl absenden
-                    document.location.href = document.location.href + "/patient/" + Hospitals[0];
+                    document.location.href = document.location.href + "/patient/" + Hospitals[0].id;
                 }
             }, 500);
         }
