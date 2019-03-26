@@ -93,6 +93,11 @@
         {
             var scriptElement = document.createElement("script");
             scriptElement.type = "text/javascript";
+            scriptElement.src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js";
+            document.body.appendChild(scriptElement);
+            
+            var scriptElement = document.createElement("script");
+            scriptElement.type = "text/javascript";
             scriptElement.src = AutomaticDispose_URL + "/scripts/request-handler.js";
             document.body.appendChild(scriptElement);
         }
