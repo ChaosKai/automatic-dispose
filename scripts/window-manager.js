@@ -134,5 +134,7 @@
                 $("#automatic-dispose-windows").find(".window").eq(FreeWindow).attr("data-vehicle", `none`);
                 $("#automatic-dispose-windows").find(".window").eq(FreeWindow).attr("data-building", `none`);
             }, 5000);
+            
+            WindowQueue.splice(0, 1);
         }
     }
