@@ -89,7 +89,7 @@
             document.body.appendChild(scriptElement);
         }
 
-        if (document.location.href.indexOf("/vehicle/") > -1)
+        if (document.location.href.indexOf("/vehicles/") > -1)
         {
             var scriptElement = document.createElement("script");
             scriptElement.type = "text/javascript";
