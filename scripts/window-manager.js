@@ -92,7 +92,8 @@
             return;
         }
         
-        var FreeWindow = -1;
+        var FreeWindow  = -1;
+        var AlreadyOpen = false;
         
         for( var WindowIndex = 0; WindowIndex < Windows.length; WindowIndex++ )
         {
@@ -105,10 +106,27 @@
             {
                 FreeWindow = WindowIndex;
             }
+            
+            if( WindowQueue[0].type == "mission" && Window.attr("data-mission") == WindowQueue[0].mission )
+            {
+                AlreadyOpen = true;
+            }
+            
+            if( WindowQueue[0].type == "vehicle" && Window.attr("data-vehicle") == WindowQueue[0].vehicle )
+            {
+                AlreadyOpen = true;
+            }
+            
+            if( WindowQueue[0].type == "building" && Window.attr("data-building") == WindowQueue[0].building )
+            {
+                AlreadyOpen = true;
+            }
         }
         
-        if( FreeWindow > -1 )
+        if( FreeWindow > -1 && !AlreadyOpen )
         {
+            var AlreadyOpen = false;
+            
             if( WindowQueue[0].type == "mission" )
             {
                 $("#automatic-dispose-windows").find(".window").eq(FreeWindow).find("iframe").attr("src", `https://www.leitstellenspiel.de/missions/${WindowQueue[0].mission}`);
