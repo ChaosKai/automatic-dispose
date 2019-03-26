@@ -21,7 +21,7 @@
             MissionWindow.attr("data-building", "none");
             MissionWindow.append( $("<iframe></iframe>") );
             
-            $("#alliance-vehicle-alert").append(MissionWindow);
+            $("#automatic-dispose-mission-windows").append(MissionWindow);
             MissionWindows.push( MissionWindow );
         }
     });
