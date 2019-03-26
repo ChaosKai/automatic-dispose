@@ -4,7 +4,7 @@
 //  -
 //  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-        var AutomaticDispose_URL    = "https://chaoskai.github.io/automatic-dispose/";
+        var AutomaticDispose_URL    = "https://chaoskai.github.io/automatic-dispose";
 
 //      -
 //      -           Settings
