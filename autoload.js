@@ -77,6 +77,14 @@
             document.body.appendChild(scriptElement);
         }
         
+        if ( document.location.href.indexOf("/missions/") > -1 )
+        {
+            var scriptElement = document.createElement("script");
+            scriptElement.type = "text/javascript";
+            scriptElement.src = AutomaticDispose_URL + "/scripts/mission-manager.js";
+            document.body.appendChild(scriptElement);
+        }
+        
 //      -
 //      -           Load Speaking Request Handler
 //      -
