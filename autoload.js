@@ -86,6 +86,18 @@
         }
         
 //      -
+//      -           Mission Configs
+//      -
+        
+        if (window.location.pathname === "/" || window.location.pathname === "/#")
+        {
+            var scriptElement = document.createElement("script");
+            scriptElement.type = "text/javascript";
+            scriptElement.src = AutomaticDispose_URL + "/scripts/mission-configs.js";
+            document.body.appendChild(scriptElement);
+        }
+        
+//      -
 //      -           Load Speaking Request Handler
 //      -
         
