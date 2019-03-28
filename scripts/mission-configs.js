@@ -7,7 +7,7 @@
 
         $(document).ready( function()
         {
-            if( localStorage.getItem("Leitstellenspiel-ChaosKai-MissionConfigsUpdate") == "null" )
+            if( localStorage.getItem("Leitstellenspiel-ChaosKai-MissionConfigsUpdate") == null )
             {
                 setMissionConfigs();
             }
