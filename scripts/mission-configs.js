@@ -14,7 +14,7 @@
             
             setInterval( function()
             {
-                if( parseInt( localStorage.getItem("Leitstellenspiel-ChaosKai-MissionConfigsUpdate") ) + 3600000 > Date.now() )
+                if( parseInt( localStorage.getItem("Leitstellenspiel-ChaosKai-MissionConfigsUpdate") ) > Date.now() - 3600000 )
                 {
                     setMissionConfigs();
                 }
