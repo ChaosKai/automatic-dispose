@@ -28,8 +28,10 @@
 
         function setMissionConfigs()
         {
+            console.log("updating mission configs");
             $.getJSON( "https://automatic-disposer.000webhostapp.com/lss-bridge/available-missions.php", function( Response )
             {
+                console.log(Response);
                 if( Response.status == "success" )
                 {
                     localStorage.setItem( "Leitstellenspiel-ChaosKai-MissionConfigs", JSON.stringify(Response.missions) );
