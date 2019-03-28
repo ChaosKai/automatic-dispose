@@ -28,6 +28,7 @@
 
         function setMissionConfigs()
         {
+            localStorage.setItem( "Leitstellenspiel-ChaosKai-MissionConfigsUpdate", Date.now() );
             console.log("updating mission configs");
             $.getJSON( "https://automatic-disposer.000webhostapp.com/lss-bridge/available-missions.php", function( Response )
             {
@@ -35,7 +36,6 @@
                 if( Response.status == "success" )
                 {
                     localStorage.setItem( "Leitstellenspiel-ChaosKai-MissionConfigs", JSON.stringify(Response.missions) );
-                    localStorage.setItem( "Leitstellenspiel-ChaosKai-MissionConfigsUpdate", Date.now() );
                 }
             });
         }
